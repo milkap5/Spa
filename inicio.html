@@ -18,11 +18,12 @@
       </div>
     </div>
     <nav style="background: none; padding: 0;">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios-individuales">Servicios Individuales</a>
-      <a href="#servicios-grupales">Servicios Grupales</a>
+      <a href="inicio.html">Inicio</a>
+      <a href="servicios-individuales.html">Servicios Individuales</a>
+      <a href="servicios-grupales.html">Servicios Grupales</a>      
       <a href="#formModal" onclick="document.getElementById('formModal').style.display='flex'">Reservar</a>
     </nav>
+    
   </header>
   
 
@@ -43,7 +44,9 @@
   <div id="formModal">
     <div class="modal-content">
       <h2>Reservar un turno</h2>
-      <form action="reservar.php" method="POST">
+      <!--<form action="reservar.php" method="POST">-->
+        <form id="formulario-reserva">
+
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
 
@@ -68,7 +71,7 @@
       </form>
     </div>
   </div>
-
+  
   <button class="floating-button" onclick="document.getElementById('formModal').style.display='flex'">+</button>
 
   <script>
@@ -244,11 +247,11 @@
 
 <!-- fuera del modal -->
 <div id="mensajeConfirmacion" class="mensaje-confirmacion">
-  ¡Gracias por tu reserva! Te contactaremos pronto.
+  
 </div>
 
 
-  <script>
+  <!--<script>
     // Cerrar el modal con la tecla Esc
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
@@ -258,20 +261,22 @@
 
     // Mostrar mensaje de confirmación al enviar
     document.querySelector('#formModal form').addEventListener('submit', function(e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      // Ocultar el modal
-      document.getElementById('formModal').style.display = 'none';
+    // Acá podrías hacer validaciones o enviar los datos si lo necesitás
 
-      // Mostrar el mensaje
-      const mensaje = document.getElementById('mensajeConfirmacion');
-      mensaje.style.display = 'block';
-
-      // Limpiar el formulario
-      this.reset();
-
-    });
+    // Redirigir a la página de gracias
+    window.location.href = 'gracias.html';
+  });
   </script>
+-->
+<script>
+  document.getElementById('formulario-reserva').addEventListener('submit', function(e) {
+    e.preventDefault();
+    window.location.href = 'gracias.html';
+  });
+</script>
+
 
   </body>
 </html>
