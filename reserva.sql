@@ -1,0 +1,9 @@
+CREATE TABLE reservas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100),
+  servicio VARCHAR(100),
+  fecha DATE,
+  hora TIME,
+  email VARCHAR(100),
+  creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
