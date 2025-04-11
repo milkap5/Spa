@@ -5,30 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Servicios Individuales - Sentirse Bien</title>
   <link rel="stylesheet" href="estilos.css" />
-  <style>
-    .servicio-box {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .servicio-box.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .boton-reservar {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #a8d8e8;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .boton-reservar:hover {
-      background-color: #85c1d4;
-    }
-  </style>
+ 
 </head>
 <body>
   <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
@@ -52,56 +29,63 @@
     <section class="servicio-box">
       <h3>Masajes</h3>
       <ul>
-        <li>Masaje relajante - $50</li>
-        <li>Masaje descontracturante - $55</li>
-        <li>Masaje con piedras calientes - $60</li>
-        <li>Masaje craneal - $45</li>
-        <li>Drenaje linfático manual - $50</li>
+        <li>Masaje Anti-Stress - $10000</li>
+        <li>Masaje descontracturante - $12000</li>
+        <li>Masaje con piedras calientes - $16000</li>
+        <li>Masaje circulatorio - $14500</li>
       </ul>
-      <button class="boton-reservar" onclick="window.location.href='index.html#formModal'">Reservar servicio</button>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
     </section>
 
     <section class="servicio-box">
       <h3>Belleza</h3>
       <ul>
-        <li>Perfilado de cejas - $20</li>
-        <li>Lifting de pestañas - $25</li>
-        <li>Depilación facial - $15</li>
-        <li>Limpieza facial profunda - $40</li>
-        <li>Tratamiento hidratante facial - $35</li>
-        <li>Peeling suave - $30</li>
-        <li>Maquillaje social - $50</li>
+        <li>Lifting de pestañas - $25000</li>
+        <li>Depilación facial - $17000</li>
+        <li>Belleza de manos y pies - $21000</li>
       </ul>
-      <button class="boton-reservar" onclick="window.location.href='index.html#formModal'">Reservar servicio</button>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
     </section>
 
     <section class="servicio-box">
-      <h3>Otros</h3>
+      <h3>Tratamientos Faciales</h3>
       <ul>
-        <li>Reiki - $40</li>
-        <li>Reflexología - $45</li>
-        <li>Auriculoterapia - $35</li>
-        <li>Terapia con cuencos tibetanos - $50</li>
+        <li>Punta de Diamante (Microexfoliaicon) - $20000</li>
+        <li>Limpieza profunda + Hidratacion - $18000</li>
+        <li>Criofrecuencia facial(Produce el "SHOCK TERMICO", lograndoresultados instantaneos en efecto lifting) - $22000</li>
       </ul>
-      <button class="boton-reservar" onclick="window.location.href='index.html#formModal'">Reservar servicio</button>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+    </section>
+
+    <section class="servicio-box">
+      <h3>Tratamientos Corporales</h3>
+      <ul>
+        <li>VelaSlim: Reduccion de la circunferencia corporal y la celulitis - $35000</li>
+        <li>DermoHealth: moviliza los distintos tejidos de la piel y estimula microcirculacion, generando un drenaje linfatico - $36000</li>
+        <li>Criofrecuencia: produce un efecto lifting instantaneo - $29000</li>
+        <li>Ultracabitacion: tecnica reductora - $29000</li>
+      </ul>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
     </section>
   </main>
 
   <script>
-     // Cerrar modal con ESC o clic afuera
-     document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function(event) {
       const modal = document.getElementById('formModal');
-      if (event.key === 'Escape' && modal.style.display === 'flex') {
+      if (event.key === 'Escape' && modal?.style.display === 'flex') {
         modal.style.display = 'none';
       }
     });
+
     window.onclick = function(event) {
       const modal = document.getElementById('formModal');
       if (event.target == modal) {
         modal.style.display = "none";
       }
     }
-    // Detectar si los elementos están en pantalla
+
     function revealOnScroll() {
       const boxes = document.querySelectorAll('.servicio-box');
       const windowHeight = window.innerHeight;

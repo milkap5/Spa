@@ -5,32 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Servicios Grupales - Sentirse Bien</title>
   <link rel="stylesheet" href="estilos.css"/>  
-
-  <style>
-    .servicio-box {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .servicio-box.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .boton-reservar {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #a8d8e8;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .boton-reservar:hover {
-      background-color: #85c1d4;
-    }
-  </style>
-  
 </head>
 <body>
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
@@ -51,17 +25,20 @@
   <main style="padding : 30px;">
     <section class="contenido-servicios">
       <h2 class="titulo-seccion">Servicios Grupales</h2>
+
       <div class="servicio-box">
         <h3>Hidromasajes</h3>
         <p>Disfrutá de una sesión grupal de hidromasajes relajantes.</p>
-        <p><strong>Precio:</strong> $80 por persona</p>
-        <button class="boton-reservar" onclick="document.getElementById('formModal').style.display='flex'">Reservar servicio</button>
+        <p><strong>Precio:</strong> $8000 por persona</p>
+        <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
       </div>
       <div class="servicio-box">
         <h3>Yoga</h3>
         <p>Clases grupales de yoga para mejorar tu bienestar físico y mental.</p>
-        <p><strong>Precio:</strong> $60 por persona</p>
-        <button class="boton-reservar" onclick="document.getElementById('formModal').style.display='flex'">Reservar servicio</button>
+        <p><strong>Precio:</strong> $6000 por persona</p>
+        <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
       </div>
     </section>
   </main>
