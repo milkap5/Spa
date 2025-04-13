@@ -478,9 +478,16 @@ button.submit {
 }
 
 .contenido h2 {
-  text-shadow: 2px 2px 5px rgba(227, 218, 218, 0.6);
+  text-shadow: 3px 3px 5px rgba(134, 129, 129, 0.938);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 900;
+}
+.contenido h2 {
+  color: white;
+}
+.contenido p{
+  color: rgb(255, 255, 255);
+  text-shadow: #003c46;
 }
 
 .mensaje-confirmacion {
