@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size:16px;
+}
+
+#imagenPrincipal {
+    border-radius: 45px;
+}
+
+body {
+    background-color: magenta;
+}
+
+#registroTitulo {
+    border: 4px solid orange;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 3em;
+}
+
+#registroFormulario {
+    border: 2px solid #fff;
+    width:50%;
+    min-width: 400px;
+    margin: auto;
+}
+
+input {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 5px solid violet;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+#limpiar, #registrar {
+    width: 40%;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+label {
+    border: 3px solid green;
+}

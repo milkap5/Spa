@@ -111,6 +111,7 @@ section {
 input, select, button.submit {
   display: block;
   width: 100%;
+  box-sizing: border-box;
   margin-bottom: 15px;
   padding: 12px;
   border-radius: 8px;

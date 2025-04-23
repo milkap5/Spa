@@ -1,0 +1,44 @@
+* {
+    margin:0;
+    padding:0;
+    font-size:14px;
+    border:none;
+    font-family: 'Arial';
+    background-color:white;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    height: 100vh;
+}
+
+.formulario {
+    border: 1px solid #ff0;
+    border-radius: 20px;
+    width: 500px;
+    margin: auto;
+    padding: 20px 20px;
+}
+
+img {
+    width:100px;
+    border: 1px solid orange;   
+    border-radius: 30px;
+    margin:  20px auto;
+}
+
+.formulario h2 {
+    border: 1px solid green;
+    font-size: x-large;
+    text-align: center;
+    margin-bottom: 20px;
+}
