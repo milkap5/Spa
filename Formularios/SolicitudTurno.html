@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="estilosFormularios.css">
+        <style>
+            body { height: 800px;}
+            select { width: 100%;}
+        </style>
+        <title>Solicitar Turno</title>
+        <script src="jquery-3.7.1.min.js"></script>
+
+        <script>
+        </script>
+    </head>
+    <body class="flexColumn">
+        <form action="" id="registro" class="formulario flexColumn" method="post">
+            <img src="../Imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
+            <h2 id="registroTitulo">Solicitud de Turno</h2>
+            <label for="nombre">Ingrese se número de cliente</label>
+            <input type="number" id="numCliente" placeholder="por ejemplo: 223415" required>
+
+            <div id="seleccionServicios" style="margin-bottom: 20px;">
+                <label>Seleccione el servicio que desee</label><br>
+                <select name="servicio" id="servicio" style="width: 65%;">
+                    <option value="">abcdefghijklmnopqrstuvwxyz</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+
+                <label>Precio: </label>
+                <label>$<u>unidad,decena</u></label>
+            </div>
+
+            <label for="fechaTurno">Seleccione la fecha que desee</label>
+            <input type="date" id="fechaTurno" required>
+
+            <label for="horaTurno">Seleccione la hora disponible que desee</label>
+            <input type="time" id="horaTurno" required>
+
+            <div id="profesionalDisponible">
+                <label>Seleccione el servicio que desee</label><br>
+                <select name="profesionalDisponible" id="profesional">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div id="botones" class="flexRow">
+                <button type="reset" class="submit">Limpiar Datos</button>
+                <button type="submit" class="submit">Solicitar Turno</button>
+            </div>
+            </form>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios Grupales - Sentirse Bien</title>
+  <link rel="stylesheet" href="estilos.css"/>
+  <link rel="icon" href="icono.ico"/>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+          <div style="color: white;">
+            <h1 style="margin: 0;">Sentirse Bien</h1>
+            <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
+          </div>
+        </div>
+        <nav style="background: none; padding: 0;">
+          <a href="inicio.html">Inicio</a>
+          <a href="servicios-individuales.html">Servicios Individuales</a>
+          <a href="servicios-grupales.html">Servicios Grupales</a>
+        </nav>
+      </header>
+
+  <main style="padding : 30px;">
+    <section class="contenido-servicios">
+      <h2 class="titulo-seccion">Servicios Grupales</h2>
+
+      <div class="servicio-box">
+        <h3>Hidromasajes</h3>
+        <p>Disfrutá de una sesión grupal de hidromasajes relajantes.</p>
+        <p><strong>Precio:</strong> $8000 por persona</p>
+        <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
+      </div>
+      <div class="servicio-box">
+        <h3>Yoga</h3>
+        <p>Clases grupales de yoga para mejorar tu bienestar físico y mental.</p>
+        <p><strong>Precio:</strong> $6000 por persona</p>
+        <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de reserva -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <h2>Reservar un turno</h2>
+      <form id="formulario-reserva">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="servicio">Servicio:</label>
+        <select id="servicio" name="servicio" onchange="mostrarPrecio()">
+          <option value="Hidromasajes">Hidromasajes - $80</option>
+          <option value="Yoga">Yoga - $60</option>
+        </select>
+        <div id="precioSeleccionado"></div>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required />
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required />
+
+        <button type="submit" class="submit">Reservar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function mostrarPrecio() {
+      const servicio = document.getElementById("servicio").value;
+      let precio = "";
+      switch (servicio) {
+        case "Hidromasajes":
+          precio = "$80";
+          break;
+        case "Yoga":
+          precio = "$60";
+          break;
+      }
+      document.getElementById("precioSeleccionado").innerText = "Precio: " + precio;
+    }
+
+    document.getElementById('formulario-reserva').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.location.href = 'gracias.html';
+    });
+
+    // Animaciones suaves
+    document.addEventListener("DOMContentLoaded", () => {
+      const boxes = document.querySelectorAll(".servicio-box");
+      boxes.forEach(box => {
+        box.style.opacity = 0;
+        box.style.transform = "translateY(20px)";
+      });
+
+      const reveal = () => {
+        boxes.forEach(box => {
+          const boxTop = box.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (boxTop < windowHeight - 100) {
+            box.style.opacity = 1;
+            box.style.transform = "translateY(0)";
+            box.style.transition = "all 0.6s ease-out";
+          }
+        });
+      };
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    });
+
+    // Cerrar modal con ESC o clic afuera
+    document.addEventListener('keydown', function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+      }
+    });
+    window.onclick = function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

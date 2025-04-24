@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spa Sentirse Bien</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" href="icono.ico"/>
+</head>
+
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img id="imagenPrincipal" src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
+      </div>
+    </div>
+    <nav style="background: none; padding: 0;">
+      <a href="inicio.html">Inicio</a>
+      <a href="servicios-individuales.html">Servicios Individuales</a>
+      <a href="servicios-grupales.html">Servicios Grupales</a>      
+      <a href="reservar.html">Iniciar Sesión</a>
+    </nav>
+    
+  </header>
+  
+
+  <div class="fondo-transparente">
+    <div class="overlay"></div>
+    <div class="contenido">
+      <h2>Sentirse Bien</h2>
+      <p>
+        Buscamos atraer la atención de nuestros clientes a través de experiencias inspiradas en la seducción de los sentidos. 
+        Adaptamos las propuestas con el objetivo de que logre desconectarse completamente de la rutina y disfrute de un momento 
+        de bienestar, en total armonía con la naturaleza.
+      </p>
+    </div>
+  </div>
+
+  <div id="formModal">
+    <div class="modal-content">
+      <h2>Reservar un turno</h2>
+      <form id="formulario-reserva">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="servicio">Servicio:</label>
+        <select id="servicio" name="servicio" onchange="mostrarPrecio()">
+          <option value="50">Masaje relajante - $50</option>
+          <option value="45">Tratamiento facial - $45</option>
+          <option value="40">Sesión de aromaterapia - $40</option>
+        </select>
+
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" name="precio" readonly />
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required />
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required />
+
+        <button type="submit" class="submit">Reservar</button>
+      </form>
+    </div>
+  </div>
+
+  <button class="floating-button" onclick="abrirFormulario()">+</button>
+
+  <footer>
+    <div class="footer-content">
+      <div class="contacto">
+        <p><strong>📧 Email:</strong> info@sentirsebien.com</p>
+        <p><strong>📞 Tel:</strong> (362) 456-7890</p>
+      </div>
+      <div class="direccion-visitanos">
+        <p><strong>📍 Dirección:</strong> French 414, Resistencia</p>
+      </div>
+      <div class="redes-sociales">
+        <a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+        <a href="https://www.facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+        <a href="https://wa.me/5491234567890" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
+      </div>
+      <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=French%20414,%20Resistencia&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    function mostrarPrecio() {
+      const select = document.getElementById("servicio");
+      const precio = select.value;
+      document.getElementById("precio").value = "$" + precio;
+    }
+
+    function abrirFormulario() {
+      document.getElementById("formModal").style.display = "flex";
+    }
+
+    // Cerrar con Esc
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById('formModal').style.display = 'none';
+      }
+    });
+
+    // Cerrar al hacer clic fuera del modal
+    window.onclick = function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Enviar formulario
+    document.getElementById('formulario-reserva').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.location.href = 'gracias.html';
+    });
+  </script>
+</body>
+</html>

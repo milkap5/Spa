@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="estilosFormularios.css">
+        <style>
+            div { padding: 5px 0 5px 15px;}
+            .dato { font-weight: bold;}
+            .soloEste { margin-left: 50px;}
+        </style>
+        <title>Turno Confirmado</title>
+        <script src="jquery-3.7.1.min.js"></script>
+
+        <script>
+        </script>
+    </head>
+    <body class="flexColumn">
+        <form action="" id="turnoConfirmado" class="formulario flexColumn" method="post">
+            <img src="logo-sentirse-bien.png" alt="Logo_SPA">
+            <h2 id="turnoNumero">Turno N° 2528</h2>
+            <div class="flexRow">
+                <label class="dato">Cliente:</label>
+                <label>Fernandez, Gimena</label>
+            </div>
+
+            <div class="flexRow">
+                <label class="dato">Servicio solicitado:</label>
+                <label>Masajes anti-stress</label>
+            </div>
+
+            <div class="flexRow">
+                <label class="dato">Precio:  $</label>
+                <label>5000,00</label>
+            </div>
+
+            <div class="flexRow">
+                <label class="dato">Fecha y hora:</label>
+                <label>Lunes 25 de Mayo 2025 - 17:30hs</label>
+            </div>
+
+            <div class="flexRow">
+                <label class="dato">Profesional:</label>
+                <label>Avecedo, Clara</label>
+            </div>
+
+            <div class="flexRow" style="padding: 0;">
+                <div class="flexRow">
+                    <label class="dato">Sección:</label>
+                    <label>Masajes</label>
+                </div>
+                <div class="flexRow soloEste">
+                    <label class="dato">Sala N°:</label>
+                    <label>3</label>
+                </div>
+            </div>
+
+            <div id="botones" class="flexRow">
+                <button type="button" class="submit">Solicitar Nuevo Turno</button>
+                <button type="button" class="submit">Ir a mis Turnos</button>
+                <button type="button" class="submit">Ir a la Página</button>
+            </div>
+    </body>
+</html>

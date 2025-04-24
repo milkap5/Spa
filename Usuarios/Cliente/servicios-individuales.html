@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios Individuales - Sentirse Bien</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" href="icono.ico"/>
+</head>
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
+      </div>
+    </div>
+    <nav style="background: none; padding: 0;">
+      <a href="inicio.html">Inicio</a>
+      <a href="servicios-individuales.html">Servicios Individuales</a>
+      <a href="servicios-grupales.html">Servicios Grupales</a>
+    </nav>
+  </header>
+
+  <main style="padding: 30px;">
+    <h2>Servicios Individuales</h2>
+    
+    <section class="servicio-box">
+      <h3>Masajes</h3>
+      <ul>
+        <li>Masaje Anti-Stress - $10000</li>
+        <li>Masaje descontracturante - $12000</li>
+        <li>Masaje con piedras calientes - $16000</li>
+        <li>Masaje circulatorio - $14500</li>
+      </ul>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+    </section>
+
+    <section class="servicio-box">
+      <h3>Belleza</h3>
+      <ul>
+        <li>Lifting de pestañas - $25000</li>
+        <li>Depilación facial - $17000</li>
+        <li>Belleza de manos y pies - $21000</li>
+      </ul>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
+    </section>
+
+    <section class="servicio-box">
+      <h3>Tratamientos Faciales</h3>
+      <ul>
+        <li>Punta de Diamante (Microexfoliaicon) - $20000</li>
+        <li>Limpieza profunda + Hidratacion - $18000</li>
+        <li>Criofrecuencia facial(Produce el "SHOCK TERMICO", lograndoresultados instantaneos en efecto lifting) - $22000</li>
+      </ul>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+    </section>
+
+    <section class="servicio-box">
+      <h3>Tratamientos Corporales</h3>
+      <ul>
+        <li>VelaSlim: Reduccion de la circunferencia corporal y la celulitis - $35000</li>
+        <li>DermoHealth: moviliza los distintos tejidos de la piel y estimula microcirculacion, generando un drenaje linfatico - $36000</li>
+        <li>Criofrecuencia: produce un efecto lifting instantaneo - $29000</li>
+        <li>Ultracabitacion: tecnica reductora - $29000</li>
+      </ul>
+      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('keydown', function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.key === 'Escape' && modal?.style.display === 'flex') {
+        modal.style.display = 'none';
+      }
+    });
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function revealOnScroll() {
+      const boxes = document.querySelectorAll('.servicio-box');
+      const windowHeight = window.innerHeight;
+
+      boxes.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        if (boxTop < windowHeight - 100) {
+          box.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+  </script>
+</body>
+</html>

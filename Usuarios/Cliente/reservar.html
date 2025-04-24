@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar Servicio - Sentirse Bien</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" href="icono.ico"/>
+</head>
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
+      </div>
+    </div>
+    <nav style="background: none; padding: 0;">
+      <a href="inicio.html">Inicio</a>
+      <a href="servicios-individuales.html">Servicios Individuales</a>
+      <a href="servicios-grupales.html">Servicios Grupales</a>      
+      <a href="#formModal" onclick="document.getElementById('formModal').style.display='flex'">Reservar</a>
+    </nav>
+    
+  </header>
+  
+
+  <main class="contenido-servicios" style="padding: 30px;">
+    <h2>Reservá tu servicio</h2>
+    <form action="gracias.html" method="POST" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+      <label>
+        Nombre completo:
+        <input type="text" name="nombre" required />
+      </label>
+
+      <label>
+        DNI:
+        <input type="text" name="dni" required />
+      </label>
+      <label>
+        Email:
+        <input type="email" name="email" required />
+      </label>
+
+      <label>
+        Tipo de servicio:
+        <select id="tipo-servicio" required>
+          <option value="">Seleccioná una opción</option>
+          <option value="individuales">Individual</option>
+          <option value="grupales">Grupal</option>
+        </select>
+      </label>
+
+      <label id="label-servicio-individual" style="display:none;">
+        Servicio individual:
+        <select name="servicio-individual">
+          <option value="">Seleccioná un servicio</option>
+          <option>Masaje Anti-Stress - $10000</option>
+          <option>Masaje descontracturante - $12000</option>
+          <option>Masaje con piedras calientes - $16000</option>
+          <option>Masaje circulatorio - $14500</option>
+          <option>Lifting de pestañas - $25000</option>
+          <option>Depilación facial - $17000</option>
+          <option>Belleza de manos y pies - $21000</option>
+          <option>Punta de Diamante (Microexfoliación) - $20000</option>
+          <option>Limpieza profunda + Hidratacion - $18000</option>  
+          <option>Criofrecuencia facial - $22000</option>
+          <option>VelaSlim - $35000</option>
+          <option>DermoHealth - $36000</option>
+          <option>Criofrecuencia corporal- $29000</option>
+          <option>Ultracabitacion - $28000</option>
+          </option>
+        </select>
+      </label>
+
+      <label id="label-servicio-grupal" style="display:none;">
+        Servicio grupal:
+        <select name="servicio-grupal">
+          <option value="">Seleccioná un servicio</option>
+          <option>Yoga en grupo - $6000 por persona</option>
+          <option>Hidromasajes - $8000 por persona</option>
+        </select>
+      </label>
+
+      <label>
+        Fecha:
+        <input type="date" name="fecha" required />
+      </label>
+      <label>
+        Horario:
+        <input type="time" name="hora" required />
+      </label>
+      
+      <button type="submit" class="submit">Confirmar reserva</button>
+    </form>
+  </main>
+
+  <script>
+    const tipoSelect = document.getElementById('tipo-servicio');
+    const individualLabel = document.getElementById('label-servicio-individual');
+    const grupalLabel = document.getElementById('label-servicio-grupal');
+
+    tipoSelect.addEventListener('change', function () {
+      if (this.value === 'individuales') {
+        individualLabel.style.display = 'block';
+        grupalLabel.style.display = 'none';
+      } else if (this.value === 'grupales') {
+        grupalLabel.style.display = 'block';
+        individualLabel.style.display = 'none';
+      } else {
+        individualLabel.style.display = 'none';
+        grupalLabel.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
