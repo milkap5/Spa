@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="estilosFormularios.css">
         <title>Registrarse</title>
+        <style>
+            body { padding: 20px 0 210px 0;}
+        </style>
         <script src="jquery-3.7.1.min.js"></script>
-
-        <script>
-        </script>
     </head>
     <body class="flexColumn">
         <form action="" id="registro" class="formulario flexColumn" method="post">
@@ -27,14 +27,15 @@
             <input type="number" id="celular" placeholder="3624001100" required>
 
             <label>Correo</label>
-            <input type="email" id="mail" placeholder="user@mail.com"required>
+            <input type="email" id="mail" placeholder="usuario@mail.com"required>
 
             <label for="contrasenia">Contraseña</label>
             <input type="password" id="contrasenia" placeholder="********" required>
 
-            <div class="flexRow">
-                <input type="reset" id="limpiar" class="botones" value="Limpiar Datos">
-                <input type="submit" id="registrar" class="botones" value="Registrarme">
+            <div id="botones" class="flexRow">
+
+                <button type="reset" class="submit">Limpiar Datos</button>
+                <button type="submit" class="submit">Registrarme</button>
             </div>
         </form>
     </body>

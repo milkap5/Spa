@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="estilosFormularios.css" rel="stylesheet">
+    <style>
+        h3 {
+            border:none;
+            text-align: center;
+            padding: 0 0 10px 0;
+            font-size: 20px;
+            margin: -10px 0 20px 0;
+        }
+    </style>
     <title>Bienvenido</title>
 </head>
 <body class="flexColumn">
@@ -14,10 +23,22 @@
         <p>
             Le agradecemos que confiara en nosotros para que usted puede descansar, relajarse, distraerse como usted se merece. A continuación, podrá ya no solo ver nuestros servicios, también podrá solicitar turnos para acceder a ellos. También podrá elegir la fecha el horario que a usted más le guste.
         </p>
-        <p>
+        <p style="font-size: 12px; text-align:right; color: darkmagenta;">
             Se ha enviado a su correo un resumen de su registro, donde se detallan sus datos con los cuales contamos. Usted podrá actualizarlos en su perfil cuando lo desee.
         </p>
-        <p>Ir a Iniciar Sesion</p>
+        <a href="inicioSesion.html">Iniciar Sesion</a>
     </form>
+
+    <!-- <input type="text" id="miInput">
+    <div id="resultado"></div>
+
+    <script>
+        const input = document.getElementById('miInput');
+        const resultado = document.getElementById('resultado');
+
+        input.addEventListener('input', () => {
+            resultado.textContent = input.value;
+        });
+    </script> -->
 </body>
 </html>

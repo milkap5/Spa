@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="estilosFormularios.css">
+        <style>
+            body { height: 800px;}
+            select { width: 100%;}
+        </style>
         <title>Solicitar Turno</title>
         <script src="jquery-3.7.1.min.js"></script>
 
@@ -17,10 +21,10 @@
             <label for="nombre">Ingrese se número de cliente</label>
             <input type="number" id="numCliente" placeholder="por ejemplo: 223415" required>
 
-            <div id="seleccionServicios">
-                <label>Seleccione el servicio que desee</label>
-                <select name="servicio" id="servicio">
-                    <option value=""></option>
+            <div id="seleccionServicios" style="margin-bottom: 20px;">
+                <label>Seleccione el servicio que desee</label><br>
+                <select name="servicio" id="servicio" style="width: 65%;">
+                    <option value="">abcdefghijklmnopqrstuvwxyz</option>
                     <option value=""></option>
                     <option value=""></option>
                     <option value=""></option>
@@ -30,7 +34,7 @@
                     <option value=""></option>
                 </select>
 
-                <label>Precio</label>
+                <label>Precio: </label>
                 <label>$<u>unidad,decena</u></label>
             </div>
 
@@ -41,7 +45,7 @@
             <input type="time" id="horaTurno" required>
 
             <div id="profesionalDisponible">
-                <label>Seleccione el servicio que desee</label>
+                <label>Seleccione el servicio que desee</label><br>
                 <select name="profesionalDisponible" id="profesional">
                     <option value=""></option>
                     <option value=""></option>
@@ -55,8 +59,8 @@
             </div>
 
             <div id="botones" class="flexRow">
-                <input type="reset" id="limpiar" class="botones" value="Limpiar Datos">
-                <input type="submit" id="solicitar" class="botones" value="Solicitar Turno">
+                <button type="reset" class="submit">Limpiar Datos</button>
+                <button type="submit" class="submit">Solicitar Turno</button>
             </div>
             </form>
     </body>
