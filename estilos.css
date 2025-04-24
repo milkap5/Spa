@@ -1,6 +1,7 @@
 :root {
-  --color-primario: #a8d8e8;
-  --color-secundario: #84c5d0;
+  --color-primario: #a70a68;
+  --color-secundario: #b3558d;
+  --color-floating: #b3558dd7 ;
   --color-fondo: #f8fbfc;
   --color-texto: #333;
   --fuente-principal: 'Segoe UI', sans-serif;
@@ -55,8 +56,8 @@ section {
   text-align: center;
   margin-top: 20px;
   line-height: 1.6;
-  font-weight: bold;
-  background-image: url(fondo-textura.png);
+  font-weight: bolder;
+  background-image: url(fondo-prueba.jpg);
   margin: 40px auto;
   max-width: 700px;
 }
@@ -65,7 +66,7 @@ section {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--color-secundario);
+  background-color: var(--color-floating);
   color: white;
   width: 55px;
   height: 55px;
@@ -82,7 +83,7 @@ section {
 }
 
 .floating-button:hover {
-  background-color: #6fb6c3;
+ /* background-color: #6fb6c3;*/
   transform: scale(1.05);
 }
 
@@ -119,26 +120,27 @@ input, select, button.submit {
 }
 
 button.submit {
-  background-color: var(--color-secundario);
+  background-color: #b3558d;
   color: white;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button.submit:hover {
-  background-color: #6fb6c3;
+  background-color: #b3558dd7 ;
   transform: scale(1.03);
 }
 
 footer {
-  background-color: var(--color-primario);
+  background-color: var(--color-secundario);
   color: #fff;
   text-align: center;
   padding: 40px 20px 20px;
   margin-top: 40px;
   font-size: 16px;
-  background: #a8d8e8;
+  /*background: #a8d8e8;*/
 }
 
 .direccion-visitanos {
@@ -177,11 +179,8 @@ ul li::before {
   content: "🌿 ";
   margin-right: 8px;
 }
-
-h2, h3 {
-  color: #267b87;
-}
-
+/*consulta de mediospara aplicar estilos especificos cuando el ancho de la pantalla 
+es de 600 píxeles o menos.*/
 @media (max-width: 600px) {
   nav a {
       display: block;
@@ -202,16 +201,16 @@ input, select, button.submit {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Enfasis al enfocar */
+/* enfasis al enfocar */
 input:focus, select:focus {
-  border-color: #84c5d0;
+  border-color: #d084bc;
   box-shadow: 0 0 5px rgba(132, 197, 208, 0.5);
   outline: none;
 }
 
-/* Botón de enviar */
+/* eoton de enviar */
 button.submit {
-  background-color: #84c5d0;
+  background-color: #d084bc;
   color: white;
   font-weight: bold;
   border: none;
@@ -219,12 +218,12 @@ button.submit {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Botón flotante + */
+/* boton flotante + */
 .floating-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #84c5d0;
+ /* background-color: #84c5d0;*/
   color: white;
   width: 60px;
   height: 60px;
@@ -259,7 +258,7 @@ button.submit {
 #servicios-individuales h2,
 #servicios-grupales h2 {
   font-size: 2rem;
-  color: #3e8e94;
+  color: var(--color-texto);
   margin-bottom: 30px;
   font-weight: bold;
   text-align: center;
@@ -287,9 +286,9 @@ button.submit {
 .servicio-box:hover {
   transform: scale(1.02);
 }
-
+/*color de las letras de las tarjetas (por ej 'Masajes') en servicios individuales y grupales*/
 .servicio-box h3 {
-  color: #4a7c8c;
+  color: #8c4a73;
   margin-bottom: 10px;
 }
 
@@ -363,7 +362,7 @@ button.submit {
 
 .categoria h3 {
   margin-left: 10px;
-  color: #558899;
+  color: #04c51a;
   font-size: 1.5rem;
 }
 
@@ -402,24 +401,24 @@ button.submit {
 #servicios-individuales, #servicios-grupales {
   background-color: #f0fbfc;
   padding: 40px 20px;
-  border-top: 1px solid #cce6eb;
+  border-top: 1px solid #ebcce4;
 }
 
 .categoria-servicio {
   max-width: 800px;
   margin: 0 auto 40px auto;
   background-color: #ffffff;
-  border: 1px solid #d7eef1;
+  border: 1px solid #ebcce4;
   border-radius: 10px;
   padding: 20px 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .categoria-servicio h3 {
-  color: #459fa5;
+  color: #a5458a;
   font-size: 1.5rem;
   margin-bottom: 15px;
-  border-bottom: 1px solid #b9e1e5;
+  border-bottom: 1px solid #ebcce4;
   padding-bottom: 5px;
 }
 
@@ -453,7 +452,7 @@ button.submit {
 
 .fondo-transparente {
   position: relative;
-  background-image: url('fondo-textura.png');
+  background-image: url('fondo-prueba.jpg');
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -464,6 +463,20 @@ button.submit {
   color: #fff;
   padding: 2rem;
   overflow: hidden;
+}
+.parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .parallax {
+    min-height: 500px;
+  }
 }
 
 .overlay {
@@ -476,24 +489,29 @@ button.submit {
   /* negro con 40% transparencia */
     z-index: 0;
 }
-
+/*sombra del titulo y la descripcion*/
 .contenido h2 {
-  text-shadow: 3px 3px 5px rgba(134, 129, 129, 0.938);
+  text-shadow: 3px 3px 5px rgba(52, 50, 50, 0.938);
   font-size: 3rem;
   font-weight: 900;
 }
+/*es el titulo 'sentirse bien' al inicio*/
 .contenido h2 {
-  color: white;
+  color: rgb(243, 238, 238);
 }
+/*es el texto de descripcion de la empresa al inicio*/
 .contenido p{
   color: rgb(255, 255, 255);
-  text-shadow: #003c46;
+  text-shadow: #1f0118;
+}
+.contenido p{
+  text-align: center;
 }
 
 .mensaje-confirmacion {
   display: none;
   text-align: center;
-  color: #44aabb;
+  color: var(--color-secundario);
   font-weight: bold;
   margin: 20px auto;
   background-color: #e2f7f9;
@@ -508,7 +526,7 @@ button.submit {
 .boton-reservar {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #a8d8e8;
+  background-color:#b3558d;
   color: white;
   border: none;
   border-radius: 8px;
@@ -517,11 +535,11 @@ button.submit {
 }
 
 .boton-reservar:hover {
-  background-color: #85c1d4;
+  background-color: var(--color-secundario);
 }
 
 
-/* Nuevos campos estilizados */
+/* nuevos campos estilizados */
 form input[type="text"],
 form input[type="email"],
 form input[type="date"],
@@ -540,14 +558,14 @@ form select {
 
 form input:focus,
 form select:focus {
-  border-color: #84c5d0;
+  border-color: var(--color-floating);
   box-shadow: 0 0 5px rgba(132, 197, 208, 0.5);
   outline: none;
 }
-
+/*del form cuando le das a reservar dentro de servicios*/
 form button.submit {
   padding: 12px;
-  background-color: #84c5d0;
+  background-color: var(--color-secundario);
   color: white;
   font-weight: bold;
   border: none;
@@ -558,6 +576,179 @@ form button.submit {
 }
 
 form button.submit:hover {
-  background-color: #6fb6c3;
+  background-color: var(--color-floating);
   transform: scale(1.03);
+}
+
+.seccion-testimonios {
+  background-color: #f9fbfb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.seccion-testimonios h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--color-texto);
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.testimonio-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.testimonio-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  background-color: #f9fefe;
+}
+
+.testimonio-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.testimonio-card p {
+  font-style: italic;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.testimonio-card h4 {
+  font-size: 1rem;
+  color: #888;
+}
+
+.testimonio-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonio-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonio-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animaciones en cascada con delay */
+.testimonio-card:nth-child(1) {
+  transition-delay: 0s;
+}
+.testimonio-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.testimonio-card:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+.testimonio-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.servicio-box {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.servicio-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cascada para las primeras 6 tarjetas */
+.servicio-box:nth-child(1) {
+  transition-delay: 0s;
+}
+.servicio-box:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.servicio-box:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.servicio-box:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.servicio-box:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.servicio-box:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/*estilo de la seccion de quienes soomos*/
+.seccion-nosotros {
+  background-color: #f8fbfc;
+  padding: 60px 20px;
+}
+
+.contenido-nosotros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  gap: 30px;
+}
+
+.texto-nosotros {
+  flex: 1 1 400px;
+}
+
+.texto-nosotros h2 {
+  font-size: 2rem;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+.texto-nosotros p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.imagen-nosotros {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.imagen-nosotros img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.animacion-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animacion-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

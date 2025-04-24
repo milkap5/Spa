@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a8d8e8;">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
     <div style="display: flex; align-items: center; gap: 15px;">
       <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
       <div style="color: white;">
@@ -27,17 +27,56 @@
   </header>
   
 
-  <div class="fondo-transparente">
+  <div class="fondo-transparente parallax">
     <div class="overlay"></div>
     <div class="contenido">
       <h2>Sentirse Bien</h2>
-      <p>
-        Buscamos atraer la atención de nuestros clientes a través de experiencias inspiradas en la seducción de los sentidos. 
-        Adaptamos las propuestas con el objetivo de que logre desconectarse completamente de la rutina y disfrute de un momento 
-        de bienestar, en total armonía con la naturaleza.
-      </p>
+      
     </div>
   </div>
+
+  <section class="seccion-nosotros">
+    <div class="contenido-nosotros animacion-scroll">
+      <div class="texto-nosotros">
+        <h2>Conocé al equipo detrás de tu bienestar</h2>
+        <p>
+          En <strong>Sentirse Bien</strong>, somos un equipo de profesionales apasionados por el bienestar y la relajación. 
+          Nos dedicamos a crear experiencias únicas, con calidez humana, técnicas especializadas y un profundo respeto por cada persona que nos elige.
+          Nuestro compromiso es que cada visita sea un verdadero momento de armonía y renovación.
+        </p>
+        <p>Buscamos atraer la atención de nuestros clientes a través de experiencias inspiradas en la seducción de los sentidos. </br>
+          Adaptamos las propuestas con el objetivo de que logre desconectarse completamente de la rutina y disfrute de un momento 
+          de bienestar, en total armonía con la naturaleza.</p>
+      </div>
+      <div class="imagen-nosotros">
+        <img src="equipo.jpg" alt="Nuestro equipo en el spa">
+      </div>
+    </div>
+  </section>
+  
+
+ <section class="seccion-testimonios">
+  <h2>Lo que dicen nuestros clientes</h2>
+  <div class="testimonios-grid">
+    <div class="testimonio-card">
+      <img src="masaje-relajante.jpg" alt="Masaje relajante">
+      <p>"Una experiencia increíble. Salí completamente renovada. El masaje fue perfecto."</p>
+      <h4>— Camila Torres</h4>
+    </div>
+    <div class="testimonio-card">
+      <img src="tratamiento-facial.jpg" alt="Tratamiento facial">
+      <p>"El facial que recibí fue maravilloso. La piel me quedó suave y radiante por días."</p>
+      <h4>— Laura Fernández</h4>
+    </div>
+    <div class="testimonio-card">
+      <img src="aromaterapia.jpeg" alt="Aromaterapia">
+      <p>"Aromaterapia de otro mundo. Un momento de paz total que necesitaba."</p>
+      <h4>— Martín Gómez</h4>
+    </div>
+  </div>
+</section>
+
+  
 
   <div id="formModal">
     <div class="modal-content">
@@ -127,5 +166,36 @@
       window.location.href = 'gracias.html';
     });
   </script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.testimonio-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  document.querySelectorAll('.servicio-box').forEach(card => {
+    observer.observe(card);
+  });
+
+  document.querySelectorAll('.animacion-scroll').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Forzar observación después de cargar completamente
+  window.addEventListener("load", () => {
+    document.querySelectorAll('.animacion-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+  
 </body>
 </html>
