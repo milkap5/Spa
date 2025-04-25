@@ -1,5 +1,5 @@
 :root {
-  --color-primario: #a70a68;
+  --color-primario: #a51f6f;
   --color-secundario: #b3558d;
   --color-floating: #b3558dd7 ;
   --color-fondo: #f8fbfc;
@@ -57,7 +57,7 @@ section {
   margin-top: 20px;
   line-height: 1.6;
   font-weight: bolder;
-  background-image: url(fondo-prueba.jpg);
+  background-image: url(img/fondo-prueba.jpg);
   margin: 40px auto;
   max-width: 700px;
 }
@@ -134,7 +134,7 @@ button.submit:hover {
 }
 
 footer {
-  background-color: var(--color-secundario);
+  background-color: #a51f6f;
   color: #fff;
   text-align: center;
   padding: 40px 20px 20px;
@@ -452,7 +452,7 @@ button.submit {
 
 .fondo-transparente {
   position: relative;
-  background-image: url('fondo-prueba.jpg');
+  background-image: url('img/fondo-prueba.jpg');
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -751,4 +751,32 @@ form button.submit:hover {
 .animacion-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+.servicios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.servicio-box {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 280px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.servicio-box:hover {
+  transform: translateY(-5px);
+}
+
+.servicio-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }

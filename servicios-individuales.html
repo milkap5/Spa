@@ -8,10 +8,9 @@
   <link rel="icon" href="icono.ico"/>
 </head>
 <body>
-  
-  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a70a68;">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a51f6f;">
     <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px">
       <div style="color: white;">
         <h1 style="margin: 0;">Sentirse Bien</h1>
         <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
@@ -22,87 +21,145 @@
       <a href="servicios-individuales.html">Servicios Individuales</a>
       <a href="servicios-grupales.html">Servicios Grupales</a>
     </nav>
-    
   </header>
 
   <main style="padding : 30px;">
-    <section class="contenido-servicios">
-      <h2 class="titulo-seccion">Servicios Individuales</h2>
-    
-    <section class="servicio-box">
+    <h2 class="titulo-seccion">Servicios Individuales</h2>
+
+    <!-- Cada servicio-box ahora tiene un botón de reservar -->
+    <section class="servicio-categoria">
       <h3>Masajes</h3>
-      <ul>
-        <li>Masaje Anti-Stress - $10000</li>
-        <li>Masaje descontracturante - $12000</li>
-        <li>Masaje con piedras calientes - $16000</li>
-        <li>Masaje circulatorio - $14500</li>
-      </ul>
-      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+      <div class="servicios-grid">
+        <div class="servicio-box">
+          <img src="img/masaje-antistress.jpeg" alt="Masaje Anti-Stress">
+          <h4>Masaje Anti-Stress</h4>
+          <p>Relajación profunda para eliminar el estrés.</p>
+          <p><strong>Precio:</strong> $10.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/masaje-descontracturante.jpg" alt="Masaje Descontracturante">
+          <h4>Masaje Descontracturante</h4>
+          <p>Alivia tensiones musculares localizadas.</p>
+          <p><strong>Precio:</strong> $12.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/masaje-piedras.jpg" alt="Masaje con piedras calientes">
+          <h4>Masaje con piedras calientes</h4>
+          <p>Técnica de calor terapéutico para relajar músculos.</p>
+          <p><strong>Precio:</strong> $16.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/masaje-circulatorio.jpg" alt="Masaje circulatorio">
+          <h4>Masaje circulatorio</h4>
+          <p>Mejora la circulación sanguínea y oxigenación.</p>
+          <p><strong>Precio:</strong> $14.500</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+      </div>
     </section>
 
-    <section class="servicio-box">
+    <section class="servicio-categoria">
       <h3>Belleza</h3>
-      <ul>
-        <li>Lifting de pestañas - $25000</li>
-        <li>Depilación facial - $17000</li>
-        <li>Belleza de manos y pies - $21000</li>
-      </ul>
-      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
-
+      <div class="servicios-grid">
+        <div class="servicio-box">
+          <img src="img/lifting-pestanias.jpg" alt="Lifting de pestañas">
+          <h4>Lifting de pestañas</h4>
+          <p>Realza tus pestañas de forma natural.</p>
+          <p><strong>Precio:</strong> $25.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/depilacion-facial.jpg" alt="Depilación facial">
+          <h4>Depilación facial</h4>
+          <p>Eliminación precisa del vello facial.</p>
+          <p><strong>Precio:</strong> $17.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/belleza-pies-manos.jpg" alt="Belleza de manos y pies">
+          <h4>Belleza de manos y pies</h4>
+          <p>Cuidado completo para que te sientas mas linda que nunca.</p>
+          <p><strong>Precio:</strong> $21.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+      </div>
     </section>
 
-    <section class="servicio-box">
+    <section class="servicio-categoria">
       <h3>Tratamientos Faciales</h3>
-      <ul>
-        <li>Punta de Diamante (Microexfoliaicon) - $20000</li>
-        <li>Limpieza profunda + Hidratacion - $18000</li>
-        <li>Criofrecuencia facial(Produce el "SHOCK TERMICO", lograndoresultados instantaneos en efecto lifting) - $22000</li>
-      </ul>
-      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+      <div class="servicios-grid">
+        <div class="servicio-box">
+          <img src="img/punta-diamante.png" alt="Punta de Diamante">
+          <h4>Punta de Diamante</h4>
+          <p>Microexfoliación que revitaliza la piel.</p>
+          <p><strong>Precio:</strong> $20.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/limpieza-hidratante.jpg" alt="Limpieza profunda + Hidratación">
+          <h4>Limpieza profunda + Hidratación</h4>
+          <p>Purificación facial con hidratación intensiva.</p>
+          <p><strong>Precio:</strong> $18.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/criofrecuencia-facial.jpg" alt="Criofrecuencia facial">
+          <h4>Criofrecuencia facial</h4>
+          <p>Shock térmico para efecto lifting instantáneo.</p>
+          <p><strong>Precio:</strong> $22.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+      </div>
     </section>
 
-    <section class="servicio-box">
+    <section class="servicio-categoria">
       <h3>Tratamientos Corporales</h3>
-      <ul>
-        <li>VelaSlim: Reduccion de la circunferencia corporal y la celulitis - $35000</li>
-        <li>DermoHealth: moviliza los distintos tejidos de la piel y estimula microcirculacion, generando un drenaje linfatico - $36000</li>
-        <li>Criofrecuencia: produce un efecto lifting instantaneo - $29000</li>
-        <li>Ultracabitacion: tecnica reductora - $29000</li>
-      </ul>
-      <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
-
+      <div class="servicios-grid">
+        <div class="servicio-box">
+          <img src="img/velaslim.jpg" alt="VelaSlim">
+          <h4>VelaSlim</h4>
+          <p>Reduce circunferencia corporal y celulitis.</p>
+          <p><strong>Precio:</strong> $35.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/dermohealth.png" alt="DermoHealth">
+          <h4>DermoHealth</h4>
+          <p>Moviliza los distintos tejidos de la piel y estimula la microcirculacio, generando un drenaje linfatico.</p>
+          <p><strong>Precio:</strong> $36.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/criofrecuencia-corporal.jpg" alt="Criofrecuencia corporal">
+          <h4>Criofrecuencia corporal</h4>
+          <p>Efecto lifting instantáneo en el cuerpo.</p>
+          <p><strong>Precio:</strong> $29.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+        <div class="servicio-box">
+          <img src="img/ultracavitacion.jpg" alt="Ultracavitación">
+          <h4>Ultracavitación</h4>
+          <p>Técnica reductora no invasiva.</p>
+          <p><strong>Precio:</strong> $29.000</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        </div>
+      </div>
     </section>
   </main>
 
   <script>
-    document.addEventListener('keydown', function(event) {
-      const modal = document.getElementById('formModal');
-      if (event.key === 'Escape' && modal?.style.display === 'flex') {
-        modal.style.display = 'none';
-      }
-    });
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('formModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-
-    function revealOnScroll() {
+    window.addEventListener('scroll', () => {
       const boxes = document.querySelectorAll('.servicio-box');
-      const windowHeight = window.innerHeight;
-
       boxes.forEach(box => {
-        const boxTop = box.getBoundingClientRect().top;
-        if (boxTop < windowHeight - 100) {
+        const top = box.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
           box.classList.add('visible');
         }
       });
-    }
-
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    });
   </script>
 </body>
 </html>

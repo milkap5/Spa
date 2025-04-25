@@ -8,9 +8,9 @@
   <link rel="icon" href="icono.ico"/>
 </head>
 <body>
-  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a70a68;">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a51f6f;">
     <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;">
+      <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;  border-radius: 15px">
       <div style="color: white;">
         <h1 style="margin: 0;">Sentirse Bien</h1>
         <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
@@ -96,6 +96,24 @@
       <button type="submit" class="submit">Confirmar reserva</button>
     </form>
   </main>
+
+<script>
+  // Obtener parámetro de URL
+  const params = new URLSearchParams(window.location.search);
+  const servicio = params.get("servicio");
+
+  // Colocar en el input
+  if (servicio) {
+    document.getElementById("servicio").value = decodeURIComponent(servicio);
+  }
+
+  // Enviar
+  document.getElementById("formulario-reserva").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Reserva realizada con éxito para: " + document.getElementById("servicio").value);
+    window.location.href = "gracias.html";
+  });
+</script>
 
   <script>
     const tipoSelect = document.getElementById('tipo-servicio');
