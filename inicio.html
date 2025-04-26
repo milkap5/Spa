@@ -14,7 +14,7 @@
       <img src="logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
       <div style="color: white;">
         <h1 style="margin: 0;">Sentirse Bien</h1>
-        <p style="margin: 0;">Tu oasis de relajación y bienestar</p>
+        <p style="margin: 0;">Bienestar pensado para vos</p>
       </div>
     </div>
     <nav style="background: none; padding: 0;">
@@ -88,15 +88,45 @@
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" required />
 
-        <label for="servicio">Servicio:</label>
-        <select id="servicio" name="servicio" onchange="mostrarPrecio()">
-          <option value="50">Masaje relajante - $50</option>
-          <option value="45">Tratamiento facial - $45</option>
-          <option value="40">Sesión de aromaterapia - $40</option>
-        </select>
+        <label>
+          Tipo de servicio:
+          <select id="tipo-servicio" required>
+            <option value="">Seleccioná una opción</option>
+            <option value="individuales">Individual</option>
+            <option value="grupales">Grupal</option>
+          </select>
+        </label>
 
-        <label for="precio">Precio:</label>
-        <input type="text" id="precio" name="precio" readonly />
+        <label id="label-servicio-individual" style="display:none;">
+          Servicio individual:
+          <select name="servicio-individual">
+            <option value="">Seleccioná un servicio</option>
+            <option>Masaje Anti-Stress - $10000</option>
+            <option>Masaje descontracturante - $12000</option>
+            <option>Masaje con piedras calientes - $16000</option>
+            <option>Masaje circulatorio - $14500</option>
+            <option>Lifting de pestañas - $25000</option>
+            <option>Depilación facial - $17000</option>
+            <option>Belleza de manos y pies - $21000</option>
+            <option>Punta de Diamante (Microexfoliación) - $20000</option>
+            <option>Limpieza profunda + Hidratacion - $18000</option>  
+            <option>Criofrecuencia facial - $22000</option>
+            <option>VelaSlim - $35000</option>
+            <option>DermoHealth - $36000</option>
+            <option>Criofrecuencia corporal- $29000</option>
+            <option>Ultracabitacion - $28000</option>
+            </option>
+          </select>
+        </label>
+
+        <label id="label-servicio-grupal" style="display:none;">
+          Servicio grupal:
+          <select name="servicio-grupal">
+            <option value="">Seleccioná un servicio</option>
+            <option>Yoga en grupo - $6000 por persona</option>
+            <option>Hidromasajes - $8000 por persona</option>
+          </select>
+        </label>
 
         <label for="fecha">Fecha:</label>
         <input type="date" id="fecha" name="fecha" required />
@@ -193,6 +223,25 @@
     document.querySelectorAll('.animacion-scroll').forEach(el => {
       observer.observe(el);
     });
+  });
+</script>
+
+<script>
+  const tipoSelect = document.getElementById('tipo-servicio');
+  const individualLabel = document.getElementById('label-servicio-individual');
+  const grupalLabel = document.getElementById('label-servicio-grupal');
+
+  tipoSelect.addEventListener('change', function () {
+    if (this.value === 'individuales') {
+      individualLabel.style.display = 'block';
+      grupalLabel.style.display = 'none';
+    } else if (this.value === 'grupales') {
+      grupalLabel.style.display = 'block';
+      individualLabel.style.display = 'none';
+    } else {
+      individualLabel.style.display = 'none';
+      grupalLabel.style.display = 'none';
+    }
   });
 </script>
 

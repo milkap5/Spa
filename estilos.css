@@ -1,10 +1,14 @@
 :root {
   --color-primario: #a51f6f;
   --color-secundario: #b3558d;
-  --color-floating: #b3558dd7 ;
+  --color-floating: #b3558dd7;
   --color-fondo: #f8fbfc;
   --color-texto: #333;
   --fuente-principal: 'Segoe UI', sans-serif;
+  --color-acento: #d4a373;
+  --color-lujo: #c0b283;
+  /* nueva fuente para los encabezados */
+  --fuente-encabezados: 'Playfair Display', serif;
 }
 
 body {
@@ -20,14 +24,14 @@ header {
   color: white;
   padding: 30px 20px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav {
   background-color: var(--color-secundario);
   padding: 12px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 nav a {
@@ -48,6 +52,13 @@ section {
   max-width: 900px;
   margin: auto;
   scroll-margin-top: 100px;
+  /* Degradado sutil para las secciones */
+  background: linear-gradient(to bottom, #f9f9fb, #ffffff);
+  border-bottom: 1px solid #ebcce4;
+  border-top: 1px solid #ebcce4;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
 }
 
 .descripcion-empresa {
@@ -62,11 +73,12 @@ section {
   max-width: 700px;
 }
 
+/* Botón flotante de contacto */
 .floating-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--color-floating);
+  background-color: var(--color-acento); /* Beige cálido */
   color: white;
   width: 55px;
   height: 55px;
@@ -74,7 +86,7 @@ section {
   font-size: 2rem;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -83,10 +95,9 @@ section {
 }
 
 .floating-button:hover {
- /* background-color: #6fb6c3;*/
+  background-color: var(--color-lujo); /* Dorado suave al hacer hover */
   transform: scale(1.05);
 }
-
 #formModal {
   display: none;
   position: fixed;
@@ -94,7 +105,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   z-index: 1001;
@@ -106,10 +117,12 @@ section {
   border-radius: 12px;
   max-width: 400px;
   width: 90%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-
-input, select, button.submit {
+/*
+input,
+select,
+button.submit {
   display: block;
   width: 100%;
   margin-bottom: 15px;
@@ -118,7 +131,8 @@ input, select, button.submit {
   border: 1px solid #ccc;
   font-size: 16px;
 }
-
+*/
+/*
 button.submit {
   background-color: #b3558d;
   color: white;
@@ -129,10 +143,10 @@ button.submit {
 }
 
 button.submit:hover {
-  background-color: #b3558dd7 ;
+  background-color: #b3558dd7;
   transform: scale(1.03);
 }
-
+*/
 footer {
   background-color: #a51f6f;
   color: #fff;
@@ -160,7 +174,7 @@ footer {
   max-width: 600px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .map-container iframe {
@@ -175,21 +189,19 @@ ul {
   padding-left: 0;
 }
 
-ul li::before {
-  content: "🌿 ";
-  margin-right: 8px;
-}
-/*consulta de mediospara aplicar estilos especificos cuando el ancho de la pantalla 
+/*consulta de mediospara aplicar estilos especificos cuando el ancho de la pantalla
 es de 600 píxeles o menos.*/
 @media (max-width: 600px) {
   nav a {
-      display: block;
-  margin: 10px 0;
+    display: block;
+    margin: 10px 0;
+  }
 }
 
-}
-  /* Estilo moderno para inputs y select */
-input, select, button.submit {
+/* estilo moderno para inputs y select */
+input,
+select,
+button.submit {
   display: block;
   width: 100%;
   margin-bottom: 15px;
@@ -198,19 +210,21 @@ input, select, button.submit {
   border: 1px solid #ccc;
   font-size: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* enfasis al enfocar */
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: #d084bc;
   box-shadow: 0 0 5px rgba(132, 197, 208, 0.5);
   outline: none;
 }
 
-/* eoton de enviar */
+/* boton de gracias!! p ir al inicio*/
+
 button.submit {
-  background-color: #d084bc;
+  background-color: var(--color-acento);
   color: white;
   font-weight: bold;
   border: none;
@@ -218,12 +232,17 @@ button.submit {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button.submit:hover {
+  background-color: var(--color-lujo); /* marron suave al hacer hover */
+  transform: scale(1.03);
+}
+
 /* boton flotante + */
 .floating-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
- /* background-color: #84c5d0;*/
+  /* background-color: #84c5d0;*/
   color: white;
   width: 60px;
   height: 60px;
@@ -231,7 +250,7 @@ button.submit {
   font-size: 2rem;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -246,10 +265,11 @@ button.submit {
   border-radius: 12px;
   max-width: 420px;
   width: 90%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-#servicios-individuales, #servicios-grupales {
+#servicios-individuales,
+#servicios-grupales {
   background-color: #f9fbfb;
   padding: 40px 20px;
   text-align: center;
@@ -257,11 +277,14 @@ button.submit {
 
 #servicios-individuales h2,
 #servicios-grupales h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--color-texto);
   margin-bottom: 30px;
   font-weight: bold;
   text-align: center;
+  /* Fuente elegante y espaciado para encabezados */
+  font-family: var(--fuente-encabezados);
+  letter-spacing: 1px;
 }
 
 .servicios-grid {
@@ -277,7 +300,8 @@ button.submit {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  /* Sombra sutil y borde redondeado */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   transform: translateY(30px);
   opacity: 0;
@@ -286,9 +310,16 @@ button.submit {
 .servicio-box:hover {
   transform: scale(1.02);
 }
-/*color de las letras de las tarjetas (por ej 'Masajes') en servicios individuales y grupales*/
+
+/*color de las letras de las tarjetas (por ej 'Masajes') en grupales*/
 .servicio-box h3 {
-  color: #8c4a73;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+}
+
+/*este es para los de servicios individuales q los titulos son h4*/
+.servicio-box h4 {
+  color: var(--color-texto);
   margin-bottom: 10px;
 }
 
@@ -316,7 +347,8 @@ button.submit {
   text-align: center;
 }
 
-.contacto, .direccion-visitanos {
+.contacto,
+.direccion-visitanos {
   font-weight: 500;
 }
 
@@ -337,7 +369,7 @@ button.submit {
   width: 32px;
   height: 32px;
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .redes-sociales a img:hover {
@@ -376,7 +408,7 @@ button.submit {
 .servicio-card {
   background-color: white;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
   transition: 0.3s ease;
@@ -398,7 +430,8 @@ button.submit {
 }
 
 /* Estilo para las secciones de servicios */
-#servicios-individuales, #servicios-grupales {
+#servicios-individuales,
+#servicios-grupales {
   background-color: #f0fbfc;
   padding: 40px 20px;
   border-top: 1px solid #ebcce4;
@@ -464,6 +497,7 @@ button.submit {
   padding: 2rem;
   overflow: hidden;
 }
+
 .parallax {
   background-attachment: fixed;
   background-size: cover;
@@ -473,9 +507,10 @@ button.submit {
   position: relative;
   z-index: 1;
 }
+
 @media (min-width: 768px) {
   .parallax {
-    min-height: 500px;
+    min-height: 500px
   }
 }
 
@@ -487,24 +522,28 @@ button.submit {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   /* negro con 40% transparencia */
-    z-index: 0;
+  z-index: 0;
 }
+
 /*sombra del titulo y la descripcion*/
 .contenido h2 {
   text-shadow: 3px 3px 5px rgba(52, 50, 50, 0.938);
   font-size: 3rem;
   font-weight: 900;
 }
+
 /*es el titulo 'sentirse bien' al inicio*/
 .contenido h2 {
-  color: rgb(243, 238, 238);
+  color: rgb(255, 255, 255);
 }
+
 /*es el texto de descripcion de la empresa al inicio*/
-.contenido p{
+.contenido p {
   color: rgb(255, 255, 255);
   text-shadow: #1f0118;
 }
-.contenido p{
+
+.contenido p {
   text-align: center;
 }
 
@@ -518,7 +557,7 @@ button.submit {
   padding: 15px 20px;
   border-radius: 10px;
   max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   font-size: 1.1rem;
   visibility: visible;
 }
@@ -526,33 +565,36 @@ button.submit {
 .boton-reservar {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color:#b3558d;
+  background-color: var(--color-acento); /* Beige cálido */
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 .boton-reservar:hover {
-  background-color: var(--color-secundario);
+  background-color: var(--color-lujo); /* Dorado suave al hacer hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 /* nuevos campos estilizados */
-form input[type="text"],
-form input[type="email"],
-form input[type="date"],
-form input[type="time"],
+form input[type='text'],
+form input[type='email'],
+form input[type='date'],
+form input[type='time'],
 form select {
   width: 100%;
-  box-sizing:border-box;
+  box-sizing: border-box;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -562,10 +604,12 @@ form select:focus {
   box-shadow: 0 0 5px rgba(132, 197, 208, 0.5);
   outline: none;
 }
+
 /*del form cuando le das a reservar dentro de servicios*/
+/* boton de envío en el formulario de contacto */
 form button.submit {
   padding: 12px;
-  background-color: var(--color-secundario);
+  background-color: var(--color-acento); /* beige calido */
   color: white;
   font-weight: bold;
   border: none;
@@ -576,7 +620,7 @@ form button.submit {
 }
 
 form button.submit:hover {
-  background-color: var(--color-floating);
+  background-color: var(--color-lujo); /* marron suave al hacer hover */
   transform: scale(1.03);
 }
 
@@ -604,7 +648,7 @@ form button.submit:hover {
   background: white;
   padding: 25px;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -658,9 +702,11 @@ form button.submit:hover {
 .testimonio-card:nth-child(1) {
   transition-delay: 0s;
 }
+
 .testimonio-card:nth-child(2) {
   transition-delay: 0.2s;
 }
+
 .testimonio-card:nth-child(3) {
   transition-delay: 0.4s;
 }
@@ -674,6 +720,8 @@ form button.submit:hover {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* Transición para la sombra */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .servicio-box.visible {
@@ -685,18 +733,23 @@ form button.submit:hover {
 .servicio-box:nth-child(1) {
   transition-delay: 0s;
 }
+
 .servicio-box:nth-child(2) {
   transition-delay: 0.1s;
 }
+
 .servicio-box:nth-child(3) {
   transition-delay: 0.2s;
 }
+
 .servicio-box:nth-child(4) {
   transition-delay: 0.3s;
 }
+
 .servicio-box:nth-child(5) {
   transition-delay: 0.4s;
 }
+
 .servicio-box:nth-child(6) {
   transition-delay: 0.5s;
 }
@@ -740,8 +793,9 @@ form button.submit:hover {
 .imagen-nosotros img {
   max-width: 100%;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .animacion-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -752,6 +806,7 @@ form button.submit:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
 .servicios-grid {
   display: flex;
   flex-wrap: wrap;
@@ -762,7 +817,7 @@ form button.submit:hover {
 .servicio-box {
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 280px;
   transition: transform 0.3s ease;
