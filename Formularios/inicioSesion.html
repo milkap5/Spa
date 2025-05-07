@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iniciar Sesión</title>
-  <link rel="stylesheet" href="estilos.css">
-  <style>
-    .login-container {
-      max-width: 400px;
-      margin: auto;
-      padding: 2rem;
-      background-color: #f8f8f8;
-      border-radius: 10px;
-    }
-    input, button {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-    }
-  </style>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spa Sentirse Bien</title>
+    <link rel="stylesheet" href="../Usuarios/Cliente/estilos.css" />
+    <link rel="icon" href="../../Imagenes/icono.ico"/>
+  </head>
+  
 <body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Bienestar pensado para vos</p>
+      </div>
+    </div>
+  </header>
   <main class="login-container">
     <h1>Iniciar Sesión</h1>
-    <form id="formLogin">
+    <form action="" id="nuevaClave" class="formulario flexColumn" method="post">
       <input type="text" id="usuario" placeholder="Usuario" required>
       <input type="password" id="contrasenia" placeholder="Contraseña" required>
-      <button type="submit">Ingresar</button>
+      <a href="../Usuarios/Cliente/inicio.html" class="submit">Ingresar</a>
     </form>
     <p id="mensajeError" style="color: red;"></p>
   </main>
