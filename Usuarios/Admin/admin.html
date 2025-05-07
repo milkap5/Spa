@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Administrador</title>
+  <link rel="stylesheet" href="../Cliente/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1 class="titulo">Panel de Administrador</h1>
+    <button id="cerrarSesion" class="btn btn-rojo">Cerrar sesión</button>
+  </header>
+
+  <main class="admin-container seccion">
+    <section class="formulario">
+      <h2 class="subtitulo">Gestión de Servicios</h2>
+      <form id="formularioServicio" class="form-grid tarjeta">
+        <input type="hidden" id="servicioId">
+        <input type="text" id="nombre" placeholder="Nombre del servicio" class="input" required>
+        <input type="text" id="descripcion" placeholder="Descripción" class="input" required>
+        <input type="number" id="precio" placeholder="Precio" class="input" required>
+        <button type="submit" class="btn btn-verde">Guardar Servicio</button>
+      </form>
+    </section>
+
+    <section class="tabla-servicios">
+      <h2 class="subtitulo">Lista de Servicios</h2>
+      <div class="tabla-responsive">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Duración</th>
+              <th>Beneficios</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tablaServicios"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    if (!usuario || usuario.rol !== "admin") {
+      alert("Acceso denegado. Debe iniciar sesión como administrador.");
+      window.location.href = "inicioSesion.html";
+    }
+
+    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+
+    function renderizarTabla() {
+      const cuerpo = document.getElementById("tablaServicios");
+      cuerpo.innerHTML = "";
+      servicios.forEach((s, index) => {
+        cuerpo.innerHTML += `
+          <tr>
+            <td>${s.nombre}</td>
+            <td>${s.descripcion}</td>
+            <td>$${s.precio}</td>
+            <td>
+              <button onclick="editar(${index})" class="btn btn-azul">Editar</button>
+              <button onclick="eliminar(${index})" class="btn btn-rojo">Eliminar</button>
+            </td>
+          </tr>`;
+      });
+      localStorage.setItem("servicios", JSON.stringify(servicios));
+    }
+
+    function editar(i) {
+      const s = servicios[i];
+      document.getElementById("servicioId").value = i;
+      document.getElementById("nombre").value = s.nombre;
+      document.getElementById("descripcion").value = s.descripcion;
+      document.getElementById("precio").value = s.precio;
+    }
+
+    function eliminar(i) {
+      if (confirm("¿Eliminar este servicio?")) {
+        servicios.splice(i, 1);
+        renderizarTabla();
+      }
+    }
+
+    document.getElementById("formularioServicio").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = document.getElementById("servicioId").value;
+      const nuevo = {
+        nombre: document.getElementById("nombre").value,
+        descripcion: document.getElementById("descripcion").value,
+        precio: Number(document.getElementById("precio").value)
+      };
+      if (id) {
+        servicios[id] = nuevo;
+      } else {
+        servicios.push(nuevo);
+      }
+      e.target.reset();
+      renderizarTabla();
+    });
+
+    document.getElementById("cerrarSesion").addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "inicioSesion.html";
+    });
+
+    renderizarTabla();
+  </script>
+</body>
+</html>

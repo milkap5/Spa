@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="login-container">
+    <h1>Iniciar Sesión</h1>
+    <form id="formLogin">
+      <input type="text" id="usuario" placeholder="Usuario" required>
+      <input type="password" id="contrasenia" placeholder="Contraseña" required>
+      <button type="submit">Ingresar</button>
+    </form>
+    <p id="mensajeError" style="color: red;"></p>
+  </main>
+
+  <script>
+    const usuariosHardcodeados = [
+      { usuario: "cliente1", contrasenia: "1234", rol: "cliente" },
+      { usuario: "admin1", contrasenia: "admin", rol: "admin" }
+    ];
+
+    document.getElementById("formLogin").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = document.getElementById("usuario").value.trim();
+      const pass = document.getElementById("contrasenia").value.trim();
+
+      const encontrado = usuariosHardcodeados.find(u => u.usuario === user && u.contrasenia === pass);
+
+      if (encontrado) {
+        localStorage.setItem("usuarioLogueado", JSON.stringify(encontrado));
+        if (encontrado.rol === "admin") {
+          window.location.href = "../../Usuarios/Admin/admin.html";
+        } else {
+          window.location.href = "inicio.html";
+        }
+      } else {
+        document.getElementById("mensajeError").textContent = "Usuario o contraseña incorrectos.";
+      }
+    });
+  </script>
+</body>
+</html>
