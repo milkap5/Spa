@@ -180,6 +180,29 @@
   </main>
 
   <script>
+    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+    const contenedor = document.getElementById("listaServicios");
+  
+    servicios
+      .filter(s => s.categoria === "individual")
+      .forEach(servicio => {
+        const card = document.createElement("article");
+        card.className = "servicio-box";
+        card.innerHTML = `
+          <img src="${servicio.imagen}" alt="${servicio.nombre}">
+          <h4>${servicio.nombre}</h4>
+          <p><strong>Descripción:</strong> ${servicio.descripcion}</p>
+          <p><strong>Duración:</strong> ${servicio.duracion}</p>
+          <p><strong>Beneficios:</strong> ${servicio.beneficios}</p>
+          <p><strong>Precio:</strong> $${servicio.precio.toLocaleString()}</p>
+          <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+        `;
+        contenedor.appendChild(card);
+      });
+  </script>
+  
+
+  <script>
     window.addEventListener('scroll', () => {
       const boxes = document.querySelectorAll('.servicio-box');
       boxes.forEach(box => {
@@ -212,6 +235,7 @@
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
+    <p>Desarrollado por Grupo 9 - 'ProcAp' para la materia Metodología de Sistemas I</p>
   </div>
 </footer>
 

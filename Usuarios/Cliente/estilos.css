@@ -8,8 +8,6 @@
   --fuente-principal: 'Segoe UI', sans-serif;
   --color-acento: #d4a373;
   --color-lujo: #c0b283;
-  /* nueva fuente para los encabezados */
-  --fuente-encabezados: 'Playfair Display', serif;
 }
 
 body {
@@ -213,6 +211,7 @@ button.submit {
   font-size: 16px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
 }
 
 /* enfasis al enfocar */
@@ -232,6 +231,8 @@ button.submit {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 button.submit:hover {
@@ -285,7 +286,7 @@ button.submit:hover {
   font-weight: bold;
   text-align: center;
   /* Fuente elegante y espaciado para encabezados */
-  font-family: var(--fuente-encabezados);
+  font-family: var(--fuente-principal);
   letter-spacing: 1px;
 }
 
@@ -576,6 +577,7 @@ button.submit:hover {
   font-size: 16px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 
@@ -620,6 +622,7 @@ form button.submit {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
 }
 
 form button.submit:hover {
@@ -846,6 +849,7 @@ form button.submit:hover {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
 }
 
 .formulario img {
@@ -865,12 +869,12 @@ form button.submit:hover {
   margin-bottom: 5px;
   color: var(#383737);
 }
-/* En tu archivo estilos.css */
+
 .formulario input[type="text"],
 .formulario input[type="number"],
 .formulario input[type="email"],
 .formulario input[type="password"] {
-    width: 400px; /* Ajusta este valor al ancho deseado */
+    width: 400px; 
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -879,7 +883,7 @@ form button.submit:hover {
 }
 
 .formulario button[type="submit"] {
-  background-color: var(--color-acento); /* Usa tus variables de color si las tienes */
+  background-color: var(--color-acento); 
   color: white;
   padding: 10px 15px;
   border: none;
@@ -889,6 +893,7 @@ form button.submit:hover {
   align-items: center;
   margin: 0 auto;
   display: block;
+  text-decoration: none;
 }
 
 .formulario button[type="submit"]:hover {
@@ -945,6 +950,7 @@ form button.submit:hover {
   align-items: center;
   margin: 0 auto;
   display: block;
+  text-decoration: none;
 }
 
 .submit:hover {
@@ -955,4 +961,75 @@ form button.submit:hover {
   display: flex;
   flex-direction: column;
 }
+.seccion-metodos-pago {
+  background-color: #f8fbfc;
+  padding: 50px 20px;
+  border-top: 1px solid #ebcce4;
+  border-bottom: 1px solid #ebcce4;
+}
 
+.contenido-metodos-pago {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pago-principal {
+  flex: 1 1 50%;
+  text-align: left;
+}
+
+.pago-principal h2 {
+  font-size: 2.2rem;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+.pago-principal p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 20px;
+}
+
+.pago-imagen {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.metodos-pago-lista {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metodo-pago {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metodo-pago:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.metodo-pago h4 {
+  font-size: 1.2rem;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+}
+
+.metodo-pago p {
+  font-size: 1rem;
+  color: var(--color-texto-secundario);
+}

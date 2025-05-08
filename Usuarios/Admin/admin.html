@@ -1,120 +1,397 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel de Administrador</title>
-  <link rel="stylesheet" href="../Cliente/estilos.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="../Cliente/estilos.css?v=1.0">
+    <style>
+        .admin-seccion {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2.subtitulo {
+            font-family: var(--fuente-encabezados);
+            font-size: 1.8rem;
+            color: var(--color-texto);
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .form-grid input,
+        select,
+        textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .boton-acento {
+            background-color: var(--color-acento);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-acento:hover {
+            background-color: var(--color-lujo);
+            transform: scale(1.05);
+        }
+
+        .boton-azul {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-azul:hover {
+            background-color: #2b80ba;
+        }
+
+        .boton-rojo {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-rojo:hover {
+            background-color: #c0392b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f3f3f3;
+            text-align: left;
+        }
+     
+    </style>
 </head>
+
 <body>
-  <header class="encabezado">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-        <div style="color: white;">
-          <h1 style="margin: 0;">Sentirse Bien</h1>
-          <p style="margin: 0;">Bienestar pensado para vos</p>
+    <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+            <div style="color: white;">
+                <h1 style="margin: 0;">Sentirse Bien</h1>
+                <p style="margin: 0;">Bienestar pensado para vos</p>
+            </div>
         </div>
-      </div>
-    <h1 class="titulo">Panel de Administrador</h1>
-    <button id="submit">Cerrar sesión</button>
-  </header>
+        <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Administrador!</div>
+        <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
+        <script>
+            const botonCerrarSesion = document.getElementById("cerrarSesion");
+            if (botonCerrarSesion) {
+              botonCerrarSesion.addEventListener("click", () => {
+                localStorage.removeItem("usuarioLogueado");
+                window.location.href = "../../Formularios/inicioSesion.html";
+              });
+            }
+          </script>
+           
+    </header>
 
-  <main class="admin-container seccion">
-    <section class="formulario">
-      <h2 class="subtitulo">Gestión de Servicios</h2>
-      <form id="formularioServicio" class="form-grid tarjeta">
-        <input type="hidden" id="servicioId">
-        <input type="text" id="nombre" placeholder="Nombre del servicio" class="input" required>
-        <input type="text" id="descripcion" placeholder="Descripción" class="input" required>
-        <input type="number" id="precio" placeholder="Precio" class="input" required>
-        <button type="submit" class="btn btn-verde">Guardar Servicio</button>
-      </form>
-    </section>
+    <main>
+        <section class="admin-seccion">
+            <h2 class="subtitulo">Gestión de Servicios</h2>
+            <form id="formularioServicio" class="form-grid">
+                <input type="hidden" id="servicioId">
+                <input type="text" id="nombre" placeholder="Nombre del servicio" required>
+                <input type="text" id="descripcion" placeholder="Descripción" required>
+                <input type="text" id="duracion" placeholder="Duración" required>
+                <input type="text" id="beneficios" placeholder="Beneficios" required>
+                <input type="number" id="precio" placeholder="Precio" required>
+                <input type="text" id="imagen" placeholder="URL de imagen" required>
+                <select id="categoria" required>
+                    <option value="">Seleccionar categoría general</option>
+                    <option value="individual">Individual</option>
+                    <option value="grupal">Grupal</option>
+                </select>
+                <select id="subcategoria" required>
+                    <option value="">Seleccionar subcategoría</option>
+                    <option value="masajes">Masajes</option>
+                    <option value="belleza">Belleza</option>
+                    <option value="faciales">Tratamientos Faciales</option>
+                    <option value="corporales">Tratamientos Corporales</option>
+                </select>
+                <button type="submit" class="boton-acento">Guardar Servicio</button>
+            </form>
 
-    <section class="tabla-servicios">
-      <h2 class="subtitulo">Lista de Servicios</h2>
-      <div class="tabla-responsive">
-        <table class="tabla">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Duración</th>
-              <th>Beneficios</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody id="tablaServicios"></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+            <h3>Lista de Servicios Registrados</h3>
+            <ul id="listaTodosServicios"></ul>
 
-  <script>
-    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-    if (!usuario || usuario.rol !== "admin") {
-      alert("Acceso denegado. Debe iniciar sesión como administrador.");
-      window.location.href = "inicioSesion.html";
-    }
+            <h3>Tabla de Servicios</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Duración</th>
+                        <th>Beneficios</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th>Subcategoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaServicios"></tbody>
+            </table>
+        </section>
 
-    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+        <section class="admin-seccion">
+            <h2 class="subtitulo">Generar Factura</h2>
+            <form id="formFactura">
+                <input type="text" id="cliente" placeholder="Nombre o Número de cliente" required>
 
-    function renderizarTabla() {
-      const cuerpo = document.getElementById("tablaServicios");
-      cuerpo.innerHTML = "";
-      servicios.forEach((s, index) => {
-        cuerpo.innerHTML += `
+                <label for="tipo-servicio">Tipo de servicio:</label>
+                <select id="tipo-servicio" required>
+                    <option value="">Seleccioná una opción</option>
+                    <option value="individual">Individual</option>
+                    <option value="grupal">Grupal</option>
+                </select>
+
+                <div id="label-servicio-individual" style="display: none;">
+                    <label for="servicio-individual">Servicio individual:</label>
+                    <select id="servicio-individual">
+                        <option value="">Seleccioná un servicio</option>
+                        <option value="Masaje Anti-Stress - 10000">Masaje Anti-Stress - $10000</option>
+                        <option value="Masaje descontracturante - 12000">Masaje descontracturante - $12000</option>
+                        <option value="Masaje con piedras calientes - 16000">Masaje con piedras calientes - $16000</option>
+                        <option value="Masaje circulatorio - 14500">Masaje circulatorio - $14500</option>
+                        <option value="Lifting de pestañas - 25000">Lifting de pestañas - $25000</option>
+                        <option value="Depilación facial - 17000">Depilación facial - $17000</option>
+                        <option value="Belleza de manos y pies - 21000">Belleza de manos y pies - $21000</option>
+                        <option value="Punta de Diamante - 20000">Punta de Diamante - $20000</option>
+                        <option value="Limpieza profunda + Hidratación - 18000">Limpieza profunda + Hidratación - $18000
+                        </option>
+                        <option value="Criofrecuencia facial - 22000">Criofrecuencia facial - $22000</option>
+                        <option value="VelaSlim - 35000">VelaSlim - $35000</option>
+                        <option value="DermoHealth - 36000">DermoHealth - $36000</option>
+                        <option value="Criofrecuencia corporal - 29000">Criofrecuencia corporal - $29000</option>
+                        <option value="Ultracavitación - 28000">Ultracavitación - $28000</option>
+                    </select>
+                </div>
+
+                <div id="label-servicio-grupal" style="display: none;">
+                    <label for="servicio-grupal">Servicio grupal:</label>
+                    <select id="servicio-grupal">
+                        <option value="">Seleccioná un servicio</option>
+                        <option value="Yoga en grupo - 6000">Yoga en grupo - $6000 por persona</option>
+                        <option value="Hidromasajes - 8000">Hidromasajes - $8000 por persona</option>
+                    </select>
+                </div>
+
+                <input type="text" id="precioFactura" placeholder="Precio" readonly>
+                <button type="submit" class="boton-acento">Generar Factura</button>
+            </form>
+        </section>
+
+        <script>
+            document.getElementById("tipo-servicio").addEventListener("change", function() {
+                const tipo = this.value;
+                document.getElementById("label-servicio-individual").style.display = tipo === "individual" ? "block" : "none";
+                document.getElementById("label-servicio-grupal").style.display = tipo === "grupal" ? "block" : "none";
+                document.getElementById("precioFactura").value = "";
+            });
+
+            document.getElementById("servicio-individual").addEventListener("change", function() {
+                const valor = this.value.split(" - ");
+                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+            });
+
+            document.getElementById("servicio-grupal").addEventListener("change", function() {
+                const valor = this.value.split(" - ");
+                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+            });
+        </script>
+    </main>
+
+    <script>
+        const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        if (!usuario || usuario.rol !== "admin") {
+            alert("Acceso denegado. Debe iniciar sesión como administrador.");
+            window.location.href = "../../Formularios/inicioSesion.html";
+        }
+
+        let servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+
+        function renderizarTabla() {
+            const cuerpo = document.getElementById("tablaServicios");
+            const lista = document.getElementById("listaTodosServicios");
+            const selectorFactura = document.getElementById("servicioFactura");
+            cuerpo.innerHTML = "";
+            lista.innerHTML = "";
+            selectorFactura.innerHTML = '<option value="">Seleccionar servicio</option>';
+
+            servicios.forEach((s, index) => {
+                cuerpo.innerHTML += `
           <tr>
             <td>${s.nombre}</td>
             <td>${s.descripcion}</td>
+            <td>${s.duracion}</td>
+            <td>${s.beneficios}</td>
             <td>$${s.precio}</td>
+            <td>${s.categoria}</td>
+            <td>${s.subcategoria}</td>
             <td>
-              <button onclick="editar(${index})" class="btn btn-azul">Editar</button>
-              <button onclick="eliminar(${index})" class="btn btn-rojo">Eliminar</button>
+              <button onclick="editar(${index})" class="boton-azul">Editar</button>
+              <button onclick="eliminar(${index})" class="boton-rojo">Eliminar</button>
             </td>
           </tr>`;
-      });
-      localStorage.setItem("servicios", JSON.stringify(servicios));
-    }
+                lista.innerHTML += `<li>${s.nombre} - ${s.subcategoria} - $${s.precio}</li>`;
+                selectorFactura.innerHTML += `<option value="${index}">${s.nombre}</option>`;
+            });
 
-    function editar(i) {
-      const s = servicios[i];
-      document.getElementById("servicioId").value = i;
-      document.getElementById("nombre").value = s.nombre;
-      document.getElementById("descripcion").value = s.descripcion;
-      document.getElementById("precio").value = s.precio;
-    }
+            localStorage.setItem("servicios", JSON.stringify(servicios));
+        }
 
-    function eliminar(i) {
-      if (confirm("¿Eliminar este servicio?")) {
-        servicios.splice(i, 1);
+        function editar(i) {
+            const s = servicios[i];
+            document.getElementById("servicioId").value = i;
+            document.getElementById("nombre").value = s.nombre;
+            document.getElementById("descripcion").value = s.descripcion;
+            document.getElementById("duracion").value = s.duracion;
+            document.getElementById("beneficios").value = s.beneficios;
+            document.getElementById("precio").value = s.precio;
+            document.getElementById("imagen").value = s.imagen;
+            document.getElementById("categoria").value = s.categoria;
+            document.getElementById("subcategoria").value = s.subcategoria;
+        }
+
+        function eliminar(i) {
+            if (confirm("¿Eliminar este servicio?")) {
+                servicios.splice(i, 1);
+                renderizarTabla();
+            }
+        }
+
+        document.getElementById("formularioServicio").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const idRaw = document.getElementById("servicioId").value;
+            const id = parseInt(idRaw);
+            const nuevo = {
+                nombre: document.getElementById("nombre").value,
+                descripcion: document.getElementById("descripcion").value,
+                duracion: document.getElementById("duracion").value,
+                beneficios: document.getElementById("beneficios").value,
+                precio: Number(document.getElementById("precio").value),
+                imagen: document.getElementById("imagen").value,
+                categoria: document.getElementById("categoria").value,
+                subcategoria: document.getElementById("subcategoria").value
+            };
+            if (!isNaN(id) && id >= 0 && id < servicios.length) {
+                servicios[id] = nuevo;
+            } else {
+                servicios.push(nuevo);
+            }
+            e.target.reset();
+            renderizarTabla();
+        });
+
+        document.getElementById("formFactura").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById("cliente").value;
+            let servicioTexto = "";
+            let precio = 0;
+
+            const tipo = document.getElementById("tipo-servicio").value;
+            if (tipo === "individual") {
+                servicioTexto = document.getElementById("servicio-individual").value;
+            } else if (tipo === "grupal") {
+                servicioTexto = document.getElementById("servicio-grupal").value;
+            }
+
+            const partes = servicioTexto.split(" - ");
+            const nombreServicio = partes[0];
+            precio = parseFloat(partes[1]);
+
+            const now = new Date();
+            const fecha = now.toLocaleDateString();
+            const hora = now.toLocaleTimeString();
+
+            const facturaHTML = `
+        <html>
+        <head><title>Factura</title><style>
+          body { font-family: Arial; padding: 40px; }
+          h2 { text-align: center; }
+          .linea { margin-bottom: 10px; }
+        </style></head>
+        <body>
+          <h2>Factura de Spa Sentirse Bien</h2>
+          <h2>------------------------------</h2>
+          <h3>Detalles de la Factura</h3></b>
+          <div class="linea"><strong>Cliente:</strong> ${cliente}</div>
+          <div class="linea"><strong>Servicio:</strong> ${nombreServicio}</div>
+          <div class="linea"><strong>Fecha:</strong> ${fecha}</div>
+          <div class="linea"><strong>Hora:</strong> ${hora}</div>
+          <div class="linea"><strong>Total a pagar:</strong> <b>$${precio.toFixed(2)}</b></div>
+          <p>Gracias por elegirnos!</p>
+          <p>¡Esperamos verte pronto!</p>
+        </body>
+        </html>
+      `;
+            const nuevaVentana = window.open("", "_blank");
+            nuevaVentana.document.write(facturaHTML);
+            nuevaVentana.document.close();
+
+            // Exportar a PDF automáticamente (usando print)
+            nuevaVentana.print();
+        });
+
+        document.getElementById("servicioFactura").addEventListener("change", function() {
+            const index = this.value;
+            if (servicios[index]) {
+                document.getElementById("precioFactura").value = servicios[index].precio;
+            } else {
+                document.getElementById("precioFactura").value = "";
+            }
+        });
+
+        //  Codigo agregado para cerrar sesion  
+         document.getElementById("cerrarSesion").addEventListener("click", () => {
+                console.log("Botón de cerrar sesión clickeado");
+                localStorage.removeItem("usuarioLogueado");
+                console.log("Usuario eliminado de localStorage");
+                window.location.href = "inicioSesion.html";
+                console.log("Redirigiendo a inicioSesion.html");
+            });
         renderizarTabla();
-      }
-    }
-
-    document.getElementById("formularioServicio").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const id = document.getElementById("servicioId").value;
-      const nuevo = {
-        nombre: document.getElementById("nombre").value,
-        descripcion: document.getElementById("descripcion").value,
-        precio: Number(document.getElementById("precio").value)
-      };
-      if (id) {
-        servicios[id] = nuevo;
-      } else {
-        servicios.push(nuevo);
-      }
-      e.target.reset();
-      renderizarTabla();
-    });
-
-    document.getElementById("cerrarSesion").addEventListener("click", () => {
-      localStorage.removeItem("usuarioLogueado");
-      window.location.href = "inicioSesion.html";
-    });
-
-    renderizarTabla();
-  </script>
+    </script>
 </body>
+
 </html>

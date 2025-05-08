@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spa Sentirse Bien</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../Usuarios/Cliente/estilos.css" />
     <link rel="icon" href="../../Imagenes/icono.ico"/>
   </head>
@@ -17,16 +17,39 @@
         <p style="margin: 0;">Bienestar pensado para vos</p>
       </div>
     </div>
+      <nav style="background: none; padding: 0;">
+        <a href="../Usuarios/Cliente/inicio.html">Inicio</a>
+        <a href="../Usuarios/Cliente/servicios-individuales.html">Servicios Individuales</a>
+        <a href="../Usuarios/Cliente/servicios-grupales.html">Servicios Grupales</a> 
+      </nav>
+
+    </div>
   </header>
-  <main class="login-container">
-    <h1>Iniciar Sesión</h1>
-    <form action="" id="nuevaClave" class="formulario flexColumn" method="post">
+  <main class="formulario animacion-scroll">
+    <h2>Iniciar Sesión</h2>
+    <form id="formLogin" class="flexColumn" method="post">
+      <label for="nombre">Usuario:</label>
       <input type="text" id="usuario" placeholder="Usuario" required>
+      <label for="nombre">Contraseña:</label>
       <input type="password" id="contrasenia" placeholder="Contraseña" required>
-      <a href="../Usuarios/Cliente/inicio.html" class="submit">Ingresar</a>
+  
+      <div class="registro">
+        <a href="olvideMiContrasenia.html">¿Olvidaste tu contraseña?</a>
+        <a href="registro.html" id="registrarme">Registrarme</a>
+      </div>
+  
+      <button type="submit" class="submit">Ingresar</button>
+      <p id="mensajeError" style="color: red;"></p>
     </form>
-    <p id="mensajeError" style="color: red;"></p>
   </main>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector("main").classList.add("visible");
+    });
+  </script>
+  
 
   <script>
     const usuariosHardcodeados = [
@@ -46,7 +69,7 @@
         if (encontrado.rol === "admin") {
           window.location.href = "../../Usuarios/Admin/admin.html";
         } else {
-          window.location.href = "inicio.html";
+          window.location.href = "../../Usuarios/Cliente/inicio.html";
         }
       } else {
         document.getElementById("mensajeError").textContent = "Usuario o contraseña incorrectos.";

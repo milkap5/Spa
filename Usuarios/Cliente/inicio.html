@@ -53,6 +53,40 @@
       </div>
     </div>
   </section>
+
+  <section class="seccion-metodos-pago">
+    <div class="contenido-metodos-pago animacion-scroll">
+      <div class="pago-principal">
+        <h2>Medios de Pago</h2>
+        <img src="https://media.istockphoto.com/id/1167658566/photo/satisfied-client-paying-at-reception-desk-in-spa.jpg?s=612x612&w=0&k=20&c=VFrNoiZfLx_Fjj9G_cqe-vUb_kTMM_4ByUPUJ4rKcjo=" alt="Cliente pagando en el spa" class="pago-imagen" />
+        <p>
+          En <strong>Sentirse Bien</strong>, queremos que tu experiencia sea lo más placentera posible,
+          ¡incluso al momento de pagar! Por eso, te ofrecemos diversas opciones para tu comodidad:
+        </p>
+      </div>
+      <div class="metodos-pago-lista">
+        <div class="metodo-pago">
+          <h4>Efectivo</h4>
+          <p>
+            Disfrutá de un <strong>10% de descuento</strong> abonando en efectivo. ¡Tu bienestar, con un beneficio extra!
+          </p>
+        </div>
+        <div class="metodo-pago">
+          <h4>Tarjetas de Débito</h4>
+          <p>
+            Aceptamos todas las tarjetas de débito. ¡Pagá de la manera más práctica!
+          </p>
+        </div>
+        <div class="metodo-pago">
+          <h4>Tarjetas de Crédito</h4>
+          <p>
+            Los <strong>viernes y sábados</strong>, aprovechá nuestra promoción especial:
+            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito. ¡Date ese gusto que merecés!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
   
 
  <section class="seccion-testimonios">
@@ -75,70 +109,37 @@
     </div>
   </div>
 </section>
-<!--
+
   <div id="formModal">
     <div class="modal-content">
-      <h2>Reservar un turno</h2>
-      <form id="formulario-reserva">
+      <h2>Tenés dudas?</h2>
+      <h3>Dejanos tu información y nos comunicamos con vos!</h3>
+      <form id="formulario-consulta">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
 
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" required />
 
-        <label>
-          Tipo de servicio:
-          <select id="tipo-servicio" required>
-            <option value="">Seleccioná una opción</option>
-            <option value="individuales">Individual</option>
-            <option value="grupales">Grupal</option>
-          </select>
-        </label>
+        <label for="telefono">Teléfono:</label> 
+        <input type="tel" id="telefono" name="telefono" required />
 
-        <label id="label-servicio-individual" style="display:none;">
-          Servicio individual:
-          <select name="servicio-individual">
-            <option value="">Seleccioná un servicio</option>
-            <option>Masaje Anti-Stress - $10000</option>
-            <option>Masaje descontracturante - $12000</option>
-            <option>Masaje con piedras calientes - $16000</option>
-            <option>Masaje circulatorio - $14500</option>
-            <option>Lifting de pestañas - $25000</option>
-            <option>Depilación facial - $17000</option>
-            <option>Belleza de manos y pies - $21000</option>
-            <option>Punta de Diamante (Microexfoliación) - $20000</option>
-            <option>Limpieza profunda + Hidratacion - $18000</option>  
-            <option>Criofrecuencia facial - $22000</option>
-            <option>VelaSlim - $35000</option>
-            <option>DermoHealth - $36000</option>
-            <option>Criofrecuencia corporal- $29000</option>
-            <option>Ultracabitacion - $28000</option>
-            </option>
-          </select>
-        </label>
+        <label for="fecha">Consulta:</label>
+        <input type="text" id="consulta" name="consulta" required />
 
-        <label id="label-servicio-grupal" style="display:none;">
-          Servicio grupal:
-          <select name="servicio-grupal">
-            <option value="">Seleccioná un servicio</option>
-            <option>Yoga en grupo - $6000 por persona</option>
-            <option>Hidromasajes - $8000 por persona</option>
-          </select>
-        </label>
 
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required />
-
-        <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora" required />
-
-        <button type="submit" class="submit">Reservar</button>
+        <button type="submit" class="submit">Enviar</button>
       </form>
     </div>
   </div>
 
   <button class="floating-button" onclick="abrirFormulario()">+</button>
--->
+  <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
+    <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
+    <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
+    <button class="boton-reservar" onclick="window.location.href='servicios-individuales.html'">Reservar servicio</button>
+  </section>
+  
   <footer>
     <div class="footer-content">
       <div class="contacto">
@@ -159,6 +160,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
+      <p>Desarrollado por Grupo 9 - 'ProcAp' para la materia Metodología de Sistemas I</p>
     </div>
   </footer>
 
@@ -189,9 +191,9 @@
     }
 
     // Enviar formulario
-    document.getElementById('formulario-reserva').addEventListener('submit', function(e) {
+    document.getElementById('formulario-consulta').addEventListener('submit', function(e) {
       e.preventDefault();
-      window.location.href = 'gracias.html';
+      window.location.href = 'consulta.html';
     });
   </script>
 
