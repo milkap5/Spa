@@ -39,7 +39,7 @@
         <a href="registro.html" id="registrarme">Registrarme</a>
       </div>
   
-      <button type="submit" class="submit">Ingresar</button>
+      <button id="ingresar" type="submit" class="submit">Ingresar</button>
       <p id="mensajeError" style="color: red;"></p>
     </form>
   </main>
@@ -53,6 +53,12 @@
   
 
   <script>
+    let ingresar=document.getElementById('ingresar');
+    ingresar.addEventListener('click', () => {
+      
+    })
+
+
     const usuariosHardcodeados = [
       { usuario: "cliente1", contrasenia: "1234", rol: "cliente" },
       { usuario: "admin1", contrasenia: "admin", rol: "admin" }
