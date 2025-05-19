@@ -4,26 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spa Sentirse Bien</title>
-  <link rel="stylesheet" href="estilos.css" />
-  <link rel="icon" href="../../Imagenes/icono.ico"/>
+  <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
+  <link rel="icon" href="./media/imagenes/icono.ico"/>
 </head>
 
 <body>
   <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
     <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+      <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
       <div style="color: white;">
         <h1 style="margin: 0;">Sentirse Bien</h1>
         <p style="margin: 0;">Bienestar pensado para vos</p>
       </div>
     </div>
     <nav style="background: none; padding: 0;">
-      <a href="inicio.html">Inicio</a>
-      <a href="servicios-individuales.html">Servicios Individuales</a>
-      <a href="servicios-grupales.html">Servicios Grupales</a>      
-      <a href="../../Formularios/inicioSesion.html">Iniciar Sesión</a>
+      <a href="/">Inicio</a>
+      <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+      <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
+      <a href="/formulario_inicioSesion">Iniciar Sesión</a>
     </nav>
-    
   </header>
   
 
@@ -49,7 +48,7 @@
           de bienestar, en total armonía con la naturaleza.</p>
       </div>
       <div class="imagen-nosotros">
-        <img src="../../img/equipo.jpg" alt="Nuestro equipo en el spa">
+        <img src="./media/imagenes/equipo.jpg" alt="Nuestro equipo en el spa">
       </div>
     </div>
   </section>
@@ -93,17 +92,17 @@
   <h2>Lo que dicen nuestros clientes</h2>
   <div class="testimonios-grid">
     <div class="testimonio-card">
-      <img src="../../img/masaje-relajante.jpg" alt="Masaje relajante">
+      <img src="./media/imagenes/masaje-relajante.jpg" alt="Masaje relajante">
       <p>"Una experiencia increíble. Salí completamente renovada. El masaje fue perfecto."</p>
       <h4>— Camila Torres</h4>
     </div>
     <div class="testimonio-card">
-      <img src="../../img/tratamiento-facial.jpg" alt="Tratamiento facial">
+      <img src="./media/imagenes/tratamiento-facial.jpg" alt="Tratamiento facial">
       <p>"El facial que recibí fue maravilloso. La piel me quedó suave y radiante por días."</p>
       <h4>— Laura Fernández</h4>
     </div>
     <div class="testimonio-card">
-      <img src="../../img/aromaterapia.jpeg" alt="Aromaterapia">
+      <img src="./media/imagenes/aromaterapia.jpeg" alt="Aromaterapia">
       <p>"Masajes anti-stress que te renuevan por completo. Lo recomiendo muchisimo."</p>
       <h4>— Martín Gómez</h4>
     </div>
@@ -137,32 +136,10 @@
   <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
     <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
     <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
-    <button class="boton-reservar" onclick="window.location.href='servicios-individuales.html'">Reservar servicio</button>
+    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
   </section>
   
-  <footer>
-    <div class="footer-content">
-      <div class="contacto">
-        <p><strong>📧 Email:</strong> info@sentirsebien.com</p>
-        <p><strong>📞 Tel:</strong> (362) 456-7890</p>
-      </div>
-      <div class="direccion-visitanos">
-        <p><strong>📍 Dirección:</strong> French 414, Resistencia</p>
-      </div>
-      <div class="redes-sociales">
-        <a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
-        <a href="https://www.facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
-        <a href="https://wa.me/5491234567890" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
-      </div>
-      <div class="map-container">
-        <iframe src="https://maps.google.com/maps?q=French%20414,%20Resistencia&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
-      <p>Desarrollado por Grupo 9 - 'ProcAp' para la materia Metodología de Sistemas I</p>
-    </div>
-  </footer>
+  <%- include("./template/footer.ejs"); %>
 
   <script>
     function mostrarPrecio() {

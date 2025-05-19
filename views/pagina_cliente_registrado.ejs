@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spa Sentirse Bien</title>
+  <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
+  <link rel="icon" href="./media/imagenes/icono.ico"/>
+</head>
+
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Bienestar pensado para vos</p>
+      </div>
+    </div>
+    <nav style="background: none; padding: 0;">
+      <a href="/">Inicio</a>
+      <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+      <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
+      <a href="/formulario_inicioSesion">Iniciar Sesión</a>
+    </nav>
+  </header>
+  
+
+  <div class="fondo-transparente parallax">
+    <div class="overlay"></div>
+    <div class="contenido">
+      <h2>Sentirse Bien</h2>
+      
+    </div>
+  </div>
+
+  <section class="seccion-nosotros">
+    <div class="contenido-nosotros animacion-scroll">
+      <div class="texto-nosotros">
+        <h2>Conocé al equipo detrás de tu bienestar</h2>
+        <p>
+          En <strong>Sentirse Bien</strong>, somos un equipo de profesionales apasionados por el bienestar y la relajación. 
+          Nos dedicamos a crear experiencias únicas, con calidez humana, técnicas especializadas y un profundo respeto por cada persona que nos elige.
+          Nuestro compromiso es que cada visita sea un verdadero momento de armonía y renovación.
+        </p>
+        <p>Buscamos atraer la atención de nuestros clientes a través de experiencias inspiradas en la seducción de los sentidos. </br>
+          Adaptamos las propuestas con el objetivo de que logre desconectarse completamente de la rutina y disfrute de un momento 
+          de bienestar, en total armonía con la naturaleza.</p>
+      </div>
+      <div class="imagen-nosotros">
+        <img src="./media/imagenes/equipo.jpg" alt="Nuestro equipo en el spa">
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-metodos-pago">
+    <div class="contenido-metodos-pago animacion-scroll">
+      <div class="pago-principal">
+        <h2>Medios de Pago</h2>
+        <img src="https://media.istockphoto.com/id/1167658566/photo/satisfied-client-paying-at-reception-desk-in-spa.jpg?s=612x612&w=0&k=20&c=VFrNoiZfLx_Fjj9G_cqe-vUb_kTMM_4ByUPUJ4rKcjo=" alt="Cliente pagando en el spa" class="pago-imagen" />
+        <p>
+          En <strong>Sentirse Bien</strong>, queremos que tu experiencia sea lo más placentera posible,
+          ¡incluso al momento de pagar! Por eso, te ofrecemos diversas opciones para tu comodidad:
+        </p>
+      </div>
+      <div class="metodos-pago-lista">
+        <div class="metodo-pago">
+          <h4>Efectivo</h4>
+          <p>
+            Disfrutá de un <strong>10% de descuento</strong> abonando en efectivo. ¡Tu bienestar, con un beneficio extra!
+          </p>
+        </div>
+        <div class="metodo-pago">
+          <h4>Tarjetas de Débito</h4>
+          <p>
+            Aceptamos todas las tarjetas de débito. ¡Pagá de la manera más práctica!
+          </p>
+        </div>
+        <div class="metodo-pago">
+          <h4>Tarjetas de Crédito</h4>
+          <p>
+            Los <strong>viernes y sábados</strong>, aprovechá nuestra promoción especial:
+            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito. ¡Date ese gusto que merecés!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+ <section class="seccion-testimonios">
+  <h2>Lo que dicen nuestros clientes</h2>
+  <div class="testimonios-grid">
+    <div class="testimonio-card">
+      <img src="./media/imagenes/masaje-relajante.jpg" alt="Masaje relajante">
+      <p>"Una experiencia increíble. Salí completamente renovada. El masaje fue perfecto."</p>
+      <h4>— Camila Torres</h4>
+    </div>
+    <div class="testimonio-card">
+      <img src="./media/imagenes/tratamiento-facial.jpg" alt="Tratamiento facial">
+      <p>"El facial que recibí fue maravilloso. La piel me quedó suave y radiante por días."</p>
+      <h4>— Laura Fernández</h4>
+    </div>
+    <div class="testimonio-card">
+      <img src="./media/imagenes/aromaterapia.jpeg" alt="Aromaterapia">
+      <p>"Masajes anti-stress que te renuevan por completo. Lo recomiendo muchisimo."</p>
+      <h4>— Martín Gómez</h4>
+    </div>
+  </div>
+</section>
+
+  <div id="formModal">
+    <div class="modal-content">
+      <h2>Tenés dudas?</h2>
+      <h3>Dejanos tu información y nos comunicamos con vos!</h3>
+      <form id="formulario-consulta">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="telefono">Teléfono:</label> 
+        <input type="tel" id="telefono" name="telefono" required />
+
+        <label for="fecha">Consulta:</label>
+        <input type="text" id="consulta" name="consulta" required />
+
+
+        <button type="submit" class="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <button class="floating-button" onclick="abrirFormulario()">+</button>
+  <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
+    <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
+    <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
+    <button class="boton-reservar" onclick="window.location.href='./usuarios/Cliente/servicios-individuales.html'">Reservar servicio</button>
+  </section>
+  
+  <%- include("./template/footer.ejs"); %>
+
+  <script>
+    function mostrarPrecio() {
+      const select = document.getElementById("servicio");
+      const precio = select.value;
+      document.getElementById("precio").value = "$" + precio;
+    }
+
+    function abrirFormulario() {
+      document.getElementById("formModal").style.display = "flex";
+    }
+
+    // Cerrar con Esc
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById('formModal').style.display = 'none';
+      }
+    });
+
+    // Cerrar al hacer clic fuera del modal
+    window.onclick = function(event) {
+      const modal = document.getElementById('formModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Enviar formulario
+    document.getElementById('formulario-consulta').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.location.href = 'consulta.html';
+    });
+  </script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.testimonio-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  document.querySelectorAll('.servicio-box').forEach(card => {
+    observer.observe(card);
+  });
+
+  document.querySelectorAll('.animacion-scroll').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Forzar observación después de cargar completamente
+  window.addEventListener("load", () => {
+    document.querySelectorAll('.animacion-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<script>
+  const tipoSelect = document.getElementById('tipo-servicio');
+  const individualLabel = document.getElementById('label-servicio-individual');
+  const grupalLabel = document.getElementById('label-servicio-grupal');
+
+  tipoSelect.addEventListener('change', function () {
+    if (this.value === 'individuales') {
+      individualLabel.style.display = 'block';
+      grupalLabel.style.display = 'none';
+    } else if (this.value === 'grupales') {
+      grupalLabel.style.display = 'block';
+      individualLabel.style.display = 'none';
+    } else {
+      individualLabel.style.display = 'none';
+      grupalLabel.style.display = 'none';
+    }
+  });
+</script>
+
+  
+</body>
+</html>

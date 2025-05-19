@@ -1,0 +1,194 @@
+:root {
+  --color-primario: #a51f6f;
+  --color-secundario: #b3558d;
+  --color-floating: #b3558dd7;
+  --color-fondo: #f8fbfc;
+  --color-texto: #333;
+  --color-texto-secundario: #666;
+  --fuente-principal: 'Segoe UI', sans-serif;
+  --color-acento: #d4a373;
+  --color-lujo: #c0b283;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 3px;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+html { padding: 0; margin: 0;}
+
+body {
+    font-family: var(--fuente-principal);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto)
+}
+
+.formulario {
+    border: none;
+    background-color:pink;
+    box-shadow: inset 0 0 20px #FFF;
+    border-radius: 15px;
+    width: 550px;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width:150px;
+    border-radius: 30px;
+    margin:  20px auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    padding: 10px 0;
+}
+
+label {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-bottom: 0;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    border: 1px solid gray;
+    transition: .08s ease all;
+}
+
+input:hover {
+    border: none;
+    border: 3px solid rgba(221, 157, 221, 0.5);
+}
+
+input:focus {
+    border: 5px solid rgba(255, 0, 255, 0.5);
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 0 50px white;
+}
+
+select {
+    border: 1px solid #888;
+    padding: 10px;
+    border-radius: 8px;
+    background: linear-gradient(0deg, #bbb, #eee);
+}
+
+option:nth-child(odd) {
+    background-color: #ddd;
+}
+
+#botones, .ver {
+    /* Separa los elementos entre si y los extremos de los bordes con el mismo espacio.*/
+    justify-content:space-evenly;
+    margin-top: 15px;
+}
+
+#botones button {
+    background-color: transparent;
+    box-shadow: 1px 1px 1px #f0f;
+    border-radius: 8px;
+    height: 50px;
+    width: 200px;
+    padding: 0 20px;
+    font-size: 1.3em;
+    border: none;
+}
+
+#botones button:hover {
+    box-shadow: inset 1px 1px 1px #f0f;
+    background: linear-gradient(rgba(255, 0, 255, 0.5) 0 3%, transparent 40% 100%);
+}
+
+#botones button:active {
+    box-shadow: inset 1px 1px 1px #f0f;
+    background: linear-gradient(transparent 0 30%, rgba(255, 0, 255, 0.2) 90% 100%);
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}
+
+.flexRow input {
+    width: 100%;
+}
+
+.inputDato {
+    position: relative;
+    padding-right: 10px; 
+}
+
+.conflictoEnDatos {
+    color: red;
+    display: none;
+}
+
+.fa {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+
+    /*esto para asegurarnos que siempre estará por encima de todo elemento*/ 
+    z-index: 100;
+    opacity: 0;
+}
+
+.inputDato input {
+    width: 100%;
+}
+
+/* -------------------------- correcto*/
+.correcto {
+	.label { color: #0b0;}
+	.inputDato {
+		.fa-times-circle { opacity: 0;}
+		.fa-check-circle { opacity: 1; color: #0b0;}
+		.input {
+			border: 2px solid #0f0;
+			box-shadow: 0 0 10px #0f0;
+			color: #0a0;
+		}
+	}
+	p { display: none;}
+}
+
+/* -------------------------- incorrecto*/
+.incorrecto {
+	.label { color: #b00;}
+	.inputDato {
+		.fa-check-circle { opacity: 0;}
+		.fa-times-circle { opacity: 1; color: #f00;}
+		.input {
+			border: 2px solid #f00;
+			box-shadow: 0 0 10px #f00;
+			color: #f00;
+		}
+	}
+	p { color: #f00; display: flex;}
+}

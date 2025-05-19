@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./estilos/estilos_de_paginas.css" rel="stylesheet">
+    <link rel="icon" href="./media/imagenes/icono.ico"/>
+    <title>Ingrese nueva contraseña</title>
+</head>
+<body class="flexColumn">
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+          <div style="color: white;">
+            <h1 style="margin: 0;">Sentirse Bien</h1>
+            <p style="margin: 0;">Bienestar pensado para vos</p>
+          </div>
+        </div>
+        <nav style="background: none; padding: 0;">
+            <a href="/pagina_cliente_inicio">Inicio</a>
+            <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+            <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
+          </nav>
+      </header>
+    <form action="" id="nuevaClave" class="formulario flexColumn" method="post">
+        <img src="../Imagenes/icono.ico" alt="Logo_SPA">
+        <h2>Nueva contraseña</h2>
+        <label>Escriba a continuación una nueva contraseña</label>
+        <input type="password" >
+        
+        <label>Repita su nueva contraseña</label>
+        <input type="password" >
+
+        <div id="botones" class="flexRow">
+          <a href="/Formulario_contraseniaActualizadaCorrectamente" class="submit">Confirmar</a>
+        </div>
+    </form>
+    <%- include("./template/footer.ejs"); %>
+</body>
+</html>

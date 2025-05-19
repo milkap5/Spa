@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regsitrarse</title>
+
+        <link rel="stylesheet" href="./estilos/estilos_formularios.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </head>
+
+    <%- include('template/header.ejs');%>
+
+    <body class="flexColumn">
+        <form action="/validar" id="formularioRegistro" class="formulario flexColumn" method="post">
+            <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
+            <h2 id="registroTitulo">Registro de Cliente</h2>
+            
+            <div id="grupoNombre" class="grupoFormulario flexColumn">
+                <label for="nombre" id="nombreLabel" class="label">Nombre(s)</label>
+                <div id="inputNombre" class="inputDato">
+                    <input type="text" id="nombre" name="nombre" class="input" placeholder="Nahuel Joaquín" maxlength="20" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>Solo debe contener letras. En su caso, deben separarse por un espacio. Mínimo de 3 carácteres.</p>
+            </div>
+
+            <div id="grupoApellido" class="grupoFormulario flexColumn">
+                <label for="apellido" id="apellidoLabel" class="label">Apellidos(s)</label>
+                <div id="inputApellido" class="inputDato">
+                    <input type="text" id="apellido" name="apellido" class="input" placeholder="Gonzalez Del Valle" maxlength="25" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>Solo debe contener letras. En su caso, deben separarse por un espacio.</p>
+            </div>
+
+            <div id="grupoDni" class="grupoFormulario flexColumn">
+                <label for="dni" id="dniLabel" class="label">DNI</label>
+                <div id="inputDni" class="inputDato">
+                    <input type="text" id="dni" name="dni" class="input" placeholder="40111222" maxlength="8" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>Solo debe contener números.</p>
+            </div>
+
+            <div id="grupoAdvertenciaDni" class="grupoFormulario conflictoEnDatos flexRow">
+                <p>Este DNI ya se encuentra registrado.</p>
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </div>
+
+            <div id="grupoCelular" class="grupoFormulario flexColumn">
+                <label for="celular" id="celularLabel" class="label">Número de celular</label>
+                <div id="inputCelular" class="inputDato">
+                    <input type="text" id="celular" name="celular" class="input" placeholder="3624311644" maxlength="10" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>No debe contener puntos ni espacios. Solo números.</p>
+            </div>
+
+            <div id="grupoAdvertenciaCelular" class="grupoFormulario conflictoEnDatos flexRow">
+                <p>Este número de celular ya se encuentra registrado.</p>
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </div>
+
+            <div id="grupoCorreo" class="grupoFormulario flexColumn">
+                <label for="correo" id="correoLabel" class="label">Correo</label>
+                <div id="inputCorreo" class="inputDato">
+                    <input type="email" id="correo" name="correo" class="input" placeholder="usuario@email.com" maxlength="50" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>El correo expresado no tiene un formato del todo correcto.</p>
+            </div>
+
+            <div id="grupoAdvertenciaCorreo" class="grupoFormulario conflictoEnDatos flexRow">
+                <p>Este correo ya se encuentra registrado.</p>
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+            </div>
+
+            <div id="grupoContrasenia" class="grupoFormulario flexColumn">
+                <label for="contrasenia" id="contraseniaLabel" class="label">Contraseña</label>
+                <div id="inputContrasenia" class="inputDato">
+                    <input type="password" id="contrasenia" name="contrasenia" class="input" placeholder="**************" minlength="8" maxlength="20" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>La contraseña debe tener entre 8 y 20 carácteres.</p>
+            </div>
+
+            <div id="grupoContrasenia2" class="grupoFormulario flexColumn">
+                <label for="contrasenia2" id="contraseniaLabel2" class="label">Contraseña</label>
+                <div id="inputContrasenia2" class="inputDato">
+                    <input type="password" id="contrasenia2" name="contrasenia2" class="input" placeholder="**************" minlength="8" maxlength="20" required>
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <p hidden>Las contraseñas no coinciden.</p>
+            </div>
+
+            <div id="grupoAdvertenciaContrasenias" class="grupoFormulario conflictoEnDatos flexRow">
+                <p>Las contrasenias no coinciden</p>
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+            </div>
+
+            <div id="botones" class="flexRow">
+                <button type="reset" class="submit" id="reset">Limpiar Datos</button>
+                <button type="submit" class="submit" id="registrar">Registrarme</button>
+            </div>
+
+            <% if(typeof mensaje !== "undefined") { %>
+                <p>
+                    <%= mensaje %>
+                </p>
+            <% } %>
+        </form>
+        <script src="./logicas/formularioRegistrar.js"></script>
+
+        <%- include("./template/footer.ejs"); %>
+    </body>
+</html>
