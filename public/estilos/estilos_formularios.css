@@ -86,10 +86,10 @@ input:hover {
 }
 
 input:focus {
-    border: 5px solid rgba(255, 0, 255, 0.5);
+    border: none;
     outline: none;
     border-radius: 8px;
-    box-shadow: 0 0 50px white;
+    box-shadow: 0 0 40px white;
 }
 
 select {
