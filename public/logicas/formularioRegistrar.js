@@ -24,7 +24,7 @@ const estadoInputs = {
 
 reset.addEventListener('click', () => {
     const grupos = ['Nombre', 'Apellido', 'Dni', 'Celular', 'Correo', 'Contrasenia', 'Contrasenia2'];
-
+    
     grupos.forEach(element => {
         document.getElementById(`grupo${element}`).classList.remove('correcto');
         document.getElementById(`grupo${element}`).classList.remove('incorrecto');

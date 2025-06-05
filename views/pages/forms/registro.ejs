@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Regsitrarse</title>
 
-        <link rel="stylesheet" href="./estilos/estilos_formularios.css">
+        <link rel="stylesheet" href="/estilos/estilos_formularios.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
 
-    <%- include('template/header.ejs');%>
+    <%- include('../../templates/header.ejs');%>
 
     <body class="flexColumn">
         <form action="/validar" id="formularioRegistro" class="formulario flexColumn" method="post">
@@ -110,6 +110,7 @@
 
             <div id="botones" class="flexRow">
                 <button type="reset" class="submit" id="reset">Limpiar Datos</button>
+                <button type="reset" class="submit" id="verificarDatos">Verificar Datos</button>
                 <button type="submit" class="submit" id="registrar">Registrarme</button>
             </div>
 
@@ -120,7 +121,7 @@
             <% } %>
         </form>
 
-        <%- include("./template/footer.ejs"); %>
+        <%- include("../../templates/footer.ejs"); %>
         <script src="./logicas/formularioRegistrar.js"></script>
     </body>
 </html>
