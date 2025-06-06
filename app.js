@@ -19,6 +19,9 @@ app.use('/', viewRoutes); // indicamos a Express que el contenido de 'viewRoutes
 const authRouter = require('./routes/auth'); // importamos el módulo relacionado con la autenticación.
 app.use('/auth', authRouter) // monta el contenido de 'authRouter' en '/auth'.
 
+const registroRouter = require('./routes/registros');
+app.use('/', registroRouter);
+
 // configuración del puerto
 app.listen(3000, () => {
     console.log('Servidor creado: http://localhost:3000');

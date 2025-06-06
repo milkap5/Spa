@@ -46,11 +46,10 @@
                 <p hidden>Solo debe contener números.</p>
             </div>
 
-            <div id="grupoAdvertenciaDni" class="grupoFormulario conflictoEnDatos flexRow">
-                <p>Este DNI ya se encuentra registrado.</p>
-                <i class="fa fa-times-circle" aria-hidden="true"></i>
-                <i class="fa fa-check-circle" aria-hidden="true"></i>
-            </div>
+            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+                id: 'grupoAdvertenciaDni',
+                mensaje: 'DNI'
+            }) %>
 
             <div id="grupoCelular" class="grupoFormulario flexColumn">
                 <label for="celular" id="celularLabel" class="label">Número de celular</label>
@@ -62,11 +61,10 @@
                 <p hidden>No debe contener puntos ni espacios. Solo números.</p>
             </div>
 
-            <div id="grupoAdvertenciaCelular" class="grupoFormulario conflictoEnDatos flexRow">
-                <p>Este número de celular ya se encuentra registrado.</p>
-                <i class="fa fa-times-circle" aria-hidden="true"></i>
-                <i class="fa fa-check-circle" aria-hidden="true"></i>
-            </div>
+            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+                id: 'grupoAdvertenciaCelular',
+                mensaje: 'número de celular'
+            }) %>
 
             <div id="grupoCorreo" class="grupoFormulario flexColumn">
                 <label for="correo" id="correoLabel" class="label">Correo</label>
@@ -78,10 +76,10 @@
                 <p hidden>El correo expresado no tiene un formato del todo correcto.</p>
             </div>
 
-            <div id="grupoAdvertenciaCorreo" class="grupoFormulario conflictoEnDatos flexRow">
-                <p>Este correo ya se encuentra registrado.</p>
-                <i class="fa fa-times-circle" aria-hidden="true"></i>
-            </div>
+            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+                id: 'grupoAdvertenciaCorreo',
+                mensaje: 'correo'
+            }) %>
 
             <div id="grupoContrasenia" class="grupoFormulario flexColumn">
                 <label for="contrasenia" id="contraseniaLabel" class="label">Contraseña</label>
@@ -103,25 +101,20 @@
                 <p hidden>Las contraseñas no coinciden.</p>
             </div>
 
-            <div id="grupoAdvertenciaContrasenias" class="grupoFormulario conflictoEnDatos flexRow">
+            <div id="grupoAdvertenciaContrasenias" class="conflictoEnDatos flexRow">
                 <p>Las contrasenias no coinciden</p>
                 <i class="fa fa-times-circle" aria-hidden="true"></i>
             </div>
 
             <div id="botones" class="flexRow">
                 <button type="reset" class="submit" id="reset">Limpiar Datos</button>
-                <button type="reset" class="submit" id="verificarDatos">Verificar Datos</button>
-                <button type="submit" class="submit" id="registrar">Registrarme</button>
+                <button type="button" class="submit" id="verificarDatos">Verificar Datos</button>
+                <button type="submit" class="submit" id="registrar" disabled>Registrarme</button>
             </div>
-
-            <% if(typeof mensaje !== "undefined") { %>
-                <p>
-                    <%= mensaje %>
-                </p>
-            <% } %>
         </form>
 
         <%- include("../../templates/footer.ejs"); %>
-        <script src="./logicas/formularioRegistrar.js"></script>
+        <script src="./logicas/formularios/formularioRegistrar.js"></script>
+        <script src="./logicas/formularios/verificarNuevoUsuario.js"></script>
     </body>
 </html>
