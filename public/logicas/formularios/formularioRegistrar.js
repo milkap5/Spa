@@ -100,6 +100,40 @@ verificarDatos.addEventListener('click', async () => {
         });
 
         const resultado = await anserFromDB.json();
+
+        if(resultado.ok) {
+            inputs.forEach(input => input.disabled = true);
+            registrar.disabled = false;
+            verificarDatos.style.display = 'none';
+        } else {
+            alert('Los datos ingresados no son válidos. Por favor, verifica los campos.');
+        }
+    } catch(error) {
+        console.log('ERROR EN LA VERIFICACIÓN DEL FORMULARIO: ', error);
+        alert('Ocurrió un error al verificar los datos. Intenta nuevamente más tarde.');
+    }
+});
+
+registrar.addEventListener('click', async () => {
+    datosCorrectos = {};
+    inputs.forEach(input => {
+        datosCorrectos[input.name] = input.value.trim();
+    });
+    
+    try {
+        const anserFromDB = await fetch('/verificar-registro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(datosCorrectos)
+        });
+
+        const resultado = await anserFromDB.json();
+
+        if(resultado.ok) {
+            alert('Registro de usuario exitoso.');
+        } else {
+            alert('Los datos ingresados no son válidos. Por favor, verifica los campos.');
+        }
     } catch(error) {
         console.log('ERROR EN LA VERIFICACIÓN DEL FORMULARIO: ', error);
         alert('Ocurrió un error al verificar los datos. Intenta nuevamente más tarde.');
