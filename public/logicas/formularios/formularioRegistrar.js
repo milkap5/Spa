@@ -33,6 +33,9 @@ const regularExpresion = (elemento, expresionReg, grupo) => {
         document.getElementById(`grupo${grupo}`).classList.add('incorrecto');
         estadoInputs[grupo.toLowerCase()] = false;
     }
+
+    if(grupo === 'Dni' || grupo === 'Celular' || grupo === 'Correo')
+    document.getElementById(`${grupo.toLowerCase()}Advertencia`).classList.add('conflictoEnDatos');
 };
 
 const verificarContrasenias = () => {
@@ -100,13 +103,16 @@ verificarDatos.addEventListener('click', async () => {
         });
 
         const resultado = await anserFromDB.json();
-
+        
         if(resultado.ok) {
             inputs.forEach(input => input.disabled = true);
-            registrar.disabled = false;
             verificarDatos.style.display = 'none';
+            reset.style.display = 'none';
+            registrar.disabled = false;
         } else {
-            alert('Los datos ingresados no son válidos. Por favor, verifica los campos.');
+            if(resultado.existe.dni) document.getElementById('dniAdvertencia').classList.remove('conflictoEnDatos');
+            if(resultado.existe.celular) document.getElementById('celularAdvertencia').classList.remove('conflictoEnDatos');
+            if(resultado.existe.correo) document.getElementById('correoAdvertencia').classList.remove('conflictoEnDatos');
         }
     } catch(error) {
         console.log('ERROR EN LA VERIFICACIÓN DEL FORMULARIO: ', error);

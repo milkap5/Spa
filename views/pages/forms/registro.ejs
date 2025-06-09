@@ -47,7 +47,7 @@
             </div>
 
             <%- include('../../templates/conflictosAlRegistrar.ejs', {
-                id: 'grupoAdvertenciaDni',
+                id: 'dniAdvertencia',
                 mensaje: 'DNI'
             }) %>
 
@@ -62,7 +62,7 @@
             </div>
 
             <%- include('../../templates/conflictosAlRegistrar.ejs', {
-                id: 'grupoAdvertenciaCelular',
+                id: 'celularAdvertencia',
                 mensaje: 'número de celular'
             }) %>
 
@@ -77,7 +77,7 @@
             </div>
 
             <%- include('../../templates/conflictosAlRegistrar.ejs', {
-                id: 'grupoAdvertenciaCorreo',
+                id: 'correoAdvertencia',
                 mensaje: 'correo'
             }) %>
 
@@ -115,6 +115,5 @@
 
         <%- include("../../templates/footer.ejs"); %>
         <script src="./logicas/formularios/formularioRegistrar.js"></script>
-        <script src="./logicas/formularios/verificarNuevoUsuario.js"></script>
     </body>
 </html>

@@ -1,33 +1,32 @@
 const poolConnection = require('../db/connection');
 
 const verificarDatos = async (req, res) => {
-    const { dni, celular, correo } = req.body;
 
-    let dniExiste = false;
-    let celularExiste = false;
-    let correoExiste = false;
+    const userDates=req.body;
+
+    const existe = {
+        dni: false,
+        celular: false,
+        correo: false
+    }
 
     try {
         const [resultado] = await poolConnection.query(
             'call consultarDatosPersona(?, ?, ?)',
-            [dni, celular, correo]
+            [userDates.dni, userDates.celular, userDates.correo]
         );
 
-        const persona = resultado.length > 0 ? resultado[0] : false;
-
-        if (persona) {
-            if(persona.dni === dni) dniExiste = true;
-            if(persona.celular === celular) dniCelular = true;
-            if(persona.correo === correo) dniCorreo = true;
+        if (resultado[0].length > 0) {
+            if(resultado[0][0].dni === userDates.dni) existe.dni = true;
+            if(resultado[0][0].celular === userDates.celular) existe.celular = true;
+            if(resultado[0][0].correo === userDates.correo) existe.correo = true;
         }
 
-        const exito = !(dniExiste || celularExiste || correoExiste);
-
+        const exito = !(existe.dni || existe.celular || existe.correo);
+        
         res.json({
             ok: exito,
-            dniExiste,
-            celularExiste,
-            correoExiste
+            existe
         });
     } catch(error) {
         console.log('ERROR DE VERIFICACIÓN: ', error);

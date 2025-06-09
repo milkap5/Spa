@@ -1,4 +1,10 @@
-<div id="<%= id %>" class="grupoFormulario conflictoEnDatos flexRow">
-    <p>Este <%= mensaje %> ya ha sido registrado.</p>
+<style>
+    i { opacity: 1}
+    .yaRegistrado { color: red}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="<%= id %>" class="conflictoEnDatos flexRow">
+    <p class="yaRegistrado">Este <%= mensaje %> ya ha sido registrado.</p>
     <i class="fa fa-times-circle" aria-hidden="true"></i>
 </div>
