@@ -3,7 +3,7 @@ const grupos=document.querySelectorAll('.grupoFormulario');
 
 const reset=document.getElementById('reset');
 const verificarDatos=document.getElementById('verificarDatos');
-const registrar=document.getElementById('registrar');
+const registrar=document.getElementById('formularioRegistro');
 
 const regExpresion = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{3,25}$/i,
@@ -105,10 +105,10 @@ verificarDatos.addEventListener('click', async () => {
         const resultado = await anserFromDB.json();
         
         if(resultado.ok) {
-            inputs.forEach(input => input.disabled = true);
+            inputs.forEach(input => input.readOnly = true);
             verificarDatos.style.display = 'none';
             reset.style.display = 'none';
-            registrar.disabled = false;
+            document.getElementById('registrar').disabled = false;
         } else {
             if(resultado.existe.dni) document.getElementById('dniAdvertencia').classList.remove('conflictoEnDatos');
             if(resultado.existe.celular) document.getElementById('celularAdvertencia').classList.remove('conflictoEnDatos');
@@ -120,28 +120,34 @@ verificarDatos.addEventListener('click', async () => {
     }
 });
 
-registrar.addEventListener('click', async () => {
-    datosCorrectos = {};
-    inputs.forEach(input => {
-        datosCorrectos[input.name] = input.value.trim();
-    });
-    
+registrar.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = new FormData(registrar);
+    const data = Object.fromEntries(form.entries());
+
     try {
-        const anserFromDB = await fetch('/verificar-registro', {
+        const anserFromDB = await fetch('/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(datosCorrectos)
-        });
+            body: JSON.stringify(data)
+        }); console.log('Respuesta completa:', anserFromDB);
+
+        
+        if(!anserFromDB.ok) {
+            const errorText = await anserFromDB.text();
+            throw new Error(`Error del servidor: ${errorText}`);
+        }
 
         const resultado = await anserFromDB.json();
 
         if(resultado.ok) {
-            alert('Registro de usuario exitoso.');
+            window.location.replace(`/bienvenido/${resultado.id}`);
         } else {
-            alert('Los datos ingresados no son válidos. Por favor, verifica los campos.');
+            alert(resultado.message || 'OCURRIÓ ALGO DURANTE EL REGISTRO !!');
         }
     } catch(error) {
-        console.log('ERROR EN LA VERIFICACIÓN DEL FORMULARIO: ', error);
-        alert('Ocurrió un error al verificar los datos. Intenta nuevamente más tarde.');
+        console.error('ERROR AL REGISTRAR EL USUARIO:', error);
+        alert('ERROR AL REGISTRAR. DETALLES:\n' + (error.message || 'Sin detalles.'));
     }
 });

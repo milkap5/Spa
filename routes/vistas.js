@@ -6,11 +6,16 @@ const router = express.Router();
         req (request): es la petición del cliente al servidor.
         res (response): es la respuesta del servidor al cliente.
 */
-router.get('/', (req, res) => res.render('index'));
+router.get('/', (req, res) => res.render('pages/users/noRegistrado/index'));
 router.get('/registro', (req, res) => res.render('pages/forms/registro'));
 router.get('/inicioSesion', (req, res) => res.render('pages/forms/inicioSesion'));
+
+router.get('/bienvenido:id', (req, res) => {
+    const { id } = req.params;
+    res.render('pages/users/noRegistrado/bienvenidoAlSpa', { id })
+});
+
 router.get('/formulario_SolicitudTurno', (req, res) => res.render('pages/forms/formulario_SolicitudTurno'));
-router.get('/formulario_bienvenidoAlSpa', (req, res) => res.render('pages/forms/formulario_bienvenidoAlSpa'));
 router.get('/formulario_confirmarCodigo', (req, res) => res.render('pages/forms/formulario_confirmarCodigo'));
 router.get('/formulario_confirmarTurno', (req, res) => res.render('pages/forms/formulario_confirmarTurno'));
 router.get('/formulario_contraseniaActualizadaCorrectamente', (req, res) => res.render('pages/forms/formulario_contraseniaActualizadaCorrectamente'));
