@@ -66,8 +66,4 @@ const registrarDatos = async (req, res) => {
     }
 }
 
-const mostrarBienvenida = async (req, res) => {
-
-}
-
-module.exports = { verificarDatos, registrarDatos, mostrarBienvenida };
+module.exports = { verificarDatos, registrarDatos };

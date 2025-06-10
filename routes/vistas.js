@@ -10,7 +10,7 @@ router.get('/', (req, res) => res.render('pages/users/noRegistrado/index'));
 router.get('/registro', (req, res) => res.render('pages/forms/registro'));
 router.get('/inicioSesion', (req, res) => res.render('pages/forms/inicioSesion'));
 
-router.get('/bienvenido:id', (req, res) => {
+router.get('/bienvenido/:id', (req, res) => {
     const { id } = req.params;
     res.render('pages/users/noRegistrado/bienvenidoAlSpa', { id })
 });

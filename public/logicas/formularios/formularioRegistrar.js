@@ -131,7 +131,7 @@ registrar.addEventListener('submit', async (e) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(data)
-        }); console.log('Respuesta completa:', anserFromDB);
+        });
 
         
         if(!anserFromDB.ok) {
@@ -139,7 +139,7 @@ registrar.addEventListener('submit', async (e) => {
             throw new Error(`Error del servidor: ${errorText}`);
         }
 
-        const resultado = await anserFromDB.json();
+        const resultado = await anserFromDB.json(); console.log('Respuesta completa:', resultado);
 
         if(resultado.ok) {
             window.location.replace(`/bienvenido/${resultado.id}`);

@@ -19,9 +19,6 @@ const viewRoutes = require('./routes/vistas'); // Importación del módulo que d
 
 app.use('/', viewRoutes); // indicamos a Express que el contenido de 'viewRoutes' se montarán desde '/'.
 
-const authRouter = require('./routes/auth'); // importamos el módulo relacionado con la autenticación.
-app.use('/auth', authRouter) // monta el contenido de 'authRouter' en '/auth'.
-
 const registroRouter = require('./routes/registros');
 app.use('/', registroRouter);
 
