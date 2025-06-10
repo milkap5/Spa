@@ -148,7 +148,7 @@ button.submit:hover {
 }
 */
 footer {
-  background-color: #a51f6f;
+  background-color: var(--color-primario);
   color: #fff;
   text-align: center;
   padding: 40px 20px 20px;

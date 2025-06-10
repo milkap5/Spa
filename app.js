@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine', 'ejs'); // se le indica a Express que utilizaremos EJS como motor de vistas.
 app.set('views', path.join(__dirname, 'views')); // aquí le indicamos que los archivos .ejs están en 'views'. Allí, 'res.render' buscará las vistas.
 
-app.use(express.static('public')); // aquí le decimos que sirva archivos estáticos desde la carpeta 'public'. '/logo.png' equivale a 'public/logo.png'.
+app.use(express.static(path.join(__dirname, 'public'))); // aquí le decimos que sirva archivos estáticos desde la carpeta 'public'. '/logo.png' equivale a 'public/logo.png'.
 app.use(express.urlencoded({extended:true})); // Middleware para procesar formularios HTML. 'extended:false' después profundizaremos.
 app.use(express.json()); // Middleware para interpretar JSON, recibidos mediante 'POST' o 'PUT' desde 'fetch' o 'axios'
 

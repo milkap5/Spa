@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente-principal);
+    align-items: center;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+#bienvenidoAlSpa {
+    background-color: var(--color-secundario);
+    width: 400px;
+    padding: 2% 5%;
+    align-items: center;
+    margin: 20px 0;
+    border-radius: 10%;
+    #logo { width: 120px; border-radius: 10%;}
+
+}

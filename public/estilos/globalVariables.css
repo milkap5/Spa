@@ -1,0 +1,11 @@
+:root {
+  --color-primario: #a51f6f;
+  --color-secundario: #b3558d;
+  --color-floating: #b3558dd7;
+  --color-fondo: #f8fbfc;
+  --color-texto: #333;
+  --color-texto-secundario: #666;
+  --fuente-principal: 'Segoe UI', sans-serif;
+  --color-acento: #d4a373;
+  --color-lujo: #c0b283;
+}

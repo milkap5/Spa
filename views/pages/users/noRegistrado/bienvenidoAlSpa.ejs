@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./estilos/estilos_formularios.css" rel="stylesheet">
-    <title>Bienvenido</title>
-</head>
-<body class="flexColumn">
-    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-        <div style="color: white;">
-          <h1 style="margin: 0;">Sentirse Bien</h1>
-          <p style="margin: 0;">Bienestar pensado para vos</p>
-        </div>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/estilos/globalVariables.css" rel="stylesheet" />
+      <link href="/estilos/bienvenido.css" rel="stylesheet" />
+      <link rel="icon" href="/media/imagenes/icono.ico"/>
+      <title>Bienvenido</title>
+  </head>
+  <body class="flexColumn">
+      <%- include("../../../templates/header.ejs"); %>
+      <div id="bienvenidoAlSpa" class="flexColumn">
+          <img src="/media/imagenes/icono.ico" alt="Logo_SPA" id="logo"/>
+          <h2>Registro exitoso!</h2>
+          <p>Le agradecemos por su confianza, ya puede disfrutar de nuestros servicios.</p>
+          <p>El siguiente es su número de Cliente: <strong><%= id %></strong>.</p>
+          <p>
+            Con el, usted podrá <strong>Iniciar Sesión</strong>,
+            <strong>soliciar</strong>, 
+            <strong>consultar</strong>, 
+            <strong>modificar</strong>, y
+            <strong>cancelar turnos</strong>.
+          </p>
+          <p>Su número de cliente ha sido enviado a los contactos que ha proporcionado.</p>
+          <form action="/iniciar-sesion" method="get">
+            <button type="submit">Iniciar Sesión</button>
+          </form>
       </div>
-      <nav style="background: none; padding: 0;">
-        <a href="/">Inicio</a>
-        <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
-        <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
-      </nav>
-      
-    </header>
+      <%- include("../../../templates/footer.ejs"); %>
 
-    <div id="bienvenido" class="flexColumn">
-        <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
-        <h2>Registro exitoso!</h2>
-        <p style="text-align:center;">
-            Le agradecemos por su confianza, ya puede disfrutar de nuestros servicios.<br> 
-        </p>
-        <p>El siguiente es su número de Cliente: <strong><%= id %></strong>.</p>
-        <p>
-          Con el, usted podrá <strong>Iniciar Sesión</strong>,
-          <strong>soliciar</strong>, 
-          <strong>consultar</strong>, 
-          <strong>modificar</strong>, y
-          <strong>cancelar turnos</strong>.
-        </p>
-        <p>Su número de cliente ha sido enviado a los contactos que ha proporcionado.</p>
-        <form action="/iniciar-sesion" method="get">
-          <button type="submit">Iniciar Sesión</button>
-        </form>
-    </div>
-    <%- include("../../../templates/footer.ejs"); %>
-
-    <script>
-      history.pushState(null, "", location.href);
-      window.onpopstate = function () { history.go(1);};
-    </script>
-</body>
+      <script>
+        history.pushState(null, "", location.href);
+        window.onpopstate = function () { history.go(1);};
+      </script>
+  </body>
 </html>

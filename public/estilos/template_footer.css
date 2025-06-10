@@ -1,0 +1,54 @@
+footer {
+    background-color: var(--color-primario);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    gap: 15px;
+}
+
+.contacto, .direccion-visitanos {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p { margin: 5px;}
+}
+
+.redes-sociales {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    
+    a {
+        img {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+
+        img:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    p { margin: 1%;}
+}

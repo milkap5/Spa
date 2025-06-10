@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    margin: 0;
+    background-color: var(--color-primario);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo_titles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.headerLogo {
+    height: 70px;
+    border-radius: 15px;
+}
+
+.headerTitles {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 5px;
+
+    h1, h2 { margin: 0; text-align: center;}
+}
+
+.headerNav {
+    display: flex;
+    background: none;
+    padding: 0;
+    gap: 20px;
+
+    a {
+        margin: 0;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+}

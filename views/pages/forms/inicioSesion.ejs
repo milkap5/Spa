@@ -4,27 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
+    <link href="/estilos/globalVariables.css" rel="stylesheet" />
     <link rel="stylesheet" href="./estilos/estilos_formularios.css" />
     <link rel="icon" href="./media/imagenes/icono.ico"/>
   </head>
   
 <body>
-  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-      <div style="color: white;">
-        <h1 style="margin: 0;">Sentirse Bien</h1>
-        <p style="margin: 0;">Bienestar pensado para vos</p>
-      </div>
-    </div>
-      <nav style="background: none; padding: 0;">
-        <a href="/">Inicio</a>
-        <a href="./usuarios/Cliente/servicios-individuales.html">Servicios Individuales</a>
-        <a href="./usuarios/Cliente/servicios-grupales.html">Servicios Grupales</a> 
-      </nav>
-
-    </div>
-  </header>
+  <%- include("../../templates/header.ejs"); %>
   <main class="formulario animacion-scroll">
     <h2>Iniciar Sesión</h2>
     <form id="formLogin" class="flexColumn" method="post">
@@ -46,7 +32,7 @@
     </form>
   </main>
   
-
+  <%- include("../../templates/footer.ejs"); %>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("main").classList.add("visible");
