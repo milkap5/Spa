@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página no encontrada</title>
+  <link href="/estilos/globalVariables.css" rel="stylesheet" />
+  <link href="/estilos/estilos_de_paginas.css" rel="stylesheet" />
+  <link rel="icon" href="/media/imagenes/icono.ico" />
+</head>
+
+<body>
+  <%- include("../../templates/header.ejs") %>
+
+  <main class="pagina-error flexColumn">
+    <h1 class="error-404">404</h1>
+    <h2>Página no encontrada</h2>
+    <p>Lo sentimos, la página que estás buscando no existe o ha sido movida.</p>
+    
+    <% if(usuario) { %>
+      <% if(usuario.usuarioTipo === 'cliente') { %>
+        <a href="/cliente" class="boton-volver">Volver al Inicio del Cliente</a>
+      <% } else if(usuario.usuarioTipo === 'profesional') { %>
+        <a href="/profesional" class="boton-volver">Volver al Inicio del Profesional</a>
+      <% } else if(usuario.usuarioTipo === 'admin') { %>
+        <a href="/admin" class="boton-volver">Volver al Inicio de Administración</a>
+      <% } else { %>
+        <a href="/" class="boton-volver">Volver al Inicio</a>
+      <% } %>
+    <% } else { %>
+      <a href="/" class="boton-volver">Volver al Inicio</a>
+    <% } %>
+    
+    <a href="/" class="boton-volver">Volver al inicio</a>
+
+
+
+
+  </main>
+
+  <%- include("../../templates/footer.ejs") %>
+</body>
+</html>

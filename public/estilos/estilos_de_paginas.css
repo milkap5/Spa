@@ -8,6 +8,7 @@
   --fuente-principal: 'Segoe UI', sans-serif;
   --color-acento: #d4a373;
   --color-lujo: #c0b283;
+  --color-principal-oscuro: #005F73;
 }
 
 body {
@@ -1032,4 +1033,34 @@ form button.submit:hover {
 .metodo-pago p {
   font-size: 1rem;
   color: var(--color-texto-secundario);
+}
+
+.pagina-error {
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-principal);
+}
+
+.error-404 {
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.boton-volver {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--color-principal);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.boton-volver:hover {
+  background-color: var(--color-principal-oscuro);
 }

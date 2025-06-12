@@ -79,6 +79,9 @@ reset.addEventListener('click', () => {
         grupo.classList.remove('correcto');
         grupo.classList.remove('incorrecto');
     });
+    document.getElementById('dniAdvertencia').classList.add('conflictoEnDatos');
+    document.getElementById('celularAdvertencia').classList.add('conflictoEnDatos');
+    document.getElementById('correoAdvertencia').classList.add('conflictoEnDatos');
     estadoInputs.forEach(state => { state=false;});
 });
 
@@ -127,7 +130,7 @@ registrar.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(form.entries());
 
     try {
-        const anserFromDB = await fetch('/registro', {
+        const anserFromDB = await fetch('/registrar-usuario', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(data)

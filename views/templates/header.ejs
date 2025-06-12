@@ -11,6 +11,13 @@
     <nav class="headerNav">
         <a href="/">Inicio</a>
         <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
-        <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a> 
+        <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>
+        
+        <% if(typeof usuario !== 'undefined') {%>
+            <span class="usuarioLogueado">¡Hola, <%= usuario.nombre %>!</span>
+        <% } else { %>
+            <a href="/inicioSesion">Iniciar Sesión</a>
+        <% } %>
+        
     </nav>          
 </header>

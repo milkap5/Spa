@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <link href="/estilos/globalVariables.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./estilos/estilos_formularios.css" />
+    <link rel="icon" href="./media/imagenes/icono.ico"/>
+  </head>
+  
+<body>
+  <%- include("../../../templates/header.ejs"); %>
+
+  <form id="formLogin" class="flexColumn">
+    <img />
+    <h2>Iniciar Sesión</h2>
+    <div>
+      <label for="cliente">Número de Cliente</sub></label>
+      <input id="cliente" type="text" name="cliente" placeholder="Número de Cliente" required />
+    </div>
+
+    <p style="display: <%= errorLogin ? 'block' : 'none' %>; color: red;">
+      <% if (errorLogin === 'noPass') { %>
+        La contraseña es incorrecta. Por favor, intente nuevamente.
+      <% } else if (errorLogin === 'noPerson') { %>
+        El número de Cliente no está registrado.
+      <% } %>
+    </p>
+    
+    <div>
+      <label for="pass">Contraseña</label>
+      <input id="pass" type="password" name="pass" minlength="8" maxlength="20" placeholder="Contraseña" required />
+    </div>
+    <div class="registro flexRow" style="gap: 180px">
+      <a href="/formulario_olvideMiContrasenia">¿Olvidaste tu contraseña?</a>
+      <a href="/registro">REGISTRARME</a>
+    </div>
+    <button type="submit">Ingresar</button>
+  </form>
+
+  <%- include("../../../templates/footer.ejs"); %>
+  <script src="./logicas/formularios/inicioSesion.js"></script>
+</body>
+</html>

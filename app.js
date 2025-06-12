@@ -1,28 +1,37 @@
 require('dotenv').config();
+const express = require('express');
+const path = require('path');
+const session = require('express-session');
 
-// Importación de módulos de Node.js
-const express = require('express'); // Framework para manejar rutas, middleware, etc.
-const path = require('path'); // Este es para construir rutas a archivos seguras y compatibles con varios SO's.
+const app = express();
 
-// Creación de una instancia de Express. Con ella operaremos en adelante.
-const app = express(); 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.set('view engine', 'ejs'); // se le indica a Express que utilizaremos EJS como motor de vistas.
-app.set('views', path.join(__dirname, 'views')); // aquí le indicamos que los archivos .ejs están en 'views'. Allí, 'res.render' buscará las vistas.
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public'))); // aquí le decimos que sirva archivos estáticos desde la carpeta 'public'. '/logo.png' equivale a 'public/logo.png'.
-app.use(express.urlencoded({extended:true})); // Middleware para procesar formularios HTML. 'extended:false' después profundizaremos.
-app.use(express.json()); // Middleware para interpretar JSON, recibidos mediante 'POST' o 'PUT' desde 'fetch' o 'axios'
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'clave-secreta',
+    resave: false,
+    saveUninitialized: false
+}));
 
-const viewRoutes = require('./routes/vistas'); // Importación del módulo que define las rutas a la vista.
-// indica a Express que las rutas definidas en './routes/vistas' están disponibles desde '/'.
+app.use((req, res, next) => {
+    res.locals.usuario = req.session.usuario;
+    next();
+});
 
-app.use('/', viewRoutes); // indicamos a Express que el contenido de 'viewRoutes' se montarán desde '/'.
-
-const registroRouter = require('./routes/registros');
+const registroRouter = require('./routes/acciones');
+const viewRoutes = require('./routes/vistas');
 app.use('/', registroRouter);
+app.use('/', viewRoutes);
 
-// configuración del puerto
+app.use((req, res) => {
+    res.status(404).render('pages/errors/404');
+});
+
 app.listen(3000, () => {
     console.log('Servidor creado: http://localhost:3000');
 });

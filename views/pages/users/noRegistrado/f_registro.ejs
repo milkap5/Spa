@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
 
-    <%- include('../../templates/header.ejs');%>
+    <%- include('../../../templates/header.ejs');%>
 
     <body class="flexColumn">
         <form id="formularioRegistro" class="formulario flexColumn">
@@ -46,7 +46,7 @@
                 <p hidden>Solo debe contener números.</p>
             </div>
 
-            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+            <%- include('../../../templates/conflictosAlRegistrar.ejs', {
                 id: 'dniAdvertencia',
                 mensaje: 'DNI'
             }) %>
@@ -61,7 +61,7 @@
                 <p hidden>No debe contener puntos ni espacios. Solo números.</p>
             </div>
 
-            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+            <%- include('../../../templates/conflictosAlRegistrar.ejs', {
                 id: 'celularAdvertencia',
                 mensaje: 'número de celular'
             }) %>
@@ -76,7 +76,7 @@
                 <p hidden>El correo expresado no tiene un formato del todo correcto.</p>
             </div>
 
-            <%- include('../../templates/conflictosAlRegistrar.ejs', {
+            <%- include('../../../templates/conflictosAlRegistrar.ejs', {
                 id: 'correoAdvertencia',
                 mensaje: 'correo'
             }) %>
@@ -113,7 +113,7 @@
             </div>
         </form>
 
-        <%- include("../../templates/footer.ejs"); %>
-        <script src="./logicas/formularios/formularioRegistrar.js"></script>
+        <%- include("../../../templates/footer.ejs"); %>
+        <script src="./logicas/formularios/registro.js"></script>
     </body>
 </html>
