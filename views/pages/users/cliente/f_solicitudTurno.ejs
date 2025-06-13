@@ -3,67 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="../Usuarios/Cliente/estilos.css">
-        <style>
-            body { height: 800px;}
-            select { width: 100%;}
-        </style>
+        <link rel="stylesheet" href="./estilos/estilos_formularios.css">
         <title>Solicitar Turno</title>
-        <script src="jquery-3.7.1.min.js"></script>
-
-        <script>
-        </script>
     </head>
-    <body class="flexColumn">
-        <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-              <img src="../Imagenes/icono.ico" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-              <div style="color: white;">
-                <h1 style="margin: 0;">Sentirse Bien</h1>
-                <p style="margin: 0;">Bienestar pensado para vos</p>
-              </div>
+    <body class="flexColumn"><%- include('../../../templates/header') %>
+
+          <h2>Solicitar un Turno</h2>
+
+          <form id="form-turno" class="formulario flexColumn">
+            <label for="servicio">Servicio:</label>
+            <select id="servicio" name="servicio" required></select>
+
+            <label for="fecha">Fecha:</label>
+            <select id="fecha" name="fecha" required></select>
+
+            <label for="hora">Hora:</label>
+            <select id="hora" name="hora" required></select>
+
+            <label for="empleado">Profesional:</label>
+            <select id="empleado" name="empleado" required></select>
+            <div id="botones" style="display: flex;">
+              <button type="submit">Reservar Turno</button>
             </div>
-            <nav style="background: none; padding: 0;">
-              <a href="../Usuarios/Cliente/inicio.html">Inicio</a>
-              <a href="../Usuarios/Cliente/servicios-individuales.html">Servicios Individuales</a>
-              <a href="../Usuarios/Cliente/servicios-grupales.html">Servicios Grupales</a>      
-            </nav>
-            
-          </header>
-        <form id="registro" class="formulario flexColumn">
-            <img src="../Imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
-            <h2 id="registroTitulo">Solicitud de Turno</h2>
-            <label for="nombre">Ingrese se número de cliente</label>
-            <input type="number" id="numCliente" placeholder="por ejemplo: 223415" required>
+          </form>
+          <script src="/logicas/formularios/turnos.js"></script>
 
-            <div id="seleccionServicios" style="margin-bottom: 20px;">
-                <label>Seleccione el servicio que desee</label><br>
-                <select name="servicio" id="servicio" style="width: 65%;">
-                    <option value="">Tipo de servicio</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-
-                <label>Precio: </label>
-                <label>$<u>unidad,decena</u></label>
-            </div>
-
-            <label for="fechaTurno">Seleccione la fecha que desee</label>
-            <input type="date" id="fechaTurno" required>
-
-            <label for="horaTurno">Seleccione la hora disponible que desee</label>
-            <input type="time" id="horaTurno" required>
-
-            <div id="botones" class="flexRow">
-                <button type="submit" class="submit">Solicitar Turno</button>
-            </div>
-            </form>
+        <%- include('../../../templates/footer') %>  
     </body>
-    
-    <%- include("./template/footer.ejs"); %>
 </html>

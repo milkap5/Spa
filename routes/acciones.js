@@ -6,5 +6,5 @@ const sesionController = require('../controllers/sesionController');
 router.post('/verificar-registro', registroController.verificarDatos);
 router.post('/registrar-usuario', registroController.registrarDatos);
 router.post('/iniciar-sesion', sesionController.iniciarSesion);
-router.get('/cerrar-sesion', sesionController.cerrarSesion);
+router.get('/cerrar-session', sesionController.cerrarSesion);
 module.exports = router;

@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', require('./routes/acciones'));
+app.use('/', require('./routes/datosBack'));
 app.use('/', require('./routes/vistas'));
 
 app.use((req, res) => {

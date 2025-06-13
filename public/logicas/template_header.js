@@ -1,13 +1,17 @@
-const opcionesUsuario = document.getElementById('opciones-usuario');
+document.addEventListener('DOMContentLoaded', () => {
+  const opcionesUsuario = document.getElementById('opciones-usuario');
 
-opcionesUsuario.addEventListener('change', (e) => {
-    const option = e.target.value;
+  if (opcionesUsuario) {
+    opcionesUsuario.addEventListener('change', (e) => {
+      const option = e.target.value;
 
-    if(option === 'cerrar-sesion') {
-        window.location.href = '/cerrar-sesion';
-    }
+      if (option === 'solicitar-turno') {
+        window.location.href = '/formulario-turno';  // <--- Asegurate que esta ruta esté definida en tus rutas
+      } else if (option === 'cerrar-sesion') {
+        window.location.href = '/cerrar-session';
+      }
 
-    if(option === 'sacar-turno') {
-        /// widow.location.href = '/solicitar-turno';
-    }
+      selector.selectedIndex = 0;
+    });
+  }
 });
