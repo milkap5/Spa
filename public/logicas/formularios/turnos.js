@@ -39,12 +39,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     horaSelect.innerHTML = '<option disabled selected>Seleccione</option>';
     empleadoSelect.innerHTML = '';
 
-    if (servicio && fecha) { console.log('NO SE, AQUÍ ESTAMOS. SERV: ', servicio, "|||||| fecha: ", fecha)
+    if (servicio && fecha) {
       const horas = await (await fetch(`/horas-disponibles?servicio=${servicio}&fecha=${fecha}`)).json();
-      horas.forEach(h => {console.log('HORAS     0: ', h)
+      horas.forEach(h => {
         const option = document.createElement('option');
-        option.value = h.hora;
-        option.textContent = h.hora;
+        option.value = h;
+        option.textContent = h;
         horaSelect.appendChild(option);
       });
     }
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     empleadoSelect.innerHTML = '<option disabled selected>Seleccione</option>';
 
     if (servicio && fecha && hora) {
-      const empleados = await (await fetch(`/profesionales-disponibles?servicio=${servicio}&fecha=${fecha}&hora=${hora}`)).json();
+      const empleados = await (await fetch(`/profesionales-disponibles?servicio=${servicio}&fecha=${fecha}&hora=${hora}`)).json(); console.log(empleados, " este");
       empleados.forEach(e => {
         const option = document.createElement('option');
         option.value = e.id;

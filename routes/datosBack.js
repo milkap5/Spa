@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pool = require('mysql2');
+const poolConnection = require('../db/connection')
+
 const turnosController = require("../controllers/turnosController");
 
 // Obtener servicios/secciones
@@ -22,7 +23,7 @@ router.post('/registrar-turno', async (req, res) => {
     const clienteID = req.session.usuario.id;
 
     // Obtener la sala libre para ese servicio, fecha, hora
-    const [sala] = await pool.query('CALL obtenerSalaLibre(?, ?, ?, ?)', [servicio, fecha, hora, empleadoID]);
+    const [sala] = await poolConnection.query('CALL obtenerSalaLibre(?, ?, ?, ?)', [servicio, fecha, hora, empleadoID]);
 
     if (!sala[0] || !sala[0][0]) {
       return res.json({ exito: false, mensaje: 'No hay salas disponibles para ese horario.' });

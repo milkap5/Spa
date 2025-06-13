@@ -12,15 +12,15 @@ const obtenerFechasDisponibles = async (req, res) => {
   res.json(rows[0].map(row => row.fecha));
 };
 
-const obtenerHorasDisponibles = async (req, res) => {//  console.log("req: ", req.query)
-  const { servicio, fecha } = req.query;//   console.log("SeccionID: ", fecha)
-  const [rows] = await db.query("CALL horariosDisponiblesPorFecha(?, ?)", [servicio, fecha]);
+const obtenerHorasDisponibles = async (req, res) => {
+  const { servicio, fecha } = req.query;
+  const [rows] = await db.query("CALL horariosDisponiblesPorFechaYServicio(?, ?)", [fecha, servicio]);
   res.json(rows[0].map(row => row.hora));
 };
 
 const obtenerProfesionalesDisponibles = async (req, res) => {
-  const { seccionID, fecha, hora } = req.query;
-  const [rows] = await db.query("CALL profesionalesDisponibles(?, ?, ?)", [seccionID, fecha, hora]);
+  const { servicio, fecha, hora } = req.query;
+  const [rows] = await db.query("CALL profesionalesDisponibles(?, ?, ?)", [servicio, fecha, hora]);
   res.json(rows[0]);
 };
 
