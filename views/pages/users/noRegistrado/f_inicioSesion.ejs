@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
-    <link href="/estilos/globalVariables.css" rel="stylesheet" />
     <link rel="stylesheet" href="./estilos/estilos_formularios.css" />
     <link rel="icon" href="./media/imagenes/icono.ico"/>
   </head>
@@ -12,10 +11,10 @@
 <body>
   <%- include("../../../templates/header.ejs"); %>
 
-  <form id="formLogin" class="flexColumn">
-    <img />
+  <form id="formLogin" class="formulario flexColumn">
+    <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
     <h2>Iniciar Sesión</h2>
-    <div>
+    <div class="flexColumn">
       <label for="cliente">Número de Cliente</sub></label>
       <input id="cliente" type="text" name="cliente" placeholder="Número de Cliente" required />
     </div>
@@ -28,7 +27,7 @@
       <% } %>
     </p>
     
-    <div>
+    <div class="flexColumn">
       <label for="pass">Contraseña</label>
       <input id="pass" type="password" name="pass" minlength="8" maxlength="20" placeholder="Contraseña" required />
     </div>
@@ -36,7 +35,10 @@
       <a href="/formulario_olvideMiContrasenia">¿Olvidaste tu contraseña?</a>
       <a href="/registro">REGISTRARME</a>
     </div>
-    <button type="submit">Ingresar</button>
+
+    <div id="botones" style="display: flex;">
+      <button type="submit">Ingresar</button>
+    </div>
   </form>
 
   <%- include("../../../templates/footer.ejs"); %>

@@ -1,12 +1,12 @@
 const poolConnection = require('../db/connection');
 
-exports.iniciarSesion = async (req, res) => {
+const iniciarSesion = async (req, res) => {
     const { numeroCliente, contrasenia } = req.body;
 
     try {
         const [rows] = await poolConnection.query('call iniciarSesion(?, ?)', [numeroCliente, contrasenia]);
         const resultado =rows[0][0];
-console.log('resultado: ', resultado);
+
         if(!resultado || resultado.usuarioTipo === 'noPass' || resultado.usuarioTipo === 'noPerson') {
             return res.redirect(`/inicioSesion?error=${resultado.usuarioTipo}`);
         }
@@ -21,3 +21,17 @@ console.log('resultado: ', resultado);
         res.status(500).send('ERROR INTERNO DEL SERVIDOR');
     }
 };
+
+const cerrarSesion = async (req, res) => {
+    req.session.destroy(error => {
+        if(error) {
+            console.error('ERROR AL CERRAR LA SESIÓN: ', error);
+            return  res.status(500).send('OCURRIÓ UN ERROR AL CERRAR SESIÓN.')
+        }
+
+        res.clearCookie('connect.sid');
+        res.redirect('/');
+    })
+}
+
+module.exports = { iniciarSesion, cerrarSesion };

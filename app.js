@@ -23,10 +23,8 @@ app.use((req, res, next) => {
     next();
 });
 
-const registroRouter = require('./routes/acciones');
-const viewRoutes = require('./routes/vistas');
-app.use('/', registroRouter);
-app.use('/', viewRoutes);
+app.use('/', require('./routes/acciones'));
+app.use('/', require('./routes/vistas'));
 
 app.use((req, res) => {
     res.status(404).render('pages/errors/404');

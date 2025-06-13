@@ -8,16 +8,26 @@
             <h2>Bienestar pensado para vos</h2>
         </hgroup>
     </div>
-    <nav class="headerNav">
-        <a href="/">Inicio</a>
+    <nav class="headerNav"">
+        <% if(typeof usuario !== 'undefined') {%>
+            <a href="<%= usuario.usuarioTipo %>">Inicio</a>
+        <% } else { %>
+            <a href="/">Inicio</a>
+        <% } %>
         <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
         <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>
-        
-        <% if(typeof usuario !== 'undefined') {%>
-            <span class="usuarioLogueado">¡Hola, <%= usuario.nombre %>!</span>
-        <% } else { %>
-            <a href="/inicioSesion">Iniciar Sesión</a>
-        <% } %>
-        
-    </nav>          
+        <div id="sesion">
+            <% if(typeof usuario !== 'undefined') {%>
+                <select id="opciones-usuario">
+                    <option value="" ><%= usuario.nombre %> <%= usuario.apellido %></option>
+                    <option value="solicitar-turno">Solicitar Turno</option>
+                    <option value="cerrar-sesion">Cerrar Sesión</option>
+                </select>
+            <% } else { %>
+                <a href="/inicioSesion">Iniciar Sesión</a>
+            <% } %>
+        </div>
+    </nav>
+
+    <script src="./logicas/template_header.js"></script>
 </header>
