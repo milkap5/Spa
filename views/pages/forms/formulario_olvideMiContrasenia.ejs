@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../Usuarios/Cliente/estilos.css" rel="stylesheet">
-    <link rel="icon" href="../Imagenes/icono.ico"/>
+    <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
+    <link rel="icon" href="./media/imagenes/icono.ico"/>
     <title>Recuperación de contraseña</title>
 </head>
 
 <body class="flexColumn">
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
       <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+        <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
         <div style="color: white;">
           <h1 style="margin: 0;">Sentirse Bien</h1>
           <p style="margin: 0;">Bienestar pensado para vos</p>
         </div>
       </div>
       <nav style="background: none; padding: 0;">
-        <a href="../Usuarios/Cliente/inicio.html">Inicio</a>
-        <a href="../Usuarios/Cliente/servicios-individuales.html">Servicios Individuales</a>
-        <a href="../Usuarios/Cliente/servicios-grupales.html">Servicios Grupales</a>      
-        <a href="../../Formularios/inicioSesion.html">Iniciar Sesión</a>
+        <a href="/">Inicio</a>
+        <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+        <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
+        <a href="/inicioSesion">Iniciar Sesión</a>
       </nav>
       
     </header>
 
     <form action="" id="recuperarClave" class="formulario flexColumn" method="post">
-        <img src="../Imagenes/icono.ico" alt="Logo_SPA" style="height: 60px; border-radius: 15px;">
+        <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA" style="height: 60px; border-radius: 15px;">
         <h2>Recuperar mi contraseña</h2>
 
         <label>Para recuperar su contraseña, ingrese el mail con el que se ha registrado</label>
         <input type="email" placeholder="usuario@mail.com">
         
         <div id="botones" class="flexRow" >
-            <a href="../Formularios/confirmarCodigo.html" class="submit">Enviar</a>
+            <a href="/formulario_confirmarCodigo" class="submit">Enviar</a>
         </div>
     </form>
 
-    <%- include("./template/footer.ejs"); %>
+    <%- include("../../templates/footer.ejs"); %>
 </body>
 </html>

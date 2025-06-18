@@ -4,11 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="../estilos/estilos_formularios.css" />
     <link rel="icon" href="../media/imagenes/icono.ico"/>
+=======
+    <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
+    <link rel="icon" href="./media/imagenes/icono.ico"/>
+>>>>>>> Stashed changes
   </head>
   
 <body>
+<!-- Imagen de fondo -->
+<div class="fondoImagen"></div>
+
+<!-- Capa oscura encima del video -->
+<div class="capaOscura"></div>
+
   <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
     <div style="display: flex; align-items: center; gap: 15px;">
       <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
@@ -19,8 +30,8 @@
     </div>
       <nav style="background: none; padding: 0;">
         <a href="/">Inicio</a>
-        <a href="./usuarios/Cliente/servicios-individuales.html">Servicios Individuales</a>
-        <a href="./usuarios/Cliente/servicios-grupales.html">Servicios Grupales</a> 
+        <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+        <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a> 
       </nav>
 
     </div>
@@ -34,13 +45,13 @@
       <input type="password" id="contrasenia" placeholder="Contraseña" required>
   
       <div class="registro flexRow" style="gap: 180px">
-        <a href="/formulario_olvideMiContrasenia" style="color: red; text-shadow: 0 0 5px white; text-decoration:none;">¿Olvidaste tu contraseña?</a>
-        <a href="/registro" id="registrarme">Registrarme</a>
+        <a href="/formulario_olvideMiContrasenia" style="color: rgb(77, 71, 237); text-shadow: 0 0 5px white; text-decoration:none;">¿Olvidaste tu contraseña?</a>
+        <a href="/registro" id="registrarme" style="color: rgb(205, 91, 146);">Registrarme</a>
       </div>
       
       <div id="botones" class="flexRow" style="margin: auto">
         <button id="ingresar" type="submit" class="submit">Ingresar</button>
-        <p id="mensajeError" style="color: red;"></p>
+        <p id="mensajeError" style="color: rgb(184, 21, 21);"></p>
       </div>
       
     </form>
@@ -84,8 +95,9 @@
         document.getElementById("mensajeError").textContent = "Usuario o contraseña incorrectos.";
       }
     });
-
-    
   </script>
+
+<%- include("../../templates/footer.ejs"); %>
+
 </body>
 </html>

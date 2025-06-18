@@ -4,22 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reservar Servicio - Sentirse Bien</title>
-  <link rel="stylesheet" href="estilos.css" />
-  <link rel="icon" href="../../Imagenes/icono.ico"/>
+  <link rel="stylesheet" href="/estilos/estilos_de_paginas.css" />
+  <link rel="icon" href="/media/imagenes/icono.ico" />
 </head>
 <body>
   <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a51f6f;">
     <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;  border-radius: 15px">
+      <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px;  border-radius: 15px">
       <div style="color: white;">
         <h1 style="margin: 0;">Sentirse Bien</h1>
         <p style="margin: 0;">Bienestar pensado para vos</p>
       </div>
     </div>
     <nav style="background: none; padding: 0;">
-      <a href="inicio.html">Inicio</a>
-      <a href="servicios-individuales.html">Servicios Individuales</a>
-      <a href="servicios-grupales.html">Servicios Grupales</a>      
+      <a href="/">Inicio</a>
+      <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+      <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
     </nav>
     
   </header>
@@ -129,5 +129,8 @@
       }
     });
   </script>
+  
+  <%- include('../../templates/footer.ejs') %>
+
 </body>
 </html>
