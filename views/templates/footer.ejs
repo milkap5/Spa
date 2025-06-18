@@ -1,63 +1,46 @@
-<<<<<<< Updated upstream
-=======
+<link rel="stylesheet" href="/estilos/template_footer.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    #map {
-      height: 300px;
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      transition: box-shadow 0.3s ease;
-    }
-
-    #map:hover {
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
-    }
-  </style>
   
->>>>>>> Stashed changes
-  <footer>
-    <div class="footer-content">
-      <div class="contacto">
-        <p><strong>📧 Email:</strong> info@sentirsebien.com</p>
-        <p><strong>📞 Tel:</strong> (362) 456-7890</p>
-      </div>
-      <div class="direccion-visitanos">
-        <p><strong>📍 Dirección:</strong> French 414, Resistencia</p>
-      </div>
-      <div class="redes-sociales">
-        <a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
-        <a href="https://www.facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
-        <a href="https://wa.me/5491234567890" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
-      </div>
-      <div class="map-container">
-        <iframe src="https://maps.google.com/maps?q=French%20414,%20Resistencia&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
-      <p>Desarrollado por Grupo 9 - 'ProcAp' para la materia Metodología de Sistemas I</p>
-    </div>
-<<<<<<< Updated upstream
-  </footer>
-=======
-  </footer>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const coords = [-27.45113, -58.97905];
-    const map = L.map('map').setView(coords, 19);
+<footer>
+	<div class="footer-content">
+		<div class="contacto">
+			<p><strong>📧 Email:</strong> info@sentirsebien.com</p>
+			<p><strong>📞 Tel:</strong> (362) 456-7890</p>
+		</div>
+		<div class="direccion-visitanos">
+			<p><strong>📍 Dirección:</strong> French 414, Resistencia</p>
+		</div>
+		<div class="redes-sociales">
+			<a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+			<a href="https://www.facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+			<a href="https://wa.me/5491234567890" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
+		</div>
+		<div 
+			id="map"
+			style="
+				height: 250px;
+				width: 60%;
+				border-radius: 10px;
+				box-shadow: 1px 1px 20px var(--color-secundario);
+			"
+		></div>
+	</div>
+	<div class="footer-bottom">
+		<p>&copy; 2025 Spa Sentirse Bien - Todos los derechos reservados</p>
+		<p>Desarrollado por Grupo 9 - 'ProcAp' para la materia Metodología de Sistemas I</p>
+	</div>
+</footer>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const map = L.map('map').setView([-27.4514, -58.9862], 16); // Coordenadas de French 414, Resistencia
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker(coords).addTo(map)
+    L.marker([-27.4514, -58.9862]).addTo(map)
       .bindPopup('📍 Spa Sentirse Bien<br>French 414, Resistencia')
       .openPopup();
   });
 </script>
-</script>
->>>>>>> Stashed changes
