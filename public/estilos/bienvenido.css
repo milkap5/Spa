@@ -11,7 +11,7 @@ body {
 }
 
 #bienvenidoAlSpa {
-    background-color: var(--color-secundario);
+    background-color: #fff;
     width: 400px;
     padding: 2% 5%;
     align-items: center;

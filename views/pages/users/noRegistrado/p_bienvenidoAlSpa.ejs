@@ -3,14 +3,14 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="/estilos/globalVariables.css" rel="stylesheet" />
+      <link href="/estilos/estilos_formularios.css" rel="stylesheet" />
       <link href="/estilos/bienvenido.css" rel="stylesheet" />
       <link rel="icon" href="/media/imagenes/icono.ico"/>
       <title>Bienvenido</title>
   </head>
   <body class="flexColumn">
       <%- include("../../../templates/header.ejs"); %>
-      <div id="bienvenidoAlSpa" class="flexColumn">
+      <div id="bienvenidoAlSpa" class="flexColumn formulario">
           <img src="/media/imagenes/icono.ico" alt="Logo_SPA" id="logo"/>
           <h2>Registro exitoso!</h2>
           <p>Le agradecemos por su confianza, ya puede disfrutar de nuestros servicios.</p>
@@ -23,7 +23,7 @@
             <strong>cancelar turnos</strong>.
           </p>
           <p>Su número de cliente ha sido enviado a los contactos que ha proporcionado.</p>
-          <form action="/iniciar-sesion" method="get">
+          <form action="/iniciar-sesion" method="get" id="botones">
             <button type="submit">Iniciar Sesión</button>
           </form>
       </div>

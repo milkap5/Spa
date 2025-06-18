@@ -15,7 +15,7 @@ router.get('/inicioSesion', redirigirSiYaEstaLogueado, (req, res) => {
 
 router.get('/bienvenido/:id', (req, res) => {
     const { id } = req.params;
-    res.render('pages/users/noRegistrado/bienvenidoAlSpa', { id });
+    res.render('pages/users/noRegistrado/p_bienvenidoAlSpa', { id });
 });
 
 router.get('/confirmarCodigo', (req, res) => res.render('pages/users/noRegistrado/confirmarCodigo'));
