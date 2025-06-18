@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./estilos/estilos_de_paginas.css" rel="stylesheet">
+    <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
     <link rel="icon" href="./media/imagenes/icono.ico"/>
     <title>Ingrese nueva contraseña</title>
 </head>
@@ -17,13 +17,13 @@
           </div>
         </div>
         <nav style="background: none; padding: 0;">
-            <a href="/pagina_cliente_inicio">Inicio</a>
+            <a href="/">Inicio</a>
             <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
             <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
           </nav>
       </header>
     <form action="" id="nuevaClave" class="formulario flexColumn" method="post">
-        <img src="../Imagenes/icono.ico" alt="Logo_SPA">
+        <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
         <h2>Nueva contraseña</h2>
         <label>Escriba a continuación una nueva contraseña</label>
         <input type="password" >
@@ -35,6 +35,6 @@
           <a href="/Formulario_contraseniaActualizadaCorrectamente" class="submit">Confirmar</a>
         </div>
     </form>
-    <%- include("./template/footer.ejs"); %>
+    <%- include("../../templates/footer.ejs"); %>
 </body>
 </html>

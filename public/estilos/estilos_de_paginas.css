@@ -2,13 +2,12 @@
   --color-primario: #a51f6f;
   --color-secundario: #b3558d;
   --color-floating: #b3558dd7;
-  --color-fondo: #f8fbfc;
+  --color-fondo: #b3558d3e;
   --color-texto: #333;
   --color-texto-secundario: #666;
   --fuente-principal: 'Segoe UI', sans-serif;
-  --color-acento: #d4a373;
-  --color-lujo: #c0b283;
-  --color-principal-oscuro: #005F73;
+  --color-acento:#2e7d32 ; 
+  --color-lujo:#4CAF50 ; 
 }
 
 body {
@@ -149,7 +148,7 @@ button.submit:hover {
 }
 */
 footer {
-  background-color: var(--color-primario);
+  background-color: #a51f6f;
   color: #fff;
   text-align: center;
   padding: 40px 20px 20px;
@@ -928,13 +927,19 @@ form button.submit:hover {
 #registrarme:hover {
   text-decoration: underline;
 }
-
 .flexRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: center; /* ¡CAMBIA ESTO! Centra los ítems y permite que 'gap' los separe */
+    align-items: center;
+    gap: 20px; 
+    padding: 10px;
 }
 
+
+#botones .submit { /* Apunta específicamente a los botones dentro del div#botones */
+    flex-shrink: 0; /* Evita que los botones se encojan */
+    width: auto; /* Permite que el ancho del botón se ajuste a su contenido */
+}
 .submit:hover {
   background-color: var(--color-lujo);
 }
@@ -1035,32 +1040,564 @@ form button.submit:hover {
   color: var(--color-texto-secundario);
 }
 
-.pagina-error {
-  min-height: 60vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  color: var(--color-principal);
+/* Estilos para el botón flotante del carrito */
+.floating-cart-button {
+    position: fixed;
+    bottom: 90px; /* Un poco más arriba que el botón flotante de contacto si lo tienes */
+    right: 20px;
+    background-color: var(--color-primario); /* Tu color primario */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 999; /* Asegúrate de que esté debajo del modal */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.error-404 {
-  font-size: 6rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.floating-cart-button:hover {
+    background-color: var(--color-secundario);
+    transform: scale(1.05);
 }
 
-.boton-volver {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.8rem 2rem;
-  background-color: var(--color-principal);
+.floating-cart-button .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-acento); /* Color para el contador, ej: verde */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Estilos para la Modal del Carrito */
+.cart-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000; /* Por encima de todo lo demás */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 700px; /* Ancho máximo para la modal */
+    position: relative;
+    animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+    max-height: 90vh; /* Limita la altura para permitir scroll */
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cart-modal-content h2 {
+    text-align: center;
+    color: var(--color-primario);
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#cartItemsContainer {
+    max-height: 400px; /* Altura máxima para la lista de ítems del carrito */
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-details {
+    flex: 1;
+    min-width: 200px; /* Asegura que no sea demasiado pequeño */
+}
+
+.cart-item-details h4 {
+    margin: 0 0 5px 0;
+    color: var(--color-texto);
+    font-size: 1.1rem;
+}
+
+.cart-item-details p {
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Espacio si se envuelve */
+}
+
+.cart-item-actions input[type="date"],
+.cart-item-actions input[type="time"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    width: 120px; /* Ancho fijo para inputs de fecha/hora */
+    box-sizing: border-box;
+}
+
+.remove-item-btn {
+    background-color: #dc3545; /* Rojo para eliminar */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.remove-item-btn:hover {
+    background-color: #c82333;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.cart-summary p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-texto);
+    margin: 5px 0;
+}
+
+.cart-total-info {
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+}
+
+.cart-total-info .day-total {
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-top: 8px;
+    display: block;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modal-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clear-button {
+    background-color: #6c757d; /* Gris para limpiar */
+    color: white;
+}
+
+.clear-button:hover {
+    background-color: #5a6268;
+    transform: scale(1.02);
+}
+
+.checkout-button {
+    background-color: var(--color-acento); /* Verde para checkout */
+    color: white;
+}
+
+.checkout-button:hover {
+    background-color: var(--color-lujo);
+    transform: scale(1.02);
+}
+
+#emptyCartMessage {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.error-message {
+    color: #dc3545; /* Rojo para errores */
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Estilos para los botones "Añadir al Carrito" en los servicios */
+.add-to-cart-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--color-acento); /* O el color que prefieras para estos botones */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    width: auto; /* Para que no ocupe todo el ancho de la caja de servicio */
+    display: block; /* Para que quede centrado debajo del texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--color-lujo);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para responsividad de la modal */
+@media (max-width: 768px) {
+    .cart-modal-content {
+        padding: 20px;
+        margin: 50px auto; /* Para dejar espacio arriba y abajo en pantallas pequeñas */
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 15px;
+    }
+
+    .cart-item-actions input[type="date"],
+    .cart-item-actions input[type="time"] {
+        width: calc(50% - 5px); /* Se ajustan mejor en línea */
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+}
+/* Fondo con imagen */
+.fondoImagen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/media/imagenes/velas.webp'); /* Cambiá por tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.6); /* Opcional para oscurecer un poco */
+  z-index: -2;
+}
+
+/* Asegurar contenido visible por encima */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main, header {
+  position: relative;
+  z-index: 1;
+}
+/* Video fondo pantalla completa */
+#videoFondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Capa semitransparente encima del video */
+.capaOscura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.5); /* oscurece suavemente */
+  z-index: -1;
+}
+
+/* Asegura que el formulario esté por encima */
+.formulario, header {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos para el botón flotante del chatbot */
+.chatbot-fab {
+    position: fixed;
+    bottom: 20px; /* Separado del carrito si lo tienes */
+    right: 20px;
+    background-color: var(--color-acento); /* Color primario del spa */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1001; /* Asegúrate de que esté por encima de todo */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.chatbot-fab:hover {
+    background-color: var(--color-lujo); /* Un tono más oscuro de tu primario */
+    transform: scale(1.05);
+}
+
+/* Contenedor principal del Chatbot */
+.chatbot-container {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 90px; /* Encima del botón FAB */
+    right: 20px;
+    width: 320px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Debajo del FAB pero encima de otros elementos */
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.chatbot-header {
+    background-color: #a51f6f;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.chatbot-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.chatbot-close-btn:hover {
+    color: #d6d5d5;
+}
+
+.chatbot-messages {
+    flex-grow: 1; /* Para que ocupe el espacio restante */
+    padding: 15px;
+    overflow-y: auto; /* Scroll para los mensajes */
+    background-color: #f9f9f9;
+}
+
+.message {
+    padding: 10px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word; /* Para que los mensajes largos no se salgan */
+}
+
+.bot-message {
+    background-color: #e0e0e0;
+    align-self: flex-start; /* Alineación del bot a la izquierda */
+    margin-right: auto;
+}
+
+.user-message {
+    background-color: #a51f6f; /* Color primario para mensajes del usuario */
+    color: white;
+    align-self: flex-end; /* Alineación del usuario a la derecha */
+    margin-left: auto;
+}
+
+.chatbot-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+}
+
+#chatbotInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.95rem;
+    margin-right: 8px;
+}
+
+#chatbotSendBtn {
+    background-color: #a51f6f;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Botón redondo */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+#chatbotSendBtn:hover {
+    background-color: #7b1754;
+}
+
+.message.user-message {
+  align-self: flex-end;
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.message.bot-message {
+  align-self: flex-start;
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+#chatbotInput {
+  border-radius: 20px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+#chatbotSendBtn {
+  background-color: var(--color-primario);
   color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-.boton-volver:hover {
-  background-color: var(--color-principal-oscuro);
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+.message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  animation: fadeInUp 0.4s ease;
+}
+
+.user-message {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  color: #0f5132;
+}
+
+.bot-message {
+  background-color: #f8d7da;
+  align-self: flex-start;
+  color: #842029;
+}
+#map {
+    height: 400px; 
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 30px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+   
+    border: 3px solid white; /* borde blanco */
+  }

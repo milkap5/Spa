@@ -6,8 +6,8 @@
   --color-texto: #333;
   --color-texto-secundario: #666;
   --fuente-principal: 'Segoe UI', sans-serif;
-  --color-acento: #d4a373;
-  --color-lujo: #c0b283;
+  --color-acento: #4CAF50; 
+  --color-lujo: #2e7d32;
 }
 
 body {

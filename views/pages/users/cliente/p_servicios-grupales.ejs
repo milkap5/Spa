@@ -5,23 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Servicios Grupales - Sentirse Bien</title>
-    <link rel="stylesheet" href="estilos.css" />
-    <link rel="icon" href="../../Imagenes/icono.ico" />
+    <link rel="stylesheet" href="/estilos/estilos_de_paginas.css" />
+    <link rel="icon" href="/media/imagenes/icono.ico" />
 </head>
 
 <body>
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px; background-color: #a51f6f;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px">
+            <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px">
             <div style="color: white;">
                 <h1 style="margin: 0;">Sentirse Bien</h1>
                 <p style="margin: 0;">Bienestar pensado para vos</p>
             </div>
         </div>
         <nav style="background: none; padding: 0;">
-            <a href="inicio.html">Inicio</a>
-            <a href="servicios-individuales.html">Servicios Individuales</a>
-            <a href="servicios-grupales.html">Servicios Grupales</a>
+            <a href="/">Inicio</a>
+            <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
+            <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>
         </nav>
     </header>
 
@@ -30,7 +30,7 @@
             <h2 class="titulo-seccion">Servicios Grupales</h2>
             <div class="servicios-grid">
                 <article class="servicio-box">
-                    <img src="../../img/hidromasajes.jpg" alt="Hidromasajes grupales">
+                    <img src="./media/imagenes/hidromasajes.jpg" alt="Hidromasajes grupales">
                     <h3>Hidromasajes</h3>
                     <p>
                         <strong>Descripción:</strong> Disfrutá de una sesión grupal de hidromasajes relajantes en nuestras piscinas termales, ideal para compartir con amigos o familia.
@@ -38,11 +38,11 @@
                     <p><strong>Duración:</strong> 90 minutos</p>
                     <p><strong>Beneficios:</strong> Relaja los músculos, alivia el estrés, mejora la circulación, promueve la socialización.</p>
                     <p><strong>Precio:</strong> $8.000 por persona</p>
-                    <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+                    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_reservar'">Reservar servicio</button>
                 </article>
 
                 <article class="servicio-box">
-                    <img src="../../img/yoga.jpg" alt="Clases de yoga">
+                    <img src="./media/imagenes/yoga.jpg" alt="Clases de yoga">
                     <h3>Yoga</h3>
                     <p>
                         <strong>Descripción:</strong> Clases grupales de yoga multinivel, adaptadas para principiantes y avanzados, para mejorar tu bienestar físico y mental.
@@ -50,7 +50,7 @@
                     <p><strong>Duración:</strong> 60 minutos</p>
                     <p><strong>Beneficios:</strong> Aumenta la flexibilidad, fortalece el cuerpo, reduce el estrés, mejora la concentración.</p>
                     <p><strong>Precio:</strong> $6.000 por persona</p>
-                    <button class="boton-reservar" onclick="window.location.href='reservar.html'">Reservar servicio</button>
+                    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_reservar'">Reservar servicio</button>
                 </article>
             </div>
         </section>
@@ -81,6 +81,6 @@
         });
     </script>
 
-<%- include("./template/footer.ejs"); %>
+<%- include('../../templates/footer.ejs') %>
 
 </html>

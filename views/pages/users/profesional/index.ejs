@@ -6,6 +6,7 @@
   <title>Spa Sentirse Bien</title>
   <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
   <link rel="icon" href="./media/imagenes/icono.ico"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </head>
 
 <body>
@@ -21,6 +22,7 @@
       <a href="/">Inicio</a>
       <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
       <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
+      <a href="#contacto">Contacto</a>
       <a href="/inicioSesion">Iniciar Sesión</a>
     </nav>
   </header>
@@ -138,9 +140,55 @@
     <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
     <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
   </section>
-  
-  <%- include("../../../templates/footer.ejs"); %>
 
+
+<section class="seccion-contacto animacion-scroll" id="contacto" style="padding: 50px 20px; background-color: #f8fbfc;">
+  <div style="max-width: 600px; margin: auto;">
+    <h2 style="text-align: center; color: var(--color-texto);">Contacto</h2>
+    <p style="text-align: center;">¿Tenés alguna consulta? Completá el formulario y te responderemos a la brevedad.</p>
+
+    <form id="formContacto" style="display: flex; flex-direction: column; gap: 15px;">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="emailContacto" name="email" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;" />
+
+      <label for="tipoConsulta">Tipo de consulta:</label>
+      <select id="tipoConsulta" name="tipo" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">Seleccioná una opción</option>
+        <option value="general">Consulta general</option>
+        <option value="servicio">Sobre un servicio</option>
+      </select>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensajeContacto" name="mensaje" rows="5" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+
+      <button type="submit" class="submit" style=" color: white; padding: 10px 20px; border: none; border-radius: 30px; font-weight: bold;">Enviar consulta</button>
+
+      <p id="mensajeEnviado" style="display:none; color: green; font-weight: bold; text-align: center;">✅ ¡Consulta enviada con éxito! Nos comunicaremos a la brevedad.</p>
+    </form>
+  </div>
+</section>
+
+  <%- include("./templates/footer.ejs"); %>
+
+<script>
+    document.getElementById('formContacto').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Simular envío
+    document.getElementById('mensajeEnviado').style.display = 'block';
+
+    // Resetear campos luego de enviar
+    this.reset();
+
+    // Ocultar mensaje luego de 4 segundos
+    setTimeout(() => {
+      document.getElementById('mensajeEnviado').style.display = 'none';
+    }, 4000);
+  });
+</script>
+
+  <!-- 
+script del viejo boton de contacto
   <script>
     function mostrarPrecio() {
       const select = document.getElementById("servicio");
@@ -172,7 +220,7 @@
       e.preventDefault();
       window.location.href = 'consulta.html';
     });
-  </script>
+  </script> -->
 
 <script>
   const observer = new IntersectionObserver((entries) => {
@@ -203,7 +251,7 @@
   });
 </script>
 
-<script>/*
+<script>
   const tipoSelect = document.getElementById('tipo-servicio');
   const individualLabel = document.getElementById('label-servicio-individual');
   const grupalLabel = document.getElementById('label-servicio-grupal');
@@ -219,9 +267,28 @@
       individualLabel.style.display = 'none';
       grupalLabel.style.display = 'none';
     }
-  });*/
+  });
 </script>
 
-  
+<div class="chatbot-fab" id="chatbotFab">
+    <i class="fas fa-comments"></i> </div>
+
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <span>Asistente de Sentirse Bien</span>
+        <button class="chatbot-close-btn" id="chatbotCloseBtn">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">¡Hola!😊 Soy Valeria, tu asistente virtual de Sentirse Bien. ¿En qué puedo ayudarte hoy? Puedes preguntar sobre nuestros servicios, precios o cómo contactarnos.</div>
+    </div>
+    <div class="chatbot-input-container">
+        <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta...">
+        <button id="chatbotSendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+<script src="/logicas/chatbot.js"></script>
 </body>
 </html>
