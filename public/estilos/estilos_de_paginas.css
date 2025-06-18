@@ -1591,3 +1591,13 @@ main, header {
   align-self: flex-start;
   color: #842029;
 }
+#map {
+    height: 400px; /* Asegúrate de que el mapa tiene una altura definida */
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 8px; /* Si ya tienes bordes redondeados, este se mantendrá */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+   
+    border: 3px solid white; /* Un borde blanco de 3px de grosor */
+  }
