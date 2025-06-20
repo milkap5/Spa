@@ -3,14 +3,16 @@ const router = express.Router();
 const redirigirSiYaEstaLogueado = require('../../utils/redirigirSiYaEstaLogueado');
 
 router.get('/', (req, res) => res.render('pages/users/noRegistrado/index'));
+router.get('/servicios-individuales', (req, res) => res.render('pages/users/noRegistrado/servicios-individuales'))
+router.get('/servicios-grupales', (req, res) => res.render('pages/users/noRegistrado/servicios-grupales'))
 
 router.get('/registro', redirigirSiYaEstaLogueado, (req, res) => {
-    res.render('pages/users/noRegistrado/f_registro');
+    res.render('pages/users/noRegistrado/formularios/registro');
 });
 
 router.get('/inicioSesion', redirigirSiYaEstaLogueado, (req, res) => {
     const errorLogin = req.query.error || null;
-    res.render('pages/users/noRegistrado/f_inicioSesion', { errorLogin });
+    res.render('pages/users/noRegistrado/formularios/inicioSesion', { errorLogin });
 });
 
 router.get('/bienvenido/:id', (req, res) => {
