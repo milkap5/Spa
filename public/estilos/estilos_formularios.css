@@ -6,22 +6,26 @@
   --color-texto: #333;
   --color-texto-secundario: #666;
   --fuente-principal: 'Segoe UI', sans-serif;
-<<<<<<< Updated upstream
-   --color-acento: #4CAF50; /* Verde */
-  --color-lujo: #2e7d32; * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-=======
   --color-acento:#2e7d32 ; 
   --color-lujo:#4CAF50 ; 
->>>>>>> Stashed changes
 }
 
+* {
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 3px;
+}
+
+html { padding: 0; margin: 0;}
+
 body {
-  font-family: var(--fuente-principal);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto)
 }
 
 header {
@@ -44,13 +48,13 @@ nav a:hover {
 }
 
 .formulario {
-  max-width: 400px;
+  max-width: 500px;
   margin: 50px auto;
   padding: 30px;
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 
@@ -113,12 +117,6 @@ a#registrarme:hover {
   margin-top: 10px;
   text-align: center;
 }
-}
-* {
-    box-sizing: border-box;
-    margin: 5px;
-    padding: 3px;
-}
 
 .flexColumn {
     display: flex;
@@ -128,17 +126,6 @@ a#registrarme:hover {
 .flexRow {
     display: flex;
     flex-direction: row;
-}
-
-html { padding: 0; margin: 0;}
-
-body {
-    font-family: var(--fuente-principal);
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    background-color: var(--color-fondo);
-    color: var(--color-texto)
 }
 
 .formulario {

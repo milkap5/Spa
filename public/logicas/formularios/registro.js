@@ -25,28 +25,7 @@ const estadoInputs = {
     contrasenia2: false // Añadido para la confirmación de contraseña
 }
 
-<<<<<<< Updated upstream
-const regularExpresion = (elemento, expresionReg, grupo) => {
-    if(expresionReg.test(elemento.value)) {
-        document.getElementById(`grupo${grupo}`).classList.remove('incorrecto');
-        document.getElementById(`grupo${grupo}`).classList.add('correcto');
-        estadoInputs[grupo.toLowerCase()] = true;
-    } else {
-        document.getElementById(`grupo${grupo}`).classList.remove('correcto');
-        document.getElementById(`grupo${grupo}`).classList.add('incorrecto');
-        estadoInputs[grupo.toLowerCase()] = false;
-    }
-};
 
-const verificarContrasenias = () => {
-    const pass = document.getElementById('contrasenia');
-    const pass2 = document.getElementById('contrasenia2');
-    
-    if(pass.value !== pass2.value) {
-        document.getElementById('grupoContrasenia2').classList.remove('correcto');
-        document.getElementById('grupoContrasenia2').classList.add('incorrecto');
-        estadoInputs.contrasenia = false;
-=======
 // Función para establecer el estado visual de un grupo de formulario
 const establecerEstadoCampo = (grupoElement, isValid, mensajeError = '') => {
     const iconoTimes = grupoElement.querySelector('.fa-times-circle');
@@ -59,7 +38,6 @@ const establecerEstadoCampo = (grupoElement, isValid, mensajeError = '') => {
         if (iconoTimes) iconoTimes.style.display = 'none';
         if (iconoCheck) iconoCheck.style.display = 'inline-block';
         if (parrafoError) parrafoError.style.display = 'none'; // Oculta el mensaje de error de formato
->>>>>>> Stashed changes
     } else {
         grupoElement.classList.remove('correcto');
         grupoElement.classList.add('incorrecto');
@@ -176,16 +154,6 @@ const verificarExistenciaEnBackend = async (elementoInput) => {
         const response = await fetch(`/verificar-existencia?campo=${nombreCampo}&valor=${valor}`);
         const data = await response.json();
 
-<<<<<<< Updated upstream
-        const resultado = await anserFromDB.json();
-
-        if(resultado.ok) {
-            inputs.forEach(input => input.disabled = true);
-            registrar.disabled = false;
-            verificarDatos.style.display = 'none';
-        } else {
-            alert('Los datos ingresados no son válidos. Por favor, verifica los campos.');
-=======
         if (data.existe) { // Asumiendo que tu backend devuelve { existe: true } si el valor ya está en uso
             mostrarAdvertenciaConflicto(nombreCampo, true); // Muestra el mensaje de "ya registrado"
             const grupo = document.getElementById(`grupo${nombreCampo.charAt(0).toUpperCase() + nombreCampo.slice(1)}`);
@@ -195,7 +163,6 @@ const verificarExistenciaEnBackend = async (elementoInput) => {
             mostrarAdvertenciaConflicto(nombreCampo, false); // Oculta el mensaje
             // El campo ya está en estado "correcto" por validarCampoFormato si llegó hasta aquí.
             estadoInputs[nombreCampo] = true; // Asegurar que el estado sea true
->>>>>>> Stashed changes
         }
     } catch (error) {
         console.error(`Error al verificar existencia de ${nombreCampo}:`, error);
@@ -206,7 +173,7 @@ const verificarExistenciaEnBackend = async (elementoInput) => {
 };
 
 // Función para habilitar/deshabilitar el botón de registrar
-const actualizarBotonRegistrar = () => {
+const actualizarBotonRegistrar = () => {establecerEstadoCampo(grupo, false, '');
     const todosCamposValidos = Object.values(estadoInputs).every(estado => estado === true);
     registrarBoton.disabled = !todosCamposValidos;
 };

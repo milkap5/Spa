@@ -9,7 +9,7 @@
   </head>
   
 <body>
-  <%- include("../../../templates/header.ejs"); %>
+  <%- include("../../../../templates/header.ejs"); %>
 
   <form id="formLogin" class="formulario flexColumn">
     <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
@@ -31,7 +31,7 @@
       <label for="pass">Contraseña</label>
       <input id="pass" type="password" name="pass" minlength="8" maxlength="20" placeholder="Contraseña" required />
     </div>
-    <div class="registro flexRow" style="gap: 180px">
+    <div class="registro flexRow">
       <a href="/formulario_olvideMiContrasenia">¿Olvidaste tu contraseña?</a>
       <a href="/registro">REGISTRARME</a>
     </div>
@@ -41,7 +41,7 @@
     </div>
   </form>
 
-  <%- include("../../../templates/footer.ejs"); %>
+  <%- include("../../../../templates/footer.ejs"); %>
   <script src="./logicas/formularios/inicioSesion.js"></script>
 </body>
 </html>

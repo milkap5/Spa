@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servicios Grupales - Sentirse Bien</title>
+    <link rel="stylesheet" href="/estilos/estilos_de_paginas.css" />
+    <link rel="icon" href="/media/imagenes/icono.ico" />
+</head>
+
+<body>
+    <%- include('../../../templates/header.ejs') %>
+
+    <main style="padding: 30px;">
+        <section class="contenido-servicios">
+            <h2 class="titulo-seccion">Servicios Grupales</h2>
+            <div class="servicios-grid">
+                <article class="servicio-box">
+                    <img src="./media/imagenes/hidromasajes.jpg" alt="Hidromasajes grupales">
+                    <h3>Hidromasajes</h3>
+                    <p>
+                        <strong>Descripción:</strong> Disfrutá de una sesión grupal de hidromasajes relajantes en nuestras piscinas termales, ideal para compartir con amigos o familia.
+                    </p>
+                    <p><strong>Duración:</strong> 90 minutos</p>
+                    <p><strong>Beneficios:</strong> Relaja los músculos, alivia el estrés, mejora la circulación, promueve la socialización.</p>
+                    <p><strong>Precio:</strong> $8.000 por persona</p>
+                    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_reservar'">Reservar servicio</button>
+                </article>
+
+                <article class="servicio-box">
+                    <img src="./media/imagenes/yoga.jpg" alt="Clases de yoga">
+                    <h3>Yoga</h3>
+                    <p>
+                        <strong>Descripción:</strong> Clases grupales de yoga multinivel, adaptadas para principiantes y avanzados, para mejorar tu bienestar físico y mental.
+                    </p>
+                    <p><strong>Duración:</strong> 60 minutos</p>
+                    <p><strong>Beneficios:</strong> Aumenta la flexibilidad, fortalece el cuerpo, reduce el estrés, mejora la concentración.</p>
+                    <p><strong>Precio:</strong> $6.000 por persona</p>
+                    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_reservar'">Reservar servicio</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const boxes = document.querySelectorAll(".servicio-box");
+            boxes.forEach(box => {
+                box.style.opacity = 0;
+                box.style.transform = "translateY(20px)";
+            });
+
+            const reveal = () => {
+                boxes.forEach(box => {
+                    const boxTop = box.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (boxTop < windowHeight - 100) {
+                        box.style.opacity = 1;
+                        box.style.transform = "translateY(0)";
+                        box.style.transition = "all 0.6s ease-out";
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", reveal);
+            reveal();
+        });
+    </script>
+
+<%- include('../../../templates/footer.ejs') %>
+
+</html>
