@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="./estilos/estilos_formularios.css" />
-    <link rel="icon" href="./media/imagenes/icono.ico"/>
-  </head>
-  
+<%- include("../../../../templates/headTag.ejs", {title: 'Iniciar Sesión'}); %>
 <body>
   <%- include("../../../../templates/header.ejs"); %>
 
   <form id="formLogin" class="formulario flexColumn">
     <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
     <h2>Iniciar Sesión</h2>
+    
     <div class="flexColumn">
       <label for="cliente">Número de Cliente</sub></label>
-      <input id="cliente" type="text" name="cliente" placeholder="Número de Cliente" required />
+      <input
+        id="cliente"
+        type="text"
+        name="cliente"
+        minlength="4"
+        placeholder="Número de Cliente"
+        required
+      />
     </div>
 
-    <p style="display: <%= errorLogin ? 'block' : 'none' %>; color: red;">
-      <% if (errorLogin === 'noPass') { %>
-        La contraseña es incorrecta. Por favor, intente nuevamente.
-      <% } else if (errorLogin === 'noPerson') { %>
-        El número de Cliente no está registrado.
-      <% } %>
+    <p style="display: <%= errorLogin === 'noPerson' ? 'block' : 'none' %>; color: red;">
+      El número de Cliente no está registrado.
     </p>
+
     
     <div class="flexColumn">
       <label for="pass">Contraseña</label>
-      <input id="pass" type="password" name="pass" minlength="8" maxlength="20" placeholder="Contraseña" required />
+      <input
+      id="pass"
+      type="password"
+      name="pass"
+      minlength="8"
+      maxlength="20"
+      placeholder="Contraseña"
+      required
+      />
     </div>
+
+    <p style="display: <%= errorLogin === 'noPass' || errorLogin === 'logueado'
+      ? 'block'
+      : 'none' %>; color: red;"
+    >
+      <% if (errorLogin === 'noPass') { %>
+        La contraseña es incorrecta. Por favor, intente nuevamente.
+      <% } else if (errorLogin === 'logueado') { %>
+        El usuario con el que intenta iniciar sesión se encuentra ya logueado.
+      <% } %>
+    </p>
+
     <div class="registro flexRow">
-      <a href="/formulario_olvideMiContrasenia">¿Olvidaste tu contraseña?</a>
+      <a href="/olvideMiContrasenia">¿Olvidaste tu contraseña?</a>
       <a href="/registro">REGISTRARME</a>
     </div>
 

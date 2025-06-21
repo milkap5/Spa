@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperación de contraseña</title>
-    <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
-    <link rel="icon" href="./media/imagenes/icono.ico"/>
-</head>
+<%- include("../../../../templates/headTag.ejs", {title: 'Recuperar mi Contraseña'}); %>
 <body class="flexColumn">
-    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 30px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-          <div style="color: white;">
-            <h1 style="margin: 0;">Sentirse Bien</h1>
-            <p style="margin: 0;">Bienestar pensado para vos</p>
-          </div>
-        </div>  
-        
-        <nav style="background: none; padding: 0;">
-            <a href="/">Inicio</a>
-            <a href="/pagina_cliente_servicios-individuales">Servicios Individuales</a>
-            <a href="/pagina_cliente_servicios-grupales">Servicios Grupales</a>      
-          </nav>
-        
-      </header>
+    <%- include("../../../../templates/header.ejs"); %>
+
     <form action="" id="confirmarClave" class="formulario flexColumn" method="post">
         <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
         <h2>Recuperar mi contraseña</h2>
@@ -32,11 +12,11 @@
         <input type="text" placeholder="Inserte aquí el código">
         <div id="botones" class="flexRow">
             
-          <a href="/formulario_ingreseNuevaContrasenia" class="submit">Continuar</a>
+          <a href="/ingreseNuevaContrasenia" class="submit">Continuar</a>
         </div>
     </form>
 
-    <%- include("../../templates/footer.ejs"); %>
+    <%- include("../../../../templates/footer.ejs"); %>
 
 </body>
 </html>

@@ -1,21 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="../Usuarios/Cliente/estilos.css">
-        <style>
-            div { padding: 5px 0 5px 15px;}
-            .dato { font-weight: bold;}
-            .soloEste { margin-left: 50px;}
-        </style>
-        <title>Turno Confirmado</title>
-        <script src="jquery-3.7.1.min.js"></script>
-
-        <script>
-        </script>
-    </head>
-    <body class="flexColumn">
+<%- include("../../../templates/headTag.ejs", {title: 'Servicios Grupales'}); %>
+<body>
+    <%- include('../../../templates/header.ejs') %>
         <form action="" id="turnoConfirmado" class="formulario flexColumn" method="post">
             <img src="../Imagenes/icono.ico" alt="Logo_SPA">
             <h2 id="turnoNumero">Turno N° 2528</h2>
@@ -60,5 +47,7 @@
                 <button type="button" class="submit">Ir a mis Turnos</button>
                 <button type="button" class="submit">Ir a la Página</button>
             </div>
+        </form>
+        <%- include('../../../templates/footer.ejs') %>
     </body>
 </html>

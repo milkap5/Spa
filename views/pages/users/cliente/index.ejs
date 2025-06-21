@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spa Sentirse Bien</title>
-  <link rel="stylesheet" href="./estilos/estilos_de_paginas.css" />
-  <link rel="icon" href="./media/imagenes/icono.ico"/>
-</head>
-
+<%- include("../../../templates/headTag.ejs", {title: 'Spa'}); %>
 <body>
   <%- include("../../../templates/header.ejs"); %>
-  
 
   <div class="fondo-transparente parallax">
     <div class="overlay"></div>
     <div class="contenido">
-      <h2>Sentirse Bien</h2>
+      <h2>Sentirse Bien CLIENTE</h2>
       
     </div>
   </div>
@@ -126,13 +118,6 @@
   </section>
   
   <%- include("../../../templates/footer.ejs"); %>
-
-  <script>
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-      history.go(1);
-    };
-  </script>
 
   <script>
     function mostrarPrecio() {

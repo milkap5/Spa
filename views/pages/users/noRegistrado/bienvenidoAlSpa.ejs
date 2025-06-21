@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="/estilos/estilos_formularios.css" rel="stylesheet" />
-      <link href="/estilos/bienvenido.css" rel="stylesheet" />
-      <link rel="icon" href="/media/imagenes/icono.ico"/>
-      <title>Bienvenido</title>
-  </head>
+  <%- include("../../../templates/headTag.ejs", {title: 'Bienvenido'}); %>
   <body class="flexColumn">
       <%- include("../../../templates/header.ejs"); %>
       <div id="bienvenidoAlSpa" class="flexColumn formulario">

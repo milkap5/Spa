@@ -104,27 +104,7 @@
 </head>
 
 <body>
-    <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-            <div style="color: white;">
-                <h1 style="margin: 0;">Sentirse Bien</h1>
-                <p style="margin: 0;">Bienestar pensado para vos</p>
-            </div>
-        </div>
-        <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Administrador!</div>
-        <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
-        <script>
-            const botonCerrarSesion = document.getElementById("cerrarSesion");
-            if (botonCerrarSesion) {
-              botonCerrarSesion.addEventListener("click", () => {
-                localStorage.removeItem("usuarioLogueado");
-                window.location.href = "../../Formularios/inicioSesion.html";
-              });
-            }
-          </script>
-           
-    </header>
+    <%- include("../../../templates/header.ejs"); %>
 
     <main>
         <section class="admin-seccion">

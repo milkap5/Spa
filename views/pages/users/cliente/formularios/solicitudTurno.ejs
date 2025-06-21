@@ -1,13 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="./estilos/estilos_formularios.css">
-        <title>Solicitar Turno</title>
-    </head>
-    <body class="flexColumn"><%- include('../../../templates/header') %>
-
+<%- include("../../../../templates/headTag.ejs", {title: 'Iniciar Sesión'}); %>
+<body>
+  <%- include("../../../../templates/header.ejs"); %>
           <h2>Solicitar un Turno</h2>
 
           <form id="form-turno" class="formulario flexColumn">
@@ -28,6 +23,6 @@
           </form>
           <script src="/logicas/formularios/turnos.js"></script>
 
-        <%- include('../../../templates/footer') %>  
+        <%- include('../../../../templates/footer') %>  
     </body>
 </html>
