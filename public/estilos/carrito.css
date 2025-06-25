@@ -1,0 +1,451 @@
+:root {
+  --color-primario: #a51f6f;
+  --color-secundario: #b3558d;
+  --color-floating: #b3558dd7;
+  --color-fondo: #b3558d3e;
+  --color-texto: #333;
+  --color-texto-secundario: #666;
+  --fuente-principal: 'Segoe UI', sans-serif;
+  --color-acento:#2e7d32 ; 
+  --color-lujo:#4CAF50 ; 
+}
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  margin: 0;
+  padding: 0;
+  color: var(--color-texto);
+}
+
+header {
+  background-color: var(--color-primario);
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.grupo-fecha {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.grupo-fecha h2 {
+  margin-top: 0;
+  color: var(--color-texto);
+}
+
+.servicios-lista {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.servicio-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.total-fecha {
+  margin-top: 20px;
+}
+
+.total-fecha select,
+.total-fecha input {
+  margin-top: 5px;
+  display: block;
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.pago-tarjeta input {
+  margin-bottom: 10px;
+}
+
+.total-monto {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.confirmar-pago {
+  margin-top: 10px;
+  background-color: var(--color-secundario);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmar-pago:hover {
+  background-color: var(--color-lujo);
+}
+/* .cart-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+} */
+
+/* .cart-modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  
+} */
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: #ccc;
+}
+
+.checkout-button {
+  background-color: #a51f6f;
+  color: white;
+}
+/* Estilos para el botón flotante del carrito */
+.floating-cart-button {
+    position: fixed;
+    bottom: 90px; /* Un poco más arriba que el botón flotante de contacto si lo tienes */
+    right: 20px;
+    background-color: var(--color-acento); /* Tu color primario */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 999; /* Asegúrate de que esté debajo del modal */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floating-cart-button:hover {
+    background-color: var(--color-lujo);
+    transform: scale(1.05);
+}
+
+.floating-cart-button .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-acento); /* Color para el contador, ej: verde */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/*Estilos para la Modal del Carrito*/
+
+.cart-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000; /* Por encima de todo lo demás */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 700px; /* Ancho máximo para la modal */
+    position: relative;
+    animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+    max-height: 90vh; /* Limita la altura para permitir scroll */
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cart-modal-content h2 {
+    text-align: center;
+    color: var(--color-texto);
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#cartItemsContainer {
+    max-height: 400px; /* Altura máxima para la lista de ítems del carrito */
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-details {
+    flex: 1;
+    min-width: 200px; /* Asegura que no sea demasiado pequeño */
+}
+
+.cart-item-details h4 {
+    margin: 0 0 5px 0;
+    color: var(--color-texto);
+    font-size: 1.1rem;
+}
+
+.cart-item-details p {
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* Espacio si se envuelve */
+}
+
+.cart-item-actions input[type="date"],
+.cart-item-actions input[type="time"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    width: 120px; /* Ancho fijo para inputs de fecha/hora */
+    box-sizing: border-box;
+}
+
+.remove-item-btn {
+    background-color: #dc3545; /* Rojo para eliminar */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.remove-item-btn:hover {
+    background-color: #c82333;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.cart-summary p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-texto);
+    margin: 5px 0;
+}
+
+.cart-total-info {
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+}
+
+.cart-total-info .day-total {
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-top: 8px;
+    display: block;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modal-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clear-button {
+    background-color: #5a6268; /* Gris para limpiar */
+    color: white;
+}
+
+.clear-button:hover {
+    background-color: #6c757d;;
+    transform: scale(1.02);
+}
+
+.checkout-button {
+    background-color: var(--color-acento); /* Verde para checkout */
+    color: white;
+}
+
+.checkout-button:hover {
+    background-color: var(--color-lujo);
+    transform: scale(1.02);
+}
+
+#emptyCartMessage {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.error-message {
+    color: #dc3545; /* Rojo para errores */
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Estilos para los botones "Añadir al Carrito" en los servicios */
+.add-to-cart-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--color-acento); /* O el color que prefieras para estos botones */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    width: auto; /* Para que no ocupe todo el ancho de la caja de servicio */
+    display: block; /* Para que quede centrado debajo del texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--color-lujo);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para responsividad de la modal */
+@media (max-width: 768px) {
+    .cart-modal-content {
+        padding: 20px;
+        margin: 50px auto; /* Para dejar espacio arriba y abajo en pantallas pequeñas */
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 15px;
+    }
+
+    .cart-item-actions input[type="date"],
+    .cart-item-actions input[type="time"] {
+        width: calc(50% - 5px); /* Se ajustan mejor en línea */
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+}

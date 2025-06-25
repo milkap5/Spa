@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito de Servicios - Sentirse Bien</title>
+  <link rel="stylesheet" href="../../../public/estilos/carrito.css">
+</head>
+<body>
+  <header>
+    <h1>🧖 Carrito de Servicios</h1>
+  </header>
+
+  <main>
+    <section id="carrito-contenido"></section>
+  </main>
+
+  <template id="grupo-fecha-template">
+    <div class="grupo-fecha">
+      <h2>Reservas para <span class="fecha-texto"></span></h2>
+      <div class="servicios-lista"></div>
+      <div class="total-fecha">
+        <label>Método de pago:</label>
+        <select class="metodo-pago">
+          <option value="efectivo">Efectivo (sin descuento)</option>
+          <option value="tarjeta">Tarjeta Débito (-15%)</option>
+        </select>
+
+        <div class="pago-tarjeta" hidden>
+          <input type="text" placeholder="Número de tarjeta" required />
+          <input type="text" placeholder="Nombre en la tarjeta" required />
+          <input type="text" placeholder="MM/AA" required />
+          <input type="text" placeholder="CVV" required />
+        </div>
+
+        <p class="total-monto">Total: $<span>0</span></p>
+        <button class="confirmar-pago">Confirmar y Reservar</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="./../../../public/logicas/carrito.js"></script>
+</body>
+</html>

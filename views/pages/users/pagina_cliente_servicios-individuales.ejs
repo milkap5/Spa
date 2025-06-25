@@ -9,7 +9,8 @@
     <link rel="icon" href="/media/imagenes/icono.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/estilos/carrito.css">
 </head>
 
 <body>
@@ -29,8 +30,9 @@
   </header>
 
   <main style="padding : 30px;">
-    <h2 class="titulo-seccion">Servicios Individuales</h2>
+   
     <section class="contenido-servicios">
+      <h2 class="titulo-seccion">Servicios Individuales</h2>
       <h3>Masajes</h3>
       <div class="servicios-grid">
         <article class="servicio-box">
@@ -284,46 +286,88 @@
         <span class="cart-count" id="cartCount">0</span>
     </div>
 
-    <div id="cartModal" class="cart-modal">
-        <div class="cart-modal-content">
-            <span class="close-button" id="closeCartModal">&times;</span>
-            <h2>Tu Carrito de Servicios</h2>
-            <div id="cartItemsContainer">
-                <p id="emptyCartMessage">El carrito está vacío.</p>
-            </div>
-            <div class="cart-summary">
-                <div class="cart-total-info" id="cartTotalInfo">
-                    </div>
-                <div class="error-message" id="cartErrorMessage"></div>
-            </div>
-            <div class="modal-buttons">
-                <button id="clearCartButton" class="modal-button clear-button">Limpiar Carrito</button>
-                <button id="checkoutButton" class="modal-button checkout-button">Finalizar Reserva</button>
-            </div>
-        </div>
-    </div>
+ <div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close-button" id="closeCartModal">&times;</span>
+    <h2>Carrito de Servicios</h2>
+    <div id="cartItemsContainer"></div>
 
-  <script>
-    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
-    const contenedor = document.getElementById("listaServicios");
-  
-    servicios
-      .filter(s => s.categoria === "individual")
-      .forEach(servicio => {
-        const card = document.createElement("article");
-        card.className = "servicio-box";
-        card.innerHTML = `
-          <img src="${servicio.imagen}" alt="${servicio.nombre}">
-          <h4>${servicio.nombre}</h4>
-          <p><strong>Descripción:</strong> ${servicio.descripcion}</p>
-          <p><strong>Duración:</strong> ${servicio.duracion}</p>
-          <p><strong>Beneficios:</strong> ${servicio.beneficios}</p>
-          <p><strong>Precio:</strong> $${servicio.precio.toLocaleString()}</p>
-          <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_reservar'">Reservar servicio</button>
-        `;
-        contenedor.appendChild(card);
-      });
-  </script>
+    <div class="modal-buttons">
+      <button id="clearCartButton" class="modal-button clear-button">Limpiar Carrito</button>
+      <button id="checkoutButton" class="modal-button checkout-button">Finalizar Reserva</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  const cartModal = document.getElementById("cartModal");
+const openBtn = document.getElementById("floatingCartButton");
+const closeBtn = document.getElementById("closeCartModal");
+const clearBtn = document.getElementById("clearCartButton");
+const checkoutBtn = document.getElementById("checkoutButton");
+const container = document.getElementById("cartItemsContainer");
+
+function renderCartModal() {
+  const servicios = JSON.parse(localStorage.getItem("carritoServicios")) || [];
+
+  container.innerHTML = "";
+
+  if (servicios.length === 0) {
+    container.innerHTML = "<p>El carrito está vacío.</p>";
+    return;
+  }
+
+  servicios.forEach(s => {
+    const item = document.createElement("div");
+    item.className = "servicio-item";
+    item.innerHTML = `
+      <img src="${s.imagen || './media/imagenes/default.jpg'}" alt="${s.nombre}" style="width: 60px; height: 60px; border-radius: 10px; margin-right: 10px;">
+      <div>
+        <p><strong>${s.nombre}</strong></p>
+        <p>🗓️ ${s.fecha} 🕑 ${s.hora}</p>
+        <p>$${s.precio}</p>
+      </div>
+    `;
+    item.style.display = "flex";
+    item.style.gap = "10px";
+    item.style.alignItems = "center";
+    item.style.borderBottom = "1px solid #eee";
+    item.style.marginBottom = "10px";
+    container.appendChild(item);
+  });
+}
+
+// abrir/cerrar modal
+openBtn.onclick = () => {
+  cartModal.style.display = "block";
+  renderCartModal();
+};
+
+closeBtn.onclick = () => {
+  cartModal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target == cartModal) {
+    cartModal.style.display = "none";
+  }
+};
+
+// limpiar carrito
+clearBtn.onclick = () => {
+  localStorage.removeItem("carritoServicios");
+  renderCartModal();
+  document.getElementById("cartCount").textContent = "0";
+};
+
+// redirigir a página de confirmación
+checkoutBtn.onclick = () => {
+  window.location.href = "/confirmar_reserva";
+};
+    
+</script>
   
 
   <script>
@@ -338,6 +382,71 @@
     });
   </script>
   
+<!-- script carrito , aca traigo nombre fecha hora e imagen -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  const botones = document.querySelectorAll(".add-to-cart-btn");
+
+  botones.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const nombre = btn.dataset.nombre;
+      const precio = parseInt(btn.dataset.precio);
+      const id = btn.dataset.id;
+
+      const picker = flatpickr(document.createElement("input"), {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: new Date(),
+        defaultHour: 10,
+        defaultMinute: 0,
+        onClose: function (selectedDates) {
+          if (!selectedDates.length) return;
+
+          const fechaCompleta = selectedDates[0];
+          const ahora = new Date();
+          const diferenciaHoras = (fechaCompleta - ahora) / 1000 / 60 / 60;
+
+          if (diferenciaHoras < 48) {
+            alert("⚠️ El servicio debe reservarse con al menos 48 horas de anticipación.");
+            return;
+          }
+
+          const fecha = fechaCompleta.toISOString().split("T")[0];
+          const hora = fechaCompleta.toTimeString().split(":").slice(0, 2).join(":");
+          const imagen = btn.parentElement.querySelector("img").getAttribute("src");
+
+          const nuevoServicio = {
+            id,
+            nombre,
+            precio,
+            fecha,
+            hora,
+            imagen
+          };
+
+          const carrito = JSON.parse(localStorage.getItem("carritoServicios")) || [];
+          carrito.push(nuevoServicio);
+          localStorage.setItem("carritoServicios", JSON.stringify(carrito));
+
+          alert(`✅ "${nombre}" agregado al carrito para el ${fecha} a las ${hora}`);
+          actualizarContadorCarrito();
+        }
+      });
+
+      picker.open();
+    });
+  });
+
+  function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carritoServicios")) || [];
+    const contador = document.getElementById("cartCount");
+    if (contador) contador.textContent = carrito.length;
+  }
+
+  actualizarContadorCarrito();
+</script>
+
+<$- include('../templates/chatbot.ejs') %>
 <%- include('../../templates/footer.ejs') %>
 
 </body>

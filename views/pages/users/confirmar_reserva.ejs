@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmar Reserva - Sentirse Bien</title>
+  <link rel="stylesheet" href="confirmar-reserva.css">
+</head>
+<body>
+  <header>
+    <h1>✅ Confirmar Reservas</h1>
+  </header>
+
+  <main id="contenedor-reservas"></main>
+
+  <template id="template-fecha">
+    <div class="grupo-reserva">
+      <h2>Reservas para <span class="fecha"></span></h2>
+      <div class="lista-servicios"></div>
+
+      <div class="opciones-pago">
+        <label>Método de pago:</label>
+        <select class="metodo-pago">
+          <option value="efectivo">Efectivo (precio normal)</option>
+          <option value="tarjeta">Tarjeta de débito (15% OFF)</option>
+        </select>
+
+        <div class="form-tarjeta" hidden>
+          <div class="tarjeta-visual">
+            <div class="chip"></div>
+            <div class="numero" id="preview-numero">#### #### #### ####</div>
+            <div class="nombre" id="preview-nombre">NOMBRE COMPLETO</div>
+            <div class="fecha" id="preview-vencimiento">MM/AA</div>
+          </div>
+
+          <input type="text" placeholder="Número de tarjeta" maxlength="19" class="input-numero" />
+          <input type="text" placeholder="Nombre en tarjeta" class="input-nombre" />
+          <input type="text" placeholder="MM/AA" maxlength="5" class="input-vencimiento" />
+          <input type="text" placeholder="CVV" maxlength="3" class="input-cvv" />
+        </div>
+
+        <p class="total">Total: $<span>0</span></p>
+        <button class="btn-confirmar">Confirmar y pagar</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="confirmar-reserva.js"></script>
+</body>
+</html>
