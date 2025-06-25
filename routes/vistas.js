@@ -24,6 +24,7 @@ router.get('/pagina_cliente_gracias', (req, res) => res.render('pages/users/pagi
 router.get('/pagina_cliente_consulta', (req, res) => res.render('pages/users/pagina_cliente_consulta'));
 router.get('/pagina_cliente_registrado', (req, res) => res.render('pages/users/pagina_cliente_registrado'));
 router.get('/pagina_admin', (req, res) => res.render('pages/users/pagina_admin'));
+router.get('/profesional', (req, res) => res.render('pages/users/profesional'));
 router.get('/footer', (req, res) => res.render('footer'));
 router.get('/header', (req, res) => res.render('header'));
 

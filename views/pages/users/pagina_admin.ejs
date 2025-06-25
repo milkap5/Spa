@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="../Cliente/estilos.css?v=1.0">
+    <link rel="stylesheet" href="../../../public/estilos/estilos_de_paginas.css" />
+    <link rel="icon" href="./media/imagenes/icono.ico"/>
     <style>
         .admin-seccion {
             max-width: 900px;
@@ -106,13 +107,13 @@
 <body>
     <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="../../Imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+            <img src="../../../public/media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
             <div style="color: white;">
                 <h1 style="margin: 0;">Sentirse Bien</h1>
                 <p style="margin: 0;">Bienestar pensado para vos</p>
             </div>
         </div>
-        <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Administrador!</div>
+        <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Dra Felicidad!</div>
         <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
         <script>
             const botonCerrarSesion = document.getElementById("cerrarSesion");
@@ -221,6 +222,22 @@
             </form>
         </section>
 
+        <section class="panel-admin">
+            <h2>Alta de Profesionales</h2>
+            <form id="formAltaProfesional" class="flexColumn">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="text" name="dni" placeholder="DNI" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <input type="text" name="usuario" placeholder="Nombre de usuario" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <button type="submit" class="submit">Registrar Profesional</button>
+                <p id="mensajeExito" style="color: green; display: none;">✅ Profesional registrado con éxito.</p>
+            </form>
+        </section>
+
+
+
         <script>
             document.getElementById("tipo-servicio").addEventListener("change", function() {
                 const tipo = this.value;
@@ -242,11 +259,11 @@
     </main>
 
     <script>
-        const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-        if (!usuario || usuario.rol !== "admin") {
-            alert("Acceso denegado. Debe iniciar sesión como administrador.");
-            window.location.href = "../../Formularios/inicioSesion.html";
-        }
+         const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+         if (!usuario || usuario.rol !== "admin") {
+             alert("Acceso denegado. Debe iniciar sesión como administrador.");
+             window.location.href = "../../Formularios/inicioSesion.html";
+         }
 
         let servicios = JSON.parse(localStorage.getItem("servicios")) || [];
 
@@ -392,6 +409,8 @@
             });
         renderizarTabla();
     </script>
+<%- include("../../templates/footer.ejs"); %>
+
 </body>
 
 </html>

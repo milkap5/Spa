@@ -1,0 +1,132 @@
+.admin-seccion {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2.subtitulo {
+            font-family: var(--fuente-encabezados);
+            font-size: 1.8rem;
+            color: var(--color-texto);
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .form-grid input,
+        select,
+        textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .boton-acento {
+            background-color: var(--color-acento);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-acento:hover {
+            background-color: var(--color-lujo);
+            transform: scale(1.05);
+        }
+
+        .boton-azul {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-azul:hover {
+            background-color: #2b80ba;
+        }
+
+        .boton-rojo {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-rojo:hover {
+            background-color: #c0392b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f3f3f3;
+            text-align: left;
+        }
+     
+        .tarjeta-turno {
+  background: #fff;
+  border-radius: 12px;
+  border-left: 5px solid var(--color-primario);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-turno:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.tarjeta-turno h4 {
+  margin: 0 0 10px;
+  color: var(--color-primario);
+  font-size: 1.2rem;
+}
+
+.tarjeta-turno p {
+  margin: 5px 0;
+  color: #444;
+}
+
+.btn-descargar {
+  background-color: #6c63ff;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btn-descargar:hover {
+  background-color: #574ce4;
+}
