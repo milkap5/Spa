@@ -1,144 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="../../../public/estilos/estilos_de_paginas.css" />
-    <link rel="stylesheet" href="../../../public/estilos/profesional.css" />
-    <link rel="icon" href="./media/imagenes/icono.ico"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-        <style>
-        
-    </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel del Profesional</title>
+  <link rel="stylesheet" href="../../../public/estilos/estilos_de_paginas.css" />
+  <link rel="stylesheet" href="../../../public/estilos/profesional.css" />
+  <link rel="icon" href="./media/imagenes/icono.ico"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
-     <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="../../../public/media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-                <div style="color: white;">
-                    <h1 style="margin: 0;">Sentirse Bien</h1>
-                    <p style="margin: 0;">Bienestar pensado para vos</p>
-                </div>
-            </div>
-            <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Profesional!</div>
-            <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
-            <script>
-                const botonCerrarSesion = document.getElementById("cerrarSesion");
-                if (botonCerrarSesion) {
-                botonCerrarSesion.addEventListener("click", () => {
-                    localStorage.removeItem("usuarioLogueado");
-                    window.location.href = "../../Formularios/inicioSesion.html";
-                });
-                }
-            </script>
-        </header>
+  <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="../../../public/media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
+      <div style="color: white;">
+        <h1 style="margin: 0;">Sentirse Bien</h1>
+        <p style="margin: 0;">Bienestar pensado para vos</p>
+      </div>
+    </div>
+    <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Profesional!</div>
+    <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
+  </header>
 
-    <main class="contenedor-profesional">
-        <section class="encabezado-profesional">
-        <h2>Turnos del día</h2>
-        <p id="fechaHoy"></p>
-        </section>
+  <div class="layout-profesional">
+    <!-- Menú lateral -->
+    <nav class="menu-lateral">
+      <button onclick="mostrarSeccion('turnos')" class="tab-btn activo">📋 Mis Turnos</button>
+      <button onclick="mostrarSeccion('datos')" class="tab-btn">🛠️ Editar Mis Datos</button>
+    </nav>
 
-        <div class="barra-filtros">
-            <label for="filtroCategoria">Filtrar por categoría:</label>
+    <!-- Contenido principal -->
+    <section class="contenido-profesional">
+
+      <!-- Sección Turnos -->
+      <div id="seccion-turnos" class="seccion-visible">
+        <div class="contenedor-profesional">
+          <section class="encabezado-profesional">
+            <h2>Turnos del día</h2>
+            <p id="fechaHoy"></p>
+          </section>
+
+          <div class="barra-filtros">
+            <label for="filtroCategoria">Categoría:</label>
             <select id="filtroCategoria">
-            <option value="todas">Todas</option>
-            <option value="masajes">Masajes</option>
-            <option value="belleza">Belleza</option>
-            <option value="faciales">Faciales</option>
-            <option value="corporales">Corporales</option>
-            <option value="grupales">Grupales</option>
+              <option value="todas">Todas</option>
+              <option value="masajes">Masajes</option>
+              <option value="belleza">Belleza</option>
+              <option value="faciales">Faciales</option>
+              <option value="corporales">Corporales</option>
+              <option value="grupales">Grupales</option>
             </select>
 
-            <label for="filtroEstado">Filtrar por estado:</label>
+            <label for="filtroEstado">Estado:</label>
             <select id="filtroEstado">
-            <option value="todos">Todos</option>
-            <option value="pendiente">Pendiente</option>
-            <option value="en curso">En curso</option>
-            <option value="finalizado">Finalizado</option>
-            <option value="cancelado">Cancelado</option>
+              <option value="todos">Todos</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="en curso">En curso</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="cancelado">Cancelado</option>
             </select>
 
-            <label for="filtroFecha">Filtrar por fecha:</label>
+            <label for="filtroFecha">Fecha:</label>
             <input type="date" id="filtroFecha" />
 
-            <button onclick="descargarTurnosPDF()" class="btn-descargar">📄 Descargar PDF</button>
-
-
+            <button onclick="descargarTurnosPDF()" class="btn-descargar">📄 PDF</button>
             <button onclick="imprimirTodos()" class="btn-imprimir-todos">🖨️ Imprimir todos</button>
+          </div>
+
+          <div id="contenedorTurnos" class="grid-turnos"></div>
         </div>
+      </div>
 
-        <div id="contenedorTurnos" class="grid-turnos"></div>
-    </main>
+      <!-- Sección Editar Datos -->
+      <div id="seccion-datos" class="seccion-oculta">
+        <section class="seccion-actualizar">
+          <h3>Actualizar mis datos</h3>
+          <form id="formActualizarDatos" class="form-actualizar">
+            <label for="nuevoCorreo">Correo electrónico:</label>
+            <input type="email" id="nuevoCorreo" required value="profesional@ejemplo.com">
 
-    <style>
-    .contenedor-profesional {
-        padding: 30px;
-        background: #fefefe;
-        max-width: 1000px;
-        margin: auto;
-    }
+            <label for="nuevoTelefono">Teléfono:</label>
+            <input type="tel" id="nuevoTelefono" required value="3624000000">
 
-    .barra-filtros {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-
-    .grid-turnos {
-        display: grid;
-        gap: 20px;
-    }
-
-   .tarjeta-turno {
-    background: #fff;
-    border-radius: 12px;
-    border-left: 5px solid var(--color-primario);
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    transition: transform 0.3s ease;
-    }
-
-    .tarjeta-turno:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-    }
-
-    .tarjeta-turno h4 {
-    margin: 0 0 10px;
-    color: var(--color-primario);
-    font-size: 1.2rem;
-    }
-
-    .tarjeta-turno p {
-    margin: 5px 0;
-    color: #444;
-    }
+            <button type="submit" class="btn-actualizar">Guardar cambios</button>
+            <p id="mensajeActualizacion" class="mensaje-exito" style="display: none;">✅ Datos actualizados correctamente.</p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </div>
 
 
-    .btn-imprimir, .btn-imprimir-todos {
-        background: var(--color-primario);
-        color: white;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-    }
-
-    .btn-imprimir:hover, .btn-imprimir-todos:hover {
-        background: var(--color-secundario);
-    }
-    </style>
-
-<script>
+  <!-- scripts -->
+  <script>
+    // datos demo, se pueden eliminar cuando estemos conectados a la bd
     const turnosDelDia = [
       {
         id: 1,
@@ -209,15 +165,15 @@
           <p><strong>N° Cliente:</strong> ${t.numero_cliente}</p>
           <p><strong>Teléfono:</strong> ${t.telefono}</p>
           <p><strong>Correo:</strong> ${t.correo}</p>
-          <p><strong>Categoría:</strong> <span class="badge">${t.categoria}</span></p>
+          <p><strong>Categoría:</strong> ${t.categoria}</p>
           <p><strong>Estado:</strong> 
             <select onchange="actualizarEstado(${t.id}, this.value)">
-              ${["Pendiente", "En curso", "Finalizado", "Cancelado"].map(e =>
+              ${["pendiente", "en curso", "finalizado", "cancelado"].map(e =>
                 `<option value="${e}" ${t.estado === e ? "selected" : ""}>${e}</option>`
               ).join("")}
             </select>
           </p>
-          <button class="btn-imprimir" onclick="imprimirTurno(${t.id})">🖨️ Imprimir</button>
+          <button class="btn-imprimir-todos" onclick="imprimirTurno(${t.id})">🖨️ Imprimir</button>
           <a class="btn-whatsapp" target="_blank"
             href="https://wa.me/54${t.telefono}?text=Hola%20${encodeURIComponent(t.cliente_nombre)}%2C%20te%20contacto%20desde%20Sentirse%20Bien%20por%20tu%20turno%20de%20${encodeURIComponent(t.servicio)}">
             💬 WhatsApp
@@ -230,6 +186,10 @@
     function actualizarEstado(id, nuevoEstado) {
       const turno = turnosDelDia.find(t => t.id === id);
       if (turno) turno.estado = nuevoEstado;
+      obtenerFiltrosYRenderizar();
+    }
+
+    function obtenerFiltrosYRenderizar() {
       renderizarTurnos(
         document.getElementById("filtroCategoria").value,
         document.getElementById("filtroEstado").value,
@@ -237,28 +197,112 @@
       );
     }
 
-    function imprimirTurno(id) {
-      const t = turnosDelDia.find(t => t.id === id);
-      if (!t) return;
-      const w = window.open("", "", "width=600,height=600");
-      w.document.write(`<h2>Turno</h2>
-        <p><strong>Cliente:</strong> ${t.cliente_nombre}</p>
-        <p><strong>Servicio:</strong> ${t.servicio}</p>
-        <p><strong>Hora:</strong> ${t.hora}</p>
-        <p><strong>Estado:</strong> ${t.estado}</p>`);
-      w.document.close();
-      w.print();
+    function mostrarSeccion(id) {
+      document.getElementById("seccion-turnos").className = "seccion-oculta";
+      document.getElementById("seccion-datos").className = "seccion-oculta";
+      document.getElementById(`seccion-${id}`).className = "seccion-visible";
+
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("activo"));
+      const botonActivo = Array.from(document.querySelectorAll(".tab-btn")).find(b => b.textContent.toLowerCase().includes(id));
+      if (botonActivo) botonActivo.classList.add("activo");
     }
 
+    function imprimirTurno(id) {
+        const t = turnosDelDia.find(t => t.id === id);
+        if (!t) return;
+
+        const w = window.open("", "", "width=600,height=600");
+
+        w.document.write(`
+            <html>
+            <head>
+            <title>Turno Profesional</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 30px; }
+                h2 { color: #a51f6f; }
+                p { font-size: 16px; margin-bottom: 8px; }
+                .detalle-turno {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 10px;
+                background: #fdfdfd;
+                }
+            </style>
+            </head>
+            <body>
+            <h2>📋 Detalles del Turno</h2>
+            <div class="detalle-turno">
+                <p><strong>👤 Nombre completo:</strong> ${t.cliente_nombre}</p>
+                <p><strong>🆔 Número de cliente:</strong> ${t.numero_cliente}</p>
+                <p><strong>📧 Correo electrónico:</strong> ${t.correo}</p>
+                <p><strong>📞 Teléfono:</strong> ${t.telefono}</p>
+                <p><strong>💆 Servicio:</strong> ${t.servicio}</p>
+                <p><strong>🕒 Hora:</strong> ${t.hora}</p>
+                <p><strong>📅 Fecha del turno:</strong> ${t.fecha}</p>
+            </div>
+            <script>
+                window.onload = function(){ window.print(); };
+            <\/script>
+            </body>
+            </html>
+        `);
+
+        w.document.close();
+        }
+
+
+
     function imprimirTodos() {
-      const w = window.open("", "", "width=800,height=800");
-      w.document.write(`<h2>Todos los turnos del día</h2>`);
-      turnosDelDia.forEach(t => {
-        w.document.write(`<p><strong>${t.servicio}</strong> (${t.hora}) - ${t.cliente_nombre} - Estado: ${t.estado}</p><hr>`);
-      });
-      w.document.close();
-      w.print();
-    }
+        const w = window.open("", "", "width=800,height=800");
+
+        w.document.write(`
+            <html>
+            <head>
+            <title>Todos los Turnos del Día</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 30px; }
+                h2 { color: #a51f6f; }
+                .detalle-turno {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                background: #fdfdfd;
+                }
+                p { font-size: 15px; margin-bottom: 6px; }
+                hr { border: none; border-top: 1px dashed #ccc; margin: 15px 0; }
+            </style>
+            </head>
+            <body>
+            <h2>📋 Turnos del Día</h2>
+        `);
+
+        turnosDelDia.forEach((t, i) => {
+            w.document.write(`
+            <div class="detalle-turno">
+                <p><strong>Turno #${i + 1}</strong></p>
+                <p><strong>👤 Nombre completo:</strong> ${t.cliente_nombre}</p>
+                <p><strong>🆔 Número de cliente:</strong> ${t.numero_cliente}</p>
+                <p><strong>📧 Correo electrónico:</strong> ${t.correo}</p>
+                <p><strong>📞 Teléfono:</strong> ${t.telefono}</p>
+                <p><strong>💆 Servicio:</strong> ${t.servicio}</p>
+                <p><strong>🕒 Hora:</strong> ${t.hora}</p>
+                <p><strong>📅 Fecha del turno:</strong> ${t.fecha}</p>
+            </div>
+            `);
+        });
+
+        w.document.write(`
+            <script>
+                window.onload = function(){ window.print(); };
+            <\/script>
+            </body>
+            </html>
+        `);
+
+        w.document.close();
+        }
+
 
     async function descargarTurnosPDF() {
       const { jsPDF } = window.jspdf;
@@ -273,14 +317,13 @@
 
       turnosDelDia.forEach((t, i) => {
         const texto = `#${i + 1}
-            Cliente: ${t.cliente_nombre} (N° ${t.numero_cliente})
-            Servicio: ${t.servicio}
-            Hora: ${t.hora}
-            Categoría: ${t.categoria}
-            Estado: ${t.estado}
-            Teléfono: ${t.telefono}
-            Correo: ${t.correo}`;
-
+        Cliente: ${t.cliente_nombre} (N° ${t.numero_cliente})
+        Servicio: ${t.servicio}
+        Hora: ${t.hora}
+        Categoría: ${t.categoria}
+        Estado: ${t.estado}
+        Teléfono: ${t.telefono}
+        Correo: ${t.correo}`;
         const lines = doc.splitTextToSize(texto, 180);
         if (y + lines.length * 6 > 270) {
           doc.addPage();
@@ -293,17 +336,20 @@
       doc.save("turnos-dia.pdf");
     }
 
-    function obtenerFiltrosYRenderizar() {
-      renderizarTurnos(
-        document.getElementById("filtroCategoria").value,
-        document.getElementById("filtroEstado").value,
-        document.getElementById("filtroFecha").value || null
-      );
-    }
-
     document.getElementById("filtroCategoria").addEventListener("change", obtenerFiltrosYRenderizar);
     document.getElementById("filtroEstado").addEventListener("change", obtenerFiltrosYRenderizar);
     document.getElementById("filtroFecha").addEventListener("change", obtenerFiltrosYRenderizar);
+
+    document.getElementById("formActualizarDatos").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const correo = document.getElementById("nuevoCorreo").value;
+      const tel = document.getElementById("nuevoTelefono").value;
+      console.log("Datos actualizados:", correo, tel);
+      document.getElementById("mensajeActualizacion").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("mensajeActualizacion").style.display = "none";
+      }, 4000);
+    });
 
     document.getElementById("cerrarSesion").addEventListener("click", () => {
       localStorage.removeItem("usuarioLogueado");
@@ -317,6 +363,6 @@
     renderizarTurnos();
   </script>
 
- <%- include("../../templates/footer.ejs"); %>
+  <%- include("../../templates/footer.ejs"); %>
 </body>
 </html>

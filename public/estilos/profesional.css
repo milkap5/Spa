@@ -130,3 +130,198 @@
 .btn-descargar:hover {
   background-color: #574ce4;
 }
+
+.seccion-actualizar {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+}
+
+.seccion-actualizar h3 {
+  color: var(--color-primario);
+  margin-bottom: 15px;
+}
+
+.form-actualizar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-actualizar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-actualizar {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.btn-actualizar:hover {
+  background-color: var(--color-secundario);
+}
+
+.mensaje-exito {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.layout-profesional {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.tab-btn {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 160px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.tab-btn.activo {
+  background-color: var(--color-secundario);
+}
+
+.tab-btn:hover {
+  background-color: var(--color-secundario);
+}
+
+.contenido-profesional {
+  flex: 1;
+}
+
+/* Ocultar secciones por defecto */
+.seccion-oculta {
+  display: none;
+}
+
+.seccion-visible {
+  display: block;
+}
+ .layout-profesional {
+      display: flex;
+      padding: 20px 30px;
+      gap: 30px;
+    }
+
+    .menu-lateral {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tab-btn {
+      background-color: var(--color-primario);
+      color: white;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 180px;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab-btn.activo,
+    .tab-btn:hover {
+      background-color: var(--color-secundario);
+    }
+
+    .contenido-profesional {
+      flex: 1;
+    }
+
+    .seccion-visible {
+      display: block;
+    }
+
+    .seccion-oculta {
+      display: none;
+    }
+
+    .contenedor-profesional {
+      padding: 30px;
+      background: #fefefe;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .barra-filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .grid-turnos {
+      display: grid;
+      gap: 20px;
+    }
+
+    .tarjeta-turno {
+      background: #fff;
+      border-radius: 12px;
+      border-left: 5px solid var(--color-primario);
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease;
+    }
+
+    .tarjeta-turno:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .btn-actualizar, .btn-descargar, .btn-imprimir-todos {
+      background-color: var(--color-primario);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-actualizar:hover, .btn-descargar:hover, .btn-imprimir-todos:hover {
+      background-color: var(--color-secundario);
+    }
+
+    .form-actualizar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    .mensaje-exito {
+      color: green;
+      font-weight: bold;
+    }
