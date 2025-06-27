@@ -1,135 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="../../../public/estilos/estilos_de_paginas.css" />
-    <link rel="icon" href="./media/imagenes/icono.ico"/>
-    <style>
-        .admin-seccion {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración</title>
+  <link rel="stylesheet" href="../../../public/estilos/estilos_de_paginas.css" />
+  <link rel="stylesheet" href="../../../public/estilos/admin.css" />
+  <link rel="icon" href="../../../public/media/imagenes/icono.ico" />
 
-        h2.subtitulo {
-            font-family: var(--fuente-encabezados);
-            font-size: 1.8rem;
-            color: var(--color-texto);
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
+  <style>
+   @media print {
+  body * {
+    visibility: hidden;
+  }
 
-        .form-grid input,
-        select,
-        textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
+  #facturaGenerada, #facturaGenerada * {
+    visibility: visible;
+  }
 
-        .boton-acento {
-            background-color: var(--color-acento);
-            color: white;
-            font-weight: bold;
-            border: none;
-            padding: 10px 20px;
-            font-size: 15px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-        }
+  #facturaGenerada {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
 
-        .boton-acento:hover {
-            background-color: var(--color-lujo);
-            transform: scale(1.05);
-        }
-
-        .boton-azul {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .boton-azul:hover {
-            background-color: #2b80ba;
-        }
-
-        .boton-rojo {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .boton-rojo:hover {
-            background-color: #c0392b;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        th {
-            background-color: #f3f3f3;
-            text-align: left;
-        }
-     
     </style>
 </head>
-
 <body>
-    <header class="encabezado" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="../../../public/media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien" style="height: 60px; border-radius: 15px;">
-            <div style="color: white;">
-                <h1 style="margin: 0;">Sentirse Bien</h1>
-                <p style="margin: 0;">Bienestar pensado para vos</p>
-            </div>
-        </div>
-        <div style="color: white; font-weight: bold;" id="saludoAdmin">Hola, Dra Felicidad!</div>
-        <button id="cerrarSesion" class="boton-acento">Cerrar sesión</button>
-        <script>
-            const botonCerrarSesion = document.getElementById("cerrarSesion");
-            if (botonCerrarSesion) {
-              botonCerrarSesion.addEventListener("click", () => {
-                localStorage.removeItem("usuarioLogueado");
-                window.location.href = "../../Formularios/inicioSesion.html";
-              });
-            }
-          </script>
-           
-    </header>
+  <header class="encabezado">
+    <div class="logo-admin">
+      <img src="../../../public/media/imagenes/logo-sentirse-bien.png" alt="Logo Sentirse Bien">
+      <div>
+        <h1>Sentirse Bien</h1>
+        <p>Panel de Administración</p>
+      </div>
+    </div>
+    <button class="cerrar-sesion-btn" onclick="cerrarSesion()">Cerrar sesión</button>
+  </header>
 
-    <main>
-        <section class="admin-seccion">
-            <h2 class="subtitulo">Gestión de Servicios</h2>
+  <div class="layout-admin">
+    <nav class="menu-lateral">
+      <button class="tab-btn activo" onclick="mostrarSeccion('servicios')">⚙️ Gestión de Servicios</button>
+      <button class="tab-btn" onclick="mostrarSeccion('factura')">🧾 Generar Factura</button>
+      <button class="tab-btn" onclick="mostrarSeccion('profesionales')">🧑‍⚕️ Alta de Profesionales</button>
+      <button class="tab-btn" onclick="mostrarSeccion('estadisticas')">📊 Estadísticas</button>
+    </nav>
+
+    <section class="contenido-admin">
+      <div id="seccion-servicios" class="seccion-visible">
+         <h2 class="subtitulo">Gestión de Servicios</h2>
             <form id="formularioServicio" class="form-grid">
                 <input type="hidden" id="servicioId">
                 <input type="text" id="nombre" placeholder="Nombre del servicio" required>
@@ -172,10 +93,10 @@
                 </thead>
                 <tbody id="tablaServicios"></tbody>
             </table>
-        </section>
+      </div>
 
-        <section class="admin-seccion">
-            <h2 class="subtitulo">Generar Factura</h2>
+      <div id="seccion-factura" class="seccion-oculta">
+        <h2 class="subtitulo">Generar Factura</h2>
             <form id="formFactura">
                 <input type="text" id="cliente" placeholder="Nombre o Número de cliente" required>
 
@@ -220,10 +141,83 @@
                 <input type="text" id="precioFactura" placeholder="Precio" readonly>
                 <button type="submit" class="boton-acento">Generar Factura</button>
             </form>
-        </section>
+      </div>
+      <!-- script factura -->
 
-        <section class="panel-admin">
-            <h2>Alta de Profesionales</h2>
+        <script>
+                document.getElementById("tipo-servicio").addEventListener("change", function() {
+                    const tipo = this.value;
+                    document.getElementById("label-servicio-individual").style.display = tipo === "individual" ? "block" : "none";
+                    document.getElementById("label-servicio-grupal").style.display = tipo === "grupal" ? "block" : "none";
+                    document.getElementById("precioFactura").value = "";
+                });
+
+                document.getElementById("servicio-individual").addEventListener("change", function() {
+                    const valor = this.value.split(" - ");
+                    document.getElementById("precioFactura").value = "";
+            });
+
+            document.getElementById("servicio-individual").addEventListener("change", function() {
+                const valor = this.value.split(" - ");
+                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+            });
+        </script>
+        <script>
+  // Mostrar precio correcto al cambiar servicio
+  document.getElementById("servicio-individual").addEventListener("change", function () {
+    const valor = this.value.split(" - ");
+    document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+  });
+
+  document.getElementById("servicio-grupal").addEventListener("change", function () {
+    const valor = this.value.split(" - ");
+    document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+  });
+
+  document.getElementById("formFactura").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const cliente = document.getElementById("cliente").value;
+    const tipoServicio = document.getElementById("tipo-servicio").value;
+    const precio = document.getElementById("precioFactura").value;
+
+    let servicioSeleccionado = "";
+
+    if (tipoServicio === "individual") {
+      const val = document.getElementById("servicio-individual").value;
+      servicioSeleccionado = val.split(" - ")[0];
+    } else if (tipoServicio === "grupal") {
+      const val = document.getElementById("servicio-grupal").value;
+      servicioSeleccionado = val.split(" - ")[0];
+    }
+
+    if (!cliente || !tipoServicio || !servicioSeleccionado || !precio) {
+      alert("Por favor completá todos los campos.");
+      return;
+    }
+
+    const facturaHTML = `
+      <div id="facturaGenerada" style="padding:20px; margin-top:20px; border:1px solid #ccc; background:#f9f9f9">
+        <h3>🧾 Factura generada</h3>
+        <p><strong>Cliente:</strong> ${cliente}</p>
+        <p><strong>Servicio:</strong> ${servicioSeleccionado}</p>
+        <p><strong>Tipo de servicio:</strong> ${tipoServicio}</p>
+        <p><strong>Precio:</strong> ${precio}</p>
+        <button onclick="window.print()" class="boton-acento" style="margin-top:10px;">🖨️ Imprimir</button>
+      </div>
+    `;
+
+    const contenedor = document.getElementById("seccion-factura");
+    const anterior = document.getElementById("facturaGenerada");
+    if (anterior) anterior.remove();
+    contenedor.insertAdjacentHTML("beforeend", facturaHTML);
+  });
+</script>
+
+
+
+      <div id="seccion-profesionales" class="seccion-oculta">
+        <h2>Alta de Profesionales</h2>
             <form id="formAltaProfesional" class="flexColumn">
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="text" name="apellido" placeholder="Apellido" required>
@@ -234,183 +228,121 @@
                 <button type="submit" class="submit">Registrar Profesional</button>
                 <p id="mensajeExito" style="color: green; display: none;">✅ Profesional registrado con éxito.</p>
             </form>
-        </section>
+      </div>
 
+      <div id="seccion-estadisticas" class="seccion-oculta">
+        <h2>📊 Estadísticas</h2>
+        <div class="card estadisticas-card">
+          <h3>📈 Turnos por Servicio (últimos 30 días)</h3>
+          <canvas id="grafico-estadisticas" height="300"></canvas>
+        </div>
+        <div class="card total-recaudado">
+          💰 <strong>Total recaudado del servicio más vendido:</strong>
+          <span id="montoRecaudado" style="font-weight: bold; font-size: 1.2rem; margin-left: 10px;">$0</span>
+        </div>
+      </div>
+    </section>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let chart;
 
-        <script>
-            document.getElementById("tipo-servicio").addEventListener("change", function() {
-                const tipo = this.value;
-                document.getElementById("label-servicio-individual").style.display = tipo === "individual" ? "block" : "none";
-                document.getElementById("label-servicio-grupal").style.display = tipo === "grupal" ? "block" : "none";
-                document.getElementById("precioFactura").value = "";
-            });
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "/inicioSesion";
+    }
 
-            document.getElementById("servicio-individual").addEventListener("change", function() {
-                const valor = this.value.split(" - ");
-                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
-            });
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('.contenido-admin > div');
+      secciones.forEach(s => s.className = 'seccion-oculta');
 
-            document.getElementById("servicio-grupal").addEventListener("change", function() {
-                const valor = this.value.split(" - ");
-                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
-            });
-        </script>
-    </main>
+      const botones = document.querySelectorAll('.tab-btn');
+      botones.forEach(b => b.classList.remove('activo'));
 
-    <script>
-         const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-         if (!usuario || usuario.rol !== "admin") {
-             alert("Acceso denegado. Debe iniciar sesión como administrador.");
-             window.location.href = "../../Formularios/inicioSesion.html";
-         }
+      document.getElementById(`seccion-${id}`).className = 'seccion-visible';
+      const botonActivo = Array.from(botones).find(b => b.textContent.toLowerCase().includes(id));
+      if (botonActivo) botonActivo.classList.add('activo');
 
-        let servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+      if (id === "estadisticas") {
+        cargarGraficoEstadisticas();
+      }
+    }
 
-        function renderizarTabla() {
-            const cuerpo = document.getElementById("tablaServicios");
-            const lista = document.getElementById("listaTodosServicios");
-            const selectorFactura = document.getElementById("servicioFactura");
-            cuerpo.innerHTML = "";
-            lista.innerHTML = "";
-            selectorFactura.innerHTML = '<option value="">Seleccionar servicio</option>';
+    const estadisticasTurnos = {
+      "Masaje Anti-Stress": 12,
+      "Criofrecuencia facial": 8,
+      "Ultracavitación": 10,
+      "Lifting de pestañas": 6,
+      "Hidromasaje grupal": 18
+    };
 
-            servicios.forEach((s, index) => {
-                cuerpo.innerHTML += `
-          <tr>
-            <td>${s.nombre}</td>
-            <td>${s.descripcion}</td>
-            <td>${s.duracion}</td>
-            <td>${s.beneficios}</td>
-            <td>$${s.precio}</td>
-            <td>${s.categoria}</td>
-            <td>${s.subcategoria}</td>
-            <td>
-              <button onclick="editar(${index})" class="boton-azul">Editar</button>
-              <button onclick="eliminar(${index})" class="boton-rojo">Eliminar</button>
-            </td>
-          </tr>`;
-                lista.innerHTML += `<li>${s.nombre} - ${s.subcategoria} - $${s.precio}</li>`;
-                selectorFactura.innerHTML += `<option value="${index}">${s.nombre}</option>`;
-            });
+    const preciosServicios = {
+      "Masaje Anti-Stress": 10000,
+      "Criofrecuencia facial": 22000,
+      "Ultracavitación": 29000,
+      "Lifting de pestañas": 25000,
+      "Hidromasaje grupal": 8000
+    };
 
-            localStorage.setItem("servicios", JSON.stringify(servicios));
+    function cargarGraficoEstadisticas() {
+      const ctx = document.getElementById('grafico-estadisticas').getContext('2d');
+      const labels = Object.keys(estadisticasTurnos);
+      const data = Object.values(estadisticasTurnos);
+
+      const servicioMasVendido = labels[data.indexOf(Math.max(...data))];
+      const totalRecaudado = estadisticasTurnos[servicioMasVendido] * preciosServicios[servicioMasVendido];
+      document.getElementById("montoRecaudado").textContent = "$" + totalRecaudado.toLocaleString("es-AR");
+
+      if (chart) {
+        chart.destroy();
+      }
+
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Turnos vendidos',
+            data,
+            backgroundColor: '#a51f6f',
+            borderRadius: 10,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const servicio = context.label;
+                  const cantidad = context.parsed.y;
+                  return `${cantidad} turnos - $${preciosServicios[servicio]} c/u`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              title: { display: true, text: 'Cantidad de turnos' }
+            },
+            x: {
+              title: { display: true, text: 'Servicios' }
+            }
+          }
         }
+      });
+    }
 
-        function editar(i) {
-            const s = servicios[i];
-            document.getElementById("servicioId").value = i;
-            document.getElementById("nombre").value = s.nombre;
-            document.getElementById("descripcion").value = s.descripcion;
-            document.getElementById("duracion").value = s.duracion;
-            document.getElementById("beneficios").value = s.beneficios;
-            document.getElementById("precio").value = s.precio;
-            document.getElementById("imagen").value = s.imagen;
-            document.getElementById("categoria").value = s.categoria;
-            document.getElementById("subcategoria").value = s.subcategoria;
-        }
-
-        function eliminar(i) {
-            if (confirm("¿Eliminar este servicio?")) {
-                servicios.splice(i, 1);
-                renderizarTabla();
-            }
-        }
-
-        document.getElementById("formularioServicio").addEventListener("submit", (e) => {
-            e.preventDefault();
-            const idRaw = document.getElementById("servicioId").value;
-            const id = parseInt(idRaw);
-            const nuevo = {
-                nombre: document.getElementById("nombre").value,
-                descripcion: document.getElementById("descripcion").value,
-                duracion: document.getElementById("duracion").value,
-                beneficios: document.getElementById("beneficios").value,
-                precio: Number(document.getElementById("precio").value),
-                imagen: document.getElementById("imagen").value,
-                categoria: document.getElementById("categoria").value,
-                subcategoria: document.getElementById("subcategoria").value
-            };
-            if (!isNaN(id) && id >= 0 && id < servicios.length) {
-                servicios[id] = nuevo;
-            } else {
-                servicios.push(nuevo);
-            }
-            e.target.reset();
-            renderizarTabla();
-        });
-
-        document.getElementById("formFactura").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const cliente = document.getElementById("cliente").value;
-            let servicioTexto = "";
-            let precio = 0;
-
-            const tipo = document.getElementById("tipo-servicio").value;
-            if (tipo === "individual") {
-                servicioTexto = document.getElementById("servicio-individual").value;
-            } else if (tipo === "grupal") {
-                servicioTexto = document.getElementById("servicio-grupal").value;
-            }
-
-            const partes = servicioTexto.split(" - ");
-            const nombreServicio = partes[0];
-            precio = parseFloat(partes[1]);
-
-            const now = new Date();
-            const fecha = now.toLocaleDateString();
-            const hora = now.toLocaleTimeString();
-
-            const facturaHTML = `
-        <html>
-        <head><title>Factura</title><style>
-          body { font-family: Arial; padding: 40px; }
-          h2 { text-align: center; }
-          .linea { margin-bottom: 10px; }
-        </style></head>
-        <body>
-          <h2>Factura de Spa Sentirse Bien</h2>
-          <h2>------------------------------</h2>
-          <h3>Detalles de la Factura</h3></b>
-          <div class="linea"><strong>Cliente:</strong> ${cliente}</div>
-          <div class="linea"><strong>Servicio:</strong> ${nombreServicio}</div>
-          <div class="linea"><strong>Fecha:</strong> ${fecha}</div>
-          <div class="linea"><strong>Hora:</strong> ${hora}</div>
-          <div class="linea"><strong>Total a pagar:</strong> <b>$${precio.toFixed(2)}</b></div>
-          <p>Gracias por elegirnos!</p>
-          <p>¡Esperamos verte pronto!</p>
-        </body>
-        </html>
-      `;
-            const nuevaVentana = window.open("", "_blank");
-            nuevaVentana.document.write(facturaHTML);
-            nuevaVentana.document.close();
-
-            // Exportar a PDF automáticamente (usando print)
-            nuevaVentana.print();
-        });
-
-        document.getElementById("servicioFactura").addEventListener("change", function() {
-            const index = this.value;
-            if (servicios[index]) {
-                document.getElementById("precioFactura").value = servicios[index].precio;
-            } else {
-                document.getElementById("precioFactura").value = "";
-            }
-        });
-
-        //  Codigo agregado para cerrar sesion  
-         document.getElementById("cerrarSesion").addEventListener("click", () => {
-                console.log("Botón de cerrar sesión clickeado");
-                localStorage.removeItem("usuarioLogueado");
-                console.log("Usuario eliminado de localStorage");
-                window.location.href = "inicioSesion.html";
-                console.log("Redirigiendo a inicioSesion.html");
-            });
-        renderizarTabla();
-    </script>
-<%- include("../../templates/footer.ejs"); %>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderizarTabla();
+      mostrarSeccion("servicios");
+    });
+  </script>
 
 </body>
-
 </html>

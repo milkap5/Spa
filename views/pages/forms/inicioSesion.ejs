@@ -82,7 +82,7 @@
       if (encontrado) {
         localStorage.setItem("usuarioLogueado", JSON.stringify(encontrado));
         if (encontrado.rol === "admin") {
-          window.location.href = "./usuarios/Admin/admin.html";
+          window.location.href = "../../users/pagina_admin.ejs";
         } else {
           window.location.href = "/";
         }
