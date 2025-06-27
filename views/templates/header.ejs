@@ -20,7 +20,13 @@
             <div id="dropdown">
                 <button class="dropdown-toggle"><%= usuario.nombre %></button>
                 <div class="dropdown-menu">
-                    <a href="/formulario-turno">Solicitar Turno</a>
+                    <% if(usuario.usuarioTipo === 'admin') { %>
+                        <a href="/admin/administracion">Administración</a>
+                    <% } else if(usuario.usuarioTipo === 'profesional') { %>
+                        <a href="/profesional/pannel-turno">Panel de turnos</a>
+                    <% } else { %>
+                        <a href="/cliente/formulario-turno">Solicitar Turno</a>
+                    <% } %>
                     <a href="/cerrar-session">Cerrar Sesión</a>
                 </div>
             </div>

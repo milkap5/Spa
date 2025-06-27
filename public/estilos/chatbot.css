@@ -1,0 +1,193 @@
+/* Estilos para el botón flotante del chatbot */
+.chatbot-fab {
+    position: fixed;
+    bottom: 20px; /* Separado del carrito si lo tienes */
+    right: 20px;
+    background-color: var(--color-acento); /* Color primario del spa */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1001; /* Asegúrate de que esté por encima de todo */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.chatbot-fab:hover {
+    background-color: var(--color-lujo); /* Un tono más oscuro de tu primario */
+    transform: scale(1.05);
+}
+
+/* Contenedor principal del Chatbot */
+.chatbot-container {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 90px; /* Encima del botón FAB */
+    right: 20px;
+    width: 320px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Debajo del FAB pero encima de otros elementos */
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.chatbot-header {
+    background-color: #a51f6f;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.chatbot-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.chatbot-close-btn:hover {
+    color: #d6d5d5;
+}
+
+.chatbot-messages {
+    flex-grow: 1; /* Para que ocupe el espacio restante */
+    padding: 15px;
+    overflow-y: auto; /* Scroll para los mensajes */
+    background-color: #f9f9f9;
+}
+
+.message {
+    padding: 10px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word; /* Para que los mensajes largos no se salgan */
+}
+
+.bot-message {
+    background-color: #e0e0e0;
+    align-self: flex-start; /* Alineación del bot a la izquierda */
+    margin-right: auto;
+}
+
+.user-message {
+    background-color: #a51f6f; /* Color primario para mensajes del usuario */
+    color: white;
+    align-self: flex-end; /* Alineación del usuario a la derecha */
+    margin-left: auto;
+}
+
+.chatbot-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+}
+
+#chatbotInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.95rem;
+    margin-right: 8px;
+}
+
+#chatbotSendBtn {
+    background-color: #a51f6f;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Botón redondo */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+#chatbotSendBtn:hover {
+    background-color: #7b1754;
+}
+
+.message.user-message {
+  align-self: flex-end;
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.message.bot-message {
+  align-self: flex-start;
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+#chatbotInput {
+  border-radius: 20px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+#chatbotSendBtn {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  animation: fadeInUp 0.4s ease;
+}
+
+.user-message {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  color: #0f5132;
+}
+
+.bot-message {
+  background-color: #f8d7da;
+  align-self: flex-start;
+  color: #842029;
+}

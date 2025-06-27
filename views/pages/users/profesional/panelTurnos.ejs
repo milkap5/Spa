@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../../../templates/headTag.ejs", {title: 'Panel de Turnos'}); %>
+
+<body>
+  <%- include("../../../templates/header.ejs"); %>
+
+  <div class="layout-profesional">
+    <!-- Menú lateral -->
+    <nav class="menu-lateral">
+      <button onclick="mostrarSeccion('turnos')" class="tab-btn activo">📋 Mis Turnos</button>
+      <button onclick="mostrarSeccion('datos')" class="tab-btn">🛠️ Editar Mis Datos</button>
+    </nav>
+
+    <!-- Contenido principal -->
+    <section class="contenido-profesional">
+
+      <!-- Sección Turnos -->
+      <div id="seccion-turnos" class="seccion-visible">
+        <div class="contenedor-profesional">
+          <section class="encabezado-profesional">
+            <h2>Turnos del día</h2>
+            <p id="fechaHoy"></p>
+          </section>
+
+          <div class="barra-filtros">
+            <label for="filtroCategoria">Categoría:</label>
+            <select id="filtroCategoria">
+              <option value="todas">Todas</option>
+              <option value="masajes">Masajes</option>
+              <option value="belleza">Belleza</option>
+              <option value="faciales">Faciales</option>
+              <option value="corporales">Corporales</option>
+              <option value="grupales">Grupales</option>
+            </select>
+
+            <label for="filtroEstado">Estado:</label>
+            <select id="filtroEstado">
+              <option value="todos">Todos</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="en curso">En curso</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+
+            <label for="filtroFecha">Fecha:</label>
+            <input type="date" id="filtroFecha" />
+
+            <button onclick="descargarTurnosPDF()" class="btn-descargar">📄 PDF</button>
+            <button onclick="imprimirTodos()" class="btn-imprimir-todos">🖨️ Imprimir todos</button>
+          </div>
+
+          <div id="contenedorTurnos" class="grid-turnos"></div>
+        </div>
+      </div>
+
+      <!-- Sección Editar Datos -->
+      <div id="seccion-datos" class="seccion-oculta">
+        <section class="seccion-actualizar">
+          <h3>Actualizar mis datos</h3>
+          <form id="formActualizarDatos" class="form-actualizar">
+            <label for="nuevoCorreo">Correo electrónico:</label>
+            <input type="email" id="nuevoCorreo" required value="profesional@ejemplo.com">
+
+            <label for="nuevoTelefono">Teléfono:</label>
+            <input type="tel" id="nuevoTelefono" required value="3624000000">
+
+            <button type="submit" class="btn-actualizar">Guardar cambios</button>
+            <p id="mensajeActualizacion" class="mensaje-exito" style="display: none;">✅ Datos actualizados correctamente.</p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <%- include("../../../templates/footer.ejs"); %>
+  <!-- scripts -->
+ 
+    <script>
+    // Función auxiliar para obtener una fecha en formato YYYY-MM-DD
+    function getFecha(daysOffset = 0) {
+      const date = new Date();
+      date.setDate(date.getDate() + daysOffset);
+      return date.toISOString().split('T')[0];
+    }
+
+    const hoy = getFecha(0);
+    const manana = getFecha(1);
+    const ayer = getFecha(-1);
+
+
+    // datos demo, se pueden eliminar cuando estemos conectados a la bd
+    const turnosDelDia = [
+      {
+        id: 1,
+        cliente_nombre: "Laura Gómez",
+        numero_cliente: "1234",
+        telefono: "3624567890",
+        correo: "laura@gmail.com",
+        servicio: "Masaje Anti-Stress",
+        categoria: "masajes",
+        hora: "10:00",
+        estado: "finalizado",
+        fecha: hoy
+      },
+      {
+        id: 2,
+        cliente_nombre: "Martín Díaz",
+        numero_cliente: "1235",
+        telefono: "3624123456",
+        correo: "martin@gmail.com",
+        servicio: "Criofrecuencia facial",
+        categoria: "faciales",
+        hora: "12:00",
+        estado: "cancelado",
+        fecha: hoy
+      },
+      {
+        id: 3,
+        cliente_nombre: "Sofía Pérez",
+        numero_cliente: "1236",
+        telefono: "3624789012",
+        correo: "sofia@gmail.com",
+        servicio: "Masaje con Piedras Calientes",
+        categoria: "masajes",
+        hora: "14:30",
+        estado: "finalizado",
+        fecha: hoy
+      },
+      {
+        id: 4,
+        cliente_nombre: "Diego Ramirez",
+        numero_cliente: "1237",
+        telefono: "3624345678",
+        correo: "diego@gmail.com",
+        servicio: "Clase de Yoga Grupal",
+        categoria: "grupales",
+        hora: "09:00",
+        estado: "cancelado",
+        fecha: hoy
+      },
+      {
+        id: 5,
+        cliente_nombre: "Ana Fernandez",
+        numero_cliente: "1238",
+        telefono: "3624876543",
+        correo: "ana@gmail.com",
+        servicio: "Clase de Yoga Grupal",
+        categoria: "grupales",
+        hora: "19:00",
+        estado: "pendiente",
+        fecha: hoy
+      },
+      {
+        id: 6,
+        cliente_nombre: "Carlos Sanchez",
+        numero_cliente: "1239",
+        telefono: "3624234567",
+        correo: "carlos@gmail.com",
+        servicio: "Limpieza facial profunda",
+        categoria: "faciales",
+        hora: "20:00",
+        estado: "pendiente",
+        fecha: manana // Turno para mañana
+      },
+      {
+        id: 7,
+        cliente_nombre: "Valeria Ruiz",
+        numero_cliente: "1240",
+        telefono: "3624987654",
+        correo: "valeria@gmail.com",
+        servicio: "Masaje Descontracturante",
+        categoria: "masajes",
+        hora: "09:30",
+        estado: "pendiente",
+        fecha: manana // Turno para mañana
+      },
+      {
+        id: 8,
+        cliente_nombre: "Pablo Gimenez",
+        numero_cliente: "1241",
+        telefono: "3624567123",
+        correo: "pablo@gmail.com",
+        servicio: "Masaje Corporal",
+        categoria: "masajes",
+        hora: "10:30",
+        estado: "finalizado",
+        fecha: ayer // Turno de ayer (finalizado)
+      },
+      {
+        id: 9,
+        cliente_nombre: "Lucía Castro",
+        numero_cliente: "1242",
+        telefono: "3624890123",
+        correo: "lucia@gmail.com",
+        servicio: "Lifting de Pestañas",
+        categoria: "belleza",
+        hora: "13:00",
+        estado: "en curso",
+        fecha: hoy
+      },
+      {
+        id: 10,
+        cliente_nombre: "Federico Herrera",
+        numero_cliente: "1243",
+        telefono: "3624112233",
+        correo: "fede@gmail.com",
+        servicio: "Hidromasajes",
+        categoria: "grupales",
+        hora: "17:00",
+        estado: "pendiente",
+        fecha: manana // Turno para mañana
+      }
+    ];
+
+    const estadoColor = {
+      pendiente: "#ffcc00",
+      "en curso": "#3498db",
+      finalizado: "#2ecc71",
+      cancelado: "#e74c3c"
+    };
+
+    const categoriaIconos = {
+      masajes: "💆",
+      belleza: "💅",
+      faciales: "🌸",
+      corporales: "🏃‍♀️",
+      grupales: "👥"
+    };
+
+    function renderizarTurnos(cat = "todas", estado = "todos", fecha = null) {
+      const contenedor = document.getElementById("contenedorTurnos");
+      contenedor.innerHTML = "";
+
+      // Asegurarse de que la fecha de filtro sea solo la parte YYYY-MM-DD
+      const filtroFechaFormato = fecha ? new Date(fecha + 'T00:00:00').toISOString().split('T')[0] : null;
+
+      const filtrados = turnosDelDia.filter(t => {
+        const matchCat = cat === "todas" || t.categoria === cat;
+        const matchEst = estado === "todos" || t.estado === estado;
+        const matchFecha = !filtroFechaFormato || t.fecha === filtroFechaFormato;
+        return matchCat && matchEst && matchFecha;
+      });
+
+      if (filtrados.length === 0) {
+        contenedor.innerHTML = "<p>No hay turnos para mostrar.</p>";
+        return;
+      }
+
+      filtrados.forEach(t => {
+        const div = document.createElement("div");
+        div.className = "tarjeta-turno";
+        div.style.borderLeft = `6px solid ${estadoColor[t.estado]}`;
+
+        const icono = categoriaIconos[t.categoria] || "❔";
+        div.innerHTML = `
+          <h4>${icono} ${t.servicio} - ${t.hora}</h4>
+          <p><strong>Cliente:</strong> ${t.cliente_nombre}</p>
+          <p><strong>N° Cliente:</strong> ${t.numero_cliente}</p>
+          <p><strong>Teléfono:</strong> ${t.telefono}</p>
+          <p><strong>Correo:</strong> ${t.correo}</p>
+          <p><strong>Categoría:</strong> ${t.categoria}</p>
+          <p><strong>Estado:</strong> 
+            <select onchange="actualizarEstado(${t.id}, this.value)">
+              ${["pendiente", "en curso", "finalizado", "cancelado"].map(e =>
+                `<option value="${e}" ${t.estado === e ? "selected" : ""}>${e}</option>`
+              ).join("")}
+            </select>
+          </p>
+          <button class="btn-imprimir-todos" onclick="imprimirTurno(${t.id})">🖨️ Imprimir</button>
+          <a class="btn-whatsapp" target="_blank"
+            href="https://wa.me/54${t.telefono}?text=Hola%20${encodeURIComponent(t.cliente_nombre)}%2C%20te%20contacto%20desde%20Sentirse%20Bien%20por%20tu%20turno%20de%20${encodeURIComponent(t.servicio)}">
+            💬 WhatsApp
+          </a>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    function actualizarEstado(id, nuevoEstado) {
+      const turno = turnosDelDia.find(t => t.id === id);
+      if (turno) {
+        turno.estado = nuevoEstado;
+        // Aquí es donde eventualmente enviarías esta actualización a tu backend
+        console.log(`Estado del turno ${id} actualizado a: ${nuevoEstado}. (Esto debería enviarse al backend)`);
+      }
+      obtenerFiltrosYRenderizar();
+    }
+
+    function obtenerFiltrosYRenderizar() {
+      renderizarTurnos(
+        document.getElementById("filtroCategoria").value,
+        document.getElementById("filtroEstado").value,
+        document.getElementById("filtroFecha").value || null
+      );
+    }
+
+    function mostrarSeccion(id) {
+      document.getElementById("seccion-turnos").className = "seccion-oculta";
+      document.getElementById("seccion-datos").className = "seccion-oculta";
+      document.getElementById(`seccion-${id}`).className = "seccion-visible";
+
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("activo"));
+      const botonActivo = Array.from(document.querySelectorAll(".tab-btn")).find(b => b.textContent.toLowerCase().includes(id));
+      if (botonActivo) botonActivo.classList.add("activo");
+    }
+
+    function imprimirTurno(id) {
+        const t = turnosDelDia.find(t => t.id === id);
+        if (!t) return;
+
+        const w = window.open("", "", "width=600,height=600");
+
+        w.document.write(`
+            <html>
+            <head>
+            <title>Turno Profesional</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 30px; }
+                h2 { color: #a51f6f; }
+                p { font-size: 16px; margin-bottom: 8px; }
+                .detalle-turno {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 10px;
+                background: #fdfdfd;
+                }
+            </style>
+            </head>
+            <body>
+            <h2>📋 Detalles del Turno</h2>
+            <div class="detalle-turno">
+                <p><strong>👤 Nombre completo:</strong> ${t.cliente_nombre}</p>
+                <p><strong>🆔 Número de cliente:</strong> ${t.numero_cliente}</p>
+                <p><strong>📧 Correo electrónico:</strong> ${t.correo}</p>
+                <p><strong>📞 Teléfono:</strong> ${t.telefono}</p>
+                <p><strong>💆 Servicio:</strong> ${t.servicio}</p>
+                <p><strong>🕒 Hora:</strong> ${t.hora}</p>
+                <p><strong>📅 Fecha del turno:</strong> ${t.fecha}</p>
+            </div>
+            <script>
+                window.onload = function(){ window.print(); };
+            <\/script>
+            </body>
+            </html>
+        `);
+
+        w.document.close();
+        }
+
+
+
+    function imprimirTodos() {
+        const w = window.open("", "", "width=800,height=800");
+
+        w.document.write(`
+            <html>
+            <head>
+            <title>Todos los Turnos del Día</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 30px; }
+                h2 { color: #a51f6f; }
+                .detalle-turno {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                background: #fdfdfd;
+                }
+                p { font-size: 15px; margin-bottom: 6px; }
+                hr { border: none; border-top: 1px dashed #ccc; margin: 15px 0; }
+            </style>
+            </head>
+            <body>
+            <h2>📋 Turnos del Día</h2>
+        `);
+
+        turnosDelDia.forEach((t, i) => {
+            w.document.write(`
+            <div class="detalle-turno">
+                <p><strong>Turno #${i + 1}</strong></p>
+                <p><strong>👤 Nombre completo:</strong> ${t.cliente_nombre}</p>
+                <p><strong>🆔 Número de cliente:</strong> ${t.numero_cliente}</p>
+                <p><strong>📧 Correo electrónico:</strong> ${t.correo}</p>
+                <p><strong>📞 Teléfono:</strong> ${t.telefono}</p>
+                <p><strong>💆 Servicio:</strong> ${t.servicio}</p>
+                <p><strong>🕒 Hora:</strong> ${t.hora}</p>
+                <p><strong>📅 Fecha del turno:</strong> ${t.fecha}</p>
+            </div>
+            `);
+        });
+
+        w.document.write(`
+            <script>
+                window.onload = function(){ window.print(); };
+            <\/script>
+            </body>
+            </html>
+        `);
+
+        w.document.close();
+        }
+
+
+    async function descargarTurnosPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Turnos del día - Sentirse Bien", 14, 20);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      doc.text(`Fecha: ${new Date().toLocaleDateString("es-AR")}`, 14, 28);
+      let y = 40;
+
+      turnosDelDia.forEach((t, i) => {
+        const texto = `#${i + 1}
+        Cliente: ${t.cliente_nombre} (N° ${t.numero_cliente})
+        Servicio: ${t.servicio}
+        Hora: ${t.hora}
+        Categoría: ${t.categoria}
+        Estado: ${t.estado}
+        Teléfono: ${t.telefono}
+        Correo: ${t.correo}`;
+        const lines = doc.splitTextToSize(texto, 180);
+        if (y + lines.length * 6 > 270) {
+          doc.addPage();
+          y = 20;
+        }
+        doc.text(lines, 14, y);
+        y += lines.length * 6 + 4;
+      });
+
+      doc.save("turnos-dia.pdf");
+    }
+
+    document.getElementById("filtroCategoria").addEventListener("change", obtenerFiltrosYRenderizar);
+    document.getElementById("filtroEstado").addEventListener("change", obtenerFiltrosYRenderizar);
+    document.getElementById("filtroFecha").addEventListener("change", obtenerFiltrosYRenderizar);
+
+    document.getElementById("formActualizarDatos").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const correo = document.getElementById("nuevoCorreo").value;
+      const tel = document.getElementById("nuevoTelefono").value;
+      console.log("Datos actualizados:", correo, tel);
+      document.getElementById("mensajeActualizacion").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("mensajeActualizacion").style.display = "none";
+      }, 4000);
+    });
+
+    document.getElementById("cerrarSesion").addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "../../Formularios/inicioSesion.html";
+    });
+
+    document.getElementById("fechaHoy").textContent = new Date().toLocaleDateString("es-AR", {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    renderizarTurnos();
+  </script>
+
+</body>
+</html>

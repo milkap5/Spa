@@ -118,7 +118,7 @@
     <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
   </section>
   
-  <%- include("../../../templates/footer.ejs"); %>
+  
 
   <script>
     function mostrarPrecio() {
@@ -182,25 +182,6 @@
   });
 </script>
 
-<script>/*
-  const tipoSelect = document.getElementById('tipo-servicio');
-  const individualLabel = document.getElementById('label-servicio-individual');
-  const grupalLabel = document.getElementById('label-servicio-grupal');
-
-  tipoSelect.addEventListener('change', function () {
-    if (this.value === 'individuales') {
-      individualLabel.style.display = 'block';
-      grupalLabel.style.display = 'none';
-    } else if (this.value === 'grupales') {
-      grupalLabel.style.display = 'block';
-      individualLabel.style.display = 'none';
-    } else {
-      individualLabel.style.display = 'none';
-      grupalLabel.style.display = 'none';
-    }
-  });*/
-</script>
-
-  
+<%- include("../../../templates/footer.ejs"); %>
 </body>
 </html>

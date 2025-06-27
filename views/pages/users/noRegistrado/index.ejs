@@ -45,25 +45,25 @@
         <div class="metodo-pago">
           <h4>Efectivo</h4>
           <p>
-            Disfrutá de un <strong>10% de descuento</strong> abonando en efectivo. ¡Tu bienestar, con un beneficio extra!
+               ¡Pagá de la manera más práctica! <strong>¡Tu pago en efectivo agiliza tu atención y te permite disfrutar más rápido de nuestros servicios!</strong>
           </p>
         </div>
         <div class="metodo-pago">
           <h4>Tarjetas de Débito</h4>
           <p>
-            Aceptamos todas las tarjetas de débito. ¡Pagá de la manera más práctica!
+             Disfrutá de un <strong>15% de descuento</strong>, aceptamos todas las tarjetas de débito. ¡Tu bienestar, con un beneficio extra!
           </p>
         </div>
-        <div class="metodo-pago">
+        <<div class="metodo-pago">
           <h4>Tarjetas de Crédito</h4>
           <p>
             Los <strong>viernes y sábados</strong>, aprovechá nuestra promoción especial:
-            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito. ¡Date ese gusto que merecés!
+            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito solo en el local!.  ¡Date ese gusto que merecés!
           </p>
-        </div>
+        </div> 
       </div>
     </div>
-  </section>
+  </section>
   
 
  <section class="seccion-testimonios">
@@ -87,54 +87,27 @@
   </div>
 </section>
 
-  <div id="formModal">
-    <div class="modal-content">
-      <h2>Tenés dudas?</h2>
-      <h3>Dejanos tu información y nos comunicamos con vos!</h3>
-      <form id="formulario-consulta">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
 
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="telefono">Teléfono:</label> 
-        <input type="tel" id="telefono" name="telefono" required />
-
-        <label for="fecha">Consulta:</label>
-        <input type="text" id="consulta" name="consulta" required />
-
-
-        <button type="submit" class="submit">Enviar</button>
-      </form>
-    </div>
-  </div>
-
-  <button class="floating-button" onclick="abrirFormulario()">+</button>
-  <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
-    <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
-    <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
-    
-    <button
-      class="boton-reservar"
-      onClick="alert('Debe iniciar sesión o registrarse para porder reservar un servicio.')"
-    >
-      Reservar servicio
-    </button>
-
-  </section>
+<section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
+  <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
+  <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
   
-  <%- include("../../../templates/footer.ejs"); %>
+  <button
+  class="boton-reservar"
+  onClick="alert('Debe iniciar sesión o registrarse para porder reservar un servicio.')"
+  >
+  Reservar servicio
+</button>
 
-  <script>
-    function mostrarPrecio() {
+</section>
+
+<%- include("../../../templates/footer.ejs"); %>
+
+<script>
+  function mostrarPrecio() {
       const select = document.getElementById("servicio");
       const precio = select.value;
       document.getElementById("precio").value = "$" + precio;
-    }
-
-    function abrirFormulario() {
-      document.getElementById("formModal").style.display = "flex";
     }
 
     // Cerrar con Esc

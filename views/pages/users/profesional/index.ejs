@@ -87,35 +87,7 @@
   </div>
 </section>
 
-  <div id="formModal">
-    <div class="modal-content">
-      <h2>Tenés dudas?</h2>
-      <h3>Dejanos tu información y nos comunicamos con vos!</h3>
-      <form id="formulario-consulta">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
-
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="telefono">Teléfono:</label> 
-        <input type="tel" id="telefono" name="telefono" required />
-
-        <label for="fecha">Consulta:</label>
-        <input type="text" id="consulta" name="consulta" required />
-
-
-        <button type="submit" class="submit">Enviar</button>
-      </form>
-    </div>
-  </div>
-
-  <button class="floating-button" onclick="abrirFormulario()">+</button>
-  <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
-    <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
-    <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
-    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
-  </section>
+  
   
   <%- include("../../../templates/footer.ejs"); %>
 
@@ -125,31 +97,6 @@
       const precio = select.value;
       document.getElementById("precio").value = "$" + precio;
     }
-
-    function abrirFormulario() {
-      document.getElementById("formModal").style.display = "flex";
-    }
-
-    // Cerrar con Esc
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        document.getElementById('formModal').style.display = 'none';
-      }
-    });
-
-    // Cerrar al hacer clic fuera del modal
-    window.onclick = function(event) {
-      const modal = document.getElementById('formModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-
-    // Enviar formulario
-    document.getElementById('formulario-consulta').addEventListener('submit', function(e) {
-      e.preventDefault();
-      window.location.href = 'consulta.html';
-    });
   </script>
 
 <script>
@@ -179,25 +126,6 @@
       observer.observe(el);
     });
   });
-</script>
-
-<script>/*
-  const tipoSelect = document.getElementById('tipo-servicio');
-  const individualLabel = document.getElementById('label-servicio-individual');
-  const grupalLabel = document.getElementById('label-servicio-grupal');
-
-  tipoSelect.addEventListener('change', function () {
-    if (this.value === 'individuales') {
-      individualLabel.style.display = 'block';
-      grupalLabel.style.display = 'none';
-    } else if (this.value === 'grupales') {
-      grupalLabel.style.display = 'block';
-      individualLabel.style.display = 'none';
-    } else {
-      individualLabel.style.display = 'none';
-      grupalLabel.style.display = 'none';
-    }
-  });*/
 </script>
 
   

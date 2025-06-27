@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../../../templates/headTag.ejs", {title: 'Panel Administración'}); %>
+<body>
+  <%- include("../../../templates/header.ejs"); %>
+
+  <div class="layout-admin">
+    <nav class="menu-lateral">
+      <button class="tab-btn activo" onclick="mostrarSeccion('servicios')">⚙️ Gestión de Servicios</button>
+      <button class="tab-btn" onclick="mostrarSeccion('factura')">🧾 Generar Factura</button>
+      <button class="tab-btn" onclick="mostrarSeccion('profesionales')">🧑‍⚕️ Alta de Profesionales</button>
+      <button class="tab-btn" onclick="mostrarSeccion('estadisticas')">📊 Estadísticas</button>
+    </nav>
+
+    <section class="contenido-admin">
+      <div id="seccion-servicios" class="seccion-visible">
+         <h2 class="subtitulo">Gestión de Servicios</h2>
+            <form id="formularioServicio" class="form-grid">
+                <input type="hidden" id="servicioId">
+                <input type="text" id="nombre" placeholder="Nombre del servicio" required>
+                <input type="text" id="descripcion" placeholder="Descripción" required>
+                <input type="text" id="duracion" placeholder="Duración" required>
+                <input type="text" id="beneficios" placeholder="Beneficios" required>
+                <input type="number" id="precio" placeholder="Precio" required>
+                <input type="text" id="imagen" placeholder="URL de imagen" required>
+                <select id="categoria" required>
+                    <option value="">Seleccionar categoría general</option>
+                    <option value="individual">Individual</option>
+                    <option value="grupal">Grupal</option>
+                </select>
+                <select id="subcategoria" required>
+                    <option value="">Seleccionar subcategoría</option>
+                    <option value="masajes">Masajes</option>
+                    <option value="belleza">Belleza</option>
+                    <option value="faciales">Tratamientos Faciales</option>
+                    <option value="corporales">Tratamientos Corporales</option>
+                </select>
+                <button type="submit" class="boton-acento">Guardar Servicio</button>
+            </form>
+
+            <h3>Lista de Servicios Registrados</h3>
+            <ul id="listaTodosServicios"></ul>
+
+            <h3>Tabla de Servicios</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Duración</th>
+                        <th>Beneficios</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th>Subcategoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaServicios"></tbody>
+            </table>
+      </div>
+
+      <div id="seccion-factura" class="seccion-oculta">
+        <h2 class="subtitulo">Generar Factura</h2>
+            <form id="formFactura">
+                <input type="text" id="cliente" placeholder="Nombre o Número de cliente" required>
+
+                <label for="tipo-servicio">Tipo de servicio:</label>
+                <select id="tipo-servicio" required>
+                    <option value="">Seleccioná una opción</option>
+                    <option value="individual">Individual</option>
+                    <option value="grupal">Grupal</option>
+                </select>
+
+                <div id="label-servicio-individual" style="display: none;">
+                    <label for="servicio-individual">Servicio individual:</label>
+                    <select id="servicio-individual">
+                        <option value="">Seleccioná un servicio</option>
+                        <option value="Masaje Anti-Stress - 10000">Masaje Anti-Stress - $10000</option>
+                        <option value="Masaje descontracturante - 12000">Masaje descontracturante - $12000</option>
+                        <option value="Masaje con piedras calientes - 16000">Masaje con piedras calientes - $16000</option>
+                        <option value="Masaje circulatorio - 14500">Masaje circulatorio - $14500</option>
+                        <option value="Lifting de pestañas - 25000">Lifting de pestañas - $25000</option>
+                        <option value="Depilación facial - 17000">Depilación facial - $17000</option>
+                        <option value="Belleza de manos y pies - 21000">Belleza de manos y pies - $21000</option>
+                        <option value="Punta de Diamante - 20000">Punta de Diamante - $20000</option>
+                        <option value="Limpieza profunda + Hidratación - 18000">Limpieza profunda + Hidratación - $18000
+                        </option>
+                        <option value="Criofrecuencia facial - 22000">Criofrecuencia facial - $22000</option>
+                        <option value="VelaSlim - 35000">VelaSlim - $35000</option>
+                        <option value="DermoHealth - 36000">DermoHealth - $36000</option>
+                        <option value="Criofrecuencia corporal - 29000">Criofrecuencia corporal - $29000</option>
+                        <option value="Ultracavitación - 28000">Ultracavitación - $28000</option>
+                    </select>
+                </div>
+
+                <div id="label-servicio-grupal" style="display: none;">
+                    <label for="servicio-grupal">Servicio grupal:</label>
+                    <select id="servicio-grupal">
+                        <option value="">Seleccioná un servicio</option>
+                        <option value="Yoga en grupo - 6000">Yoga en grupo - $6000 por persona</option>
+                        <option value="Hidromasajes - 8000">Hidromasajes - $8000 por persona</option>
+                    </select>
+                </div>
+
+                <input type="text" id="precioFactura" placeholder="Precio" readonly>
+                <button type="submit" class="boton-acento">Generar Factura</button>
+            </form>
+      </div>
+      <!-- script factura -->
+
+        <script>
+                document.getElementById("tipo-servicio").addEventListener("change", function() {
+                    const tipo = this.value;
+                    document.getElementById("label-servicio-individual").style.display = tipo === "individual" ? "block" : "none";
+                    document.getElementById("label-servicio-grupal").style.display = tipo === "grupal" ? "block" : "none";
+                    document.getElementById("precioFactura").value = "";
+                });
+
+                document.getElementById("servicio-individual").addEventListener("change", function() {
+                    const valor = this.value.split(" - ");
+                    document.getElementById("precioFactura").value = "";
+            });
+
+            document.getElementById("servicio-individual").addEventListener("change", function() {
+                const valor = this.value.split(" - ");
+                document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+            });
+        </script>
+        <script>
+  // Mostrar precio correcto al cambiar servicio
+  document.getElementById("servicio-individual").addEventListener("change", function () {
+    const valor = this.value.split(" - ");
+    document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+  });
+
+  document.getElementById("servicio-grupal").addEventListener("change", function () {
+    const valor = this.value.split(" - ");
+    document.getElementById("precioFactura").value = valor[1] ? `$${valor[1]}` : "";
+  });
+
+  document.getElementById("formFactura").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const cliente = document.getElementById("cliente").value;
+    const tipoServicio = document.getElementById("tipo-servicio").value;
+    const precio = document.getElementById("precioFactura").value;
+
+    let servicioSeleccionado = "";
+
+    if (tipoServicio === "individual") {
+      const val = document.getElementById("servicio-individual").value;
+      servicioSeleccionado = val.split(" - ")[0];
+    } else if (tipoServicio === "grupal") {
+      const val = document.getElementById("servicio-grupal").value;
+      servicioSeleccionado = val.split(" - ")[0];
+    }
+
+    if (!cliente || !tipoServicio || !servicioSeleccionado || !precio) {
+      alert("Por favor completá todos los campos.");
+      return;
+    }
+
+    const facturaHTML = `
+      <div id="facturaGenerada" style="padding:20px; margin-top:20px; border:1px solid #ccc; background:#f9f9f9">
+        <h3>🧾 Factura generada</h3>
+        <p><strong>Cliente:</strong> ${cliente}</p>
+        <p><strong>Servicio:</strong> ${servicioSeleccionado}</p>
+        <p><strong>Tipo de servicio:</strong> ${tipoServicio}</p>
+        <p><strong>Precio:</strong> ${precio}</p>
+        <button onclick="window.print()" class="boton-acento" style="margin-top:10px;">🖨️ Imprimir</button>
+      </div>
+    `;
+
+    const contenedor = document.getElementById("seccion-factura");
+    const anterior = document.getElementById("facturaGenerada");
+    if (anterior) anterior.remove();
+    contenedor.insertAdjacentHTML("beforeend", facturaHTML);
+  });
+</script>
+
+
+
+      <div id="seccion-profesionales" class="seccion-oculta">
+        <h2>Alta de Profesionales</h2>
+            <form id="formAltaProfesional" class="flexColumn">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="text" name="dni" placeholder="DNI" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <input type="text" name="usuario" placeholder="Nombre de usuario" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <button type="submit" class="submit">Registrar Profesional</button>
+                <p id="mensajeExito" style="color: green; display: none;">✅ Profesional registrado con éxito.</p>
+            </form>
+      </div>
+
+      <div id="seccion-estadisticas" class="seccion-oculta">
+        <h2>📊 Estadísticas</h2>
+        <div class="card estadisticas-card">
+          <h3>📈 Turnos por Servicio (últimos 30 días)</h3>
+          <canvas id="grafico-estadisticas" height="300"></canvas>
+        </div>
+        <div class="card total-recaudado">
+          💰 <strong>Total recaudado del servicio más vendido:</strong>
+          <span id="montoRecaudado" style="font-weight: bold; font-size: 1.2rem; margin-left: 10px;">$0</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let chart;
+
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('.contenido-admin > div');
+      secciones.forEach(s => s.className = 'seccion-oculta');
+
+      const botones = document.querySelectorAll('.tab-btn');
+      botones.forEach(b => b.classList.remove('activo'));
+
+      document.getElementById(`seccion-${id}`).className = 'seccion-visible';
+      const botonActivo = Array.from(botones).find(b => b.textContent.toLowerCase().includes(id));
+      if (botonActivo) botonActivo.classList.add('activo');
+
+      if (id === "estadisticas") {
+        cargarGraficoEstadisticas();
+      }
+    }
+
+    const estadisticasTurnos = {
+      "Masaje Anti-Stress": 12,
+      "Criofrecuencia facial": 8,
+      "Ultracavitación": 10,
+      "Lifting de pestañas": 6,
+      "Hidromasaje grupal": 18
+    };
+
+    const preciosServicios = {
+      "Masaje Anti-Stress": 10000,
+      "Criofrecuencia facial": 22000,
+      "Ultracavitación": 29000,
+      "Lifting de pestañas": 25000,
+      "Hidromasaje grupal": 8000
+    };
+
+    function cargarGraficoEstadisticas() {
+      const ctx = document.getElementById('grafico-estadisticas').getContext('2d');
+      const labels = Object.keys(estadisticasTurnos);
+      const data = Object.values(estadisticasTurnos);
+
+      const servicioMasVendido = labels[data.indexOf(Math.max(...data))];
+      const totalRecaudado = estadisticasTurnos[servicioMasVendido] * preciosServicios[servicioMasVendido];
+      document.getElementById("montoRecaudado").textContent = "$" + totalRecaudado.toLocaleString("es-AR");
+
+      if (chart) {
+        chart.destroy();
+      }
+
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Turnos vendidos',
+            data,
+            backgroundColor: '#a51f6f',
+            borderRadius: 10,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const servicio = context.label;
+                  const cantidad = context.parsed.y;
+                  return `${cantidad} turnos - $${preciosServicios[servicio]} c/u`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              title: { display: true, text: 'Cantidad de turnos' }
+            },
+            x: {
+              title: { display: true, text: 'Servicios' }
+            }
+          }
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderizarTabla();
+      mostrarSeccion("servicios");
+    });
+  </script>
+<%- include("../../../templates/footer.ejs"); %>
+</body>
+</html>

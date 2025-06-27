@@ -1,0 +1,164 @@
+body {
+  margin: 0;
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.encabezado {
+  background: var(--color-primario);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  color: var(--color-texto);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.logo-admin {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-admin img {
+  height: 60px;
+  border-radius: 12px;
+}
+
+.menu-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-primario);
+  padding: 20px;
+  border-radius: 0 12px 12px 0;
+  min-width: 220px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tab-btn:hover, .tab-btn.activo {
+  background: var(--color-secundario);
+}
+
+.layout-admin {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.contenido-admin {
+  flex-grow: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.seccion-visible {
+  display: block;
+}
+
+.seccion-oculta {
+  display: none;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.total-recaudado {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  background: #f9f1f7;
+  color: #a51f6f;
+}
+
+.estadisticas-card {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+.total-recaudado {
+  padding: 20px;
+  background-color: #fcecf5;
+  border-left: 8px solid #a51f6f;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #a51f6f;
+}
+.boton-cerrar-sesion {
+  background: var(--color-secundario);
+  color: white;
+  padding: 8px 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-cerrar-sesion:hover {
+  background: #8e3c66;
+}
+
+.cerrar-sesion-btn {
+  background-color: var(--color-acento);
+  color: white;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  height: auto;
+  width: auto;
+  min-width: auto;
+  max-width: 200px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cerrar-sesion-btn:hover {
+  background-color: var(--color-lujo);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #facturaGenerada, #facturaGenerada * {
+    visibility: visible;
+  }
+
+  #facturaGenerada {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

@@ -45,25 +45,25 @@
         <div class="metodo-pago">
           <h4>Efectivo</h4>
           <p>
-            Disfrutá de un <strong>10% de descuento</strong> abonando en efectivo. ¡Tu bienestar, con un beneficio extra!
+               ¡Pagá de la manera más práctica! <strong>¡Tu pago en efectivo agiliza tu atención y te permite disfrutar más rápido de nuestros servicios!</strong>
           </p>
         </div>
         <div class="metodo-pago">
           <h4>Tarjetas de Débito</h4>
           <p>
-            Aceptamos todas las tarjetas de débito. ¡Pagá de la manera más práctica!
+             Disfrutá de un <strong>15% de descuento</strong>, aceptamos todas las tarjetas de débito. ¡Tu bienestar, con un beneficio extra!
           </p>
         </div>
-        <div class="metodo-pago">
+        <<div class="metodo-pago">
           <h4>Tarjetas de Crédito</h4>
           <p>
             Los <strong>viernes y sábados</strong>, aprovechá nuestra promoción especial:
-            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito. ¡Date ese gusto que merecés!
+            <strong>6 cuotas sin interés</strong> con tu tarjeta de crédito solo en el local!.  ¡Date ese gusto que merecés!
           </p>
-        </div>
+        </div> 
       </div>
     </div>
-  </section>
+  </section>
   
 
  <section class="seccion-testimonios">
@@ -87,47 +87,56 @@
   </div>
 </section>
 
-  <div id="formModal">
-    <div class="modal-content">
-      <h2>Tenés dudas?</h2>
-      <h3>Dejanos tu información y nos comunicamos con vos!</h3>
-      <form id="formulario-consulta">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
+  <section class="seccion-contacto animacion-scroll" id="contacto" style="padding: 50px 20px; background-color: #f8fbfc;">
+  <div style="max-width: 600px; margin: auto;">
+    <h2 style="text-align: center; color: var(--color-texto);">Contacto</h2>
+    <p style="text-align: center;">¿Tenés alguna consulta? Completá el formulario y te responderemos a la brevedad.</p>
 
-        <label for="mail">Correo electrónico:</label>
-        <input type="email" id="mail" name="mail" required />
+    <form id="formContacto" style="display: flex; flex-direction: column; gap: 15px;">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="emailContacto" name="email" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;" />
 
-        <label for="telefono">Teléfono:</label> 
-        <input type="tel" id="telefono" name="telefono" required />
+      <label for="tipoConsulta">Tipo de consulta:</label>
+      <select id="tipoConsulta" name="tipo" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">Seleccioná una opción</option>
+        <option value="general">Consulta general</option>
+        <option value="servicio">Sobre un servicio</option>
+      </select>
 
-        <label for="consulta">Consulta:</label>
-        <input type="text" id="consulta" name="consulta" required />
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensajeContacto" name="mensaje" rows="5" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
 
+      <button type="submit" class="submit" style=" color: white; padding: 10px 20px; border: none; border-radius: 30px; font-weight: bold;">Enviar consulta</button>
 
-        <button type="submit" class="submit">Enviar</button>
-      </form>
-    </div>
+      <p id="mensajeEnviado" style="display:none; color: green; font-weight: bold; text-align: center;">✅ ¡Consulta enviada con éxito! Nos comunicaremos a la brevedad.</p>
+    </form>
   </div>
+</section>
 
-  <button class="floating-button" onclick="abrirFormulario()">+</button>
-  <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
-    <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
-    <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
-    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
-  </section>
-  
   <%- include("../../../templates/footer.ejs"); %>
+
+  <script>
+    document.getElementById('formContacto').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Simular envío
+    document.getElementById('mensajeEnviado').style.display = 'block';
+
+    // Resetear campos luego de enviar
+    this.reset();
+
+    // Ocultar mensaje luego de 4 segundos
+    setTimeout(() => {
+      document.getElementById('mensajeEnviado').style.display = 'none';
+    }, 4000);
+  });
+</script>
 
   <script>
     function mostrarPrecio() {
       const select = document.getElementById("servicio");
       const precio = select.value;
       document.getElementById("precio").value = "$" + precio;
-    }
-
-    function abrirFormulario() {
-      document.getElementById("formModal").style.display = "flex";
     }
 
     // Cerrar con Esc
