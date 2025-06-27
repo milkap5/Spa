@@ -33,19 +33,15 @@
 </footer>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const map = L.map('map').setView([-27.45091, -58.97909], 16); // ¡ACTUALIZA ESTAS COORDENADAS!
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+	document.addEventListener("DOMContentLoaded", function () {
+		const map = L.map('map').setView([-27.45091, -58.97909], 16); // ¡ACTUALIZA ESTAS COORDENADAS!
+		
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
 
-    L.marker([-27.45091, -58.97909]).addTo(map) // ¡Y TAMBIÉN ESTAS COORDENADAS!
-        .bindPopup('📍 Spa Sentirse Bien<br>French 414, Resistencia')
-        .openPopup();
-});
-</script>
-
-
-
+		L.marker([-27.45091, -58.97909]).addTo(map) // ¡Y TAMBIÉN ESTAS COORDENADAS!
+			.bindPopup('📍 Spa Sentirse Bien<br>French 414, Resistencia')
+			.openPopup();
+	});
 </script>

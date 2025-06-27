@@ -2,20 +2,23 @@
 <html lang="es">
 <%- include("../../../../templates/headTag.ejs", {title: 'Nueva Contraseña'}); %>
 <body class="flexColumn">
-  <%- include("../../../../templates/header.ejs"); %>
-    <form action="" id="nuevaClave" class="formulario flexColumn" method="post">
-        <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
-        <h2>Nueva contraseña</h2>
-        <label>Escriba a continuación una nueva contraseña</label>
-        <input type="password" >
-        
-        <label>Repita su nueva contraseña</label>
-        <input type="password" >
+    <%- include("../../../../templates/header.ejs"); %>
+
+    <form action="/actualizar-contrasenia" class="formulario flexColumn" method="post">
+        <img src="/media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
+        <h2>Ingrese su nueva contraseña</h2>
+
+        <label>Escriba la nueva contraseña</label>
+        <input type="password" name="nuevaContrasenia" required placeholder="Nueva contraseña">
+
+        <label>Repita la nueva contraseña</label>
+        <input type="password" name="confirmarContrasenia" required placeholder="Confirmar contraseña">
 
         <div id="botones" class="flexRow">
-          <a href="/Formulario_contraseniaActualizadaCorrectamente" class="submit">Confirmar</a>
+            <button type="submit" class="submit">Actualizar</button>
         </div>
     </form>
+
     <%- include("../../../../templates/footer.ejs"); %>
 </body>
 </html>

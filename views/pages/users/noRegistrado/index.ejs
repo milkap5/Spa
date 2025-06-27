@@ -114,7 +114,14 @@
   <section class="seccion-llamada-accion" style="text-align: center; padding: 40px 20px; background-color: #fbe8f2;">
     <h2 style="font-size: 2em; color: #333;">¿Qué estás esperando para vivir una experiencia única?</h2>
     <p style="font-size: 1.2em; max-width: 600px; margin: auto;">Dejate cuidar por nuestros profesionales y regalate un momento de bienestar pensado exclusivamente para vos.</p>
-    <button class="boton-reservar" onclick="window.location.href='/pagina_cliente_servicios-individuales'">Reservar servicio</button>
+    
+    <button
+      class="boton-reservar"
+      onClick="alert('Debe iniciar sesión o registrarse para porder reservar un servicio.')"
+    >
+      Reservar servicio
+    </button>
+
   </section>
   
   <%- include("../../../templates/footer.ejs"); %>

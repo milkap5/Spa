@@ -9,22 +9,29 @@
         </hgroup>
     </div>
     <nav class="headerNav">
-        <% if(typeof usuario !== 'undefined') { console.log('Usuario: ', usuario);%>
+
+        <script>let usuario;</script>
+        <% if(typeof usuario !== 'undefined') { %>
+            <script>usuario = "<%= usuario.usuarioTipo %>";</script>
+
             <a href="/<%= usuario.usuarioTipo %>">Inicio</a> 
-            <a href="/<%= usuario.usuarioTipo %>/servicios-individuales">Servicios Individuales</a>
-            <a href="/<%= usuario.usuarioTipo %>/servicios-grupales">Servicios Grupales</a>
-            <select id="opciones-usuario">
-                <option value="" ><%= usuario.nombre %></option>
-                <option value="solicitar-turno">Solicitar Turno</option>
-                <option value="cerrar-sesion">Cerrar Sesión</option>
-            </select>
+            <a href="/servicios-individuales">Servicios Individuales</a>
+            <a href="/servicios-grupales">Servicios Grupales</a>
+            <div id="dropdown">
+                <button class="dropdown-toggle"><%= usuario.nombre %></button>
+                <div class="dropdown-menu">
+                    <a href="/formulario-turno">Solicitar Turno</a>
+                    <a href="/cerrar-session">Cerrar Sesión</a>
+                </div>
+            </div>
+            <script src="./logicas/template_header.js"></script>
         <% } else { %>
+            <script>usuario = "noRegistrado";</script>
+            
             <a href="/">Inicio</a>
             <a href="/servicios-individuales">Servicios Individuales</a>
             <a href="/servicios-grupales">Servicios Grupales</a>
             <a href="/inicioSesion">Iniciar Sesión</a>
         <% } %>
     </nav>
-
-    <script src="./logicas/template_header.js"></script>
 </header>

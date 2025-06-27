@@ -1,0 +1,22 @@
+<article class="servicio-box">
+    <img src="./media/imagenes/<%= servicio.imagen %>" alt="<%= servicio.titulo %>" />
+    <h4><%= servicio.titulo %></h4>
+    <p><strong>Descripción: </strong><%= servicio.descripcion %></p>
+    <p><strong>Duración: </strong>50 minutos.</p>
+    <p><strong>Beneficios: </strong><%= servicio.beneficios %></p>
+    <p>
+        <strong>Precio: </strong>
+        $<%= servicio.precio %><%= grupo === 'g' ? ' por persona.' : '.' %>
+    </p>
+
+    <% if(!usuario || usuario.usuarioTipo === 'cliente') { %>
+        <button
+            class="add-to-cart-btn"
+            data-imagen="<%= encodeURIComponent(servicio.imagen) %>"
+            data-titulo="<%= servicio.titulo %>"
+            data-precio="<%= servicio.precio %>"
+        >
+            Añadir al carrito
+        </button>
+    <% } %>
+</article>

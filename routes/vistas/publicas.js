@@ -3,30 +3,28 @@ const router = express.Router();
 const redirigirSiYaEstaLogueado = require('../../utils/redirigirSiYaEstaLogueado');
 
 router.get('/', (req, res) => res.render('pages/users/noRegistrado/index'));
-router.get('/servicios-individuales', (req, res) => res.render('pages/users/noRegistrado/servicios-individuales'))
-router.get('/servicios-grupales', (req, res) => res.render('pages/users/noRegistrado/servicios-grupales'))
 
-router.get('/registro', redirigirSiYaEstaLogueado, (req, res) => {
+router.get('/registro', (req, res) => {
     res.render('pages/users/noRegistrado/formularios/registro');
 });
 
-router.get('/inicioSesion', redirigirSiYaEstaLogueado, (req, res) => {
+router.get('/inicioSesion', (req, res) => {
     const errorLogin = req.query.error || null;
     res.render('pages/users/noRegistrado/formularios/inicioSesion', { errorLogin });
 });
 
-router.get('/olvideMiContrasenia', redirigirSiYaEstaLogueado, (req, res) => {
+router.get('/olvideMiContrasenia', (req, res) => {
     res.render('pages/users/noRegistrado/formularios/olvideMiContrasenia')
 });
 
+router.get('/confirmarCodigo', (req, res) => res.render('pages/users/noRegistrado/formularios/confirmarCodigo'));
+router.get('/nuevaContrasenia', (req, res) => res.render('pages/users/noRegistrado/formularios/nuevaContrasenia'));
+router.get('/contrasenia-actualizada', (req, res) => res.render('pages/users/noRegistrado/contraseniaActualizadaCorrectamente'));
 
 router.get('/bienvenido/:id', (req, res) => {
     const { id } = req.params;
-    res.render('pages/users/noRegistrado/p_bienvenidoAlSpa', { id });
+    res.render('pages/users/noRegistrado/bienvenidoAlSpa', { id });
 });
 
-router.get('/confirmarCodigo', (req, res) => res.render('pages/users/noRegistrado/confirmarCodigo'));
-router.get('/contraseniaActualizadaCorrectamente', (req, res) => res.render('pages/users/noRegistrado/contraseniaActualizadaCorrectamente'));
-router.get('/ingreseNuevaContrasenia', (req, res) => res.render('pages/users/noRegistrado/ingreseNuevaContrasenia'));
 
 module.exports = router;

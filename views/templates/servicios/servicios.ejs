@@ -1,0 +1,13 @@
+<% tratamientos.forEach( tratamiento => { %>
+	<section>
+		<h3><%= tratamiento %></h3>
+		<div class="servicios-grid">
+			<%
+				const servicios = resultados.filter(res => res.tratamiento === tratamiento);
+				servicios.forEach(servicio => {
+			%>
+				<%- include("./servicioCard.ejs", { servicio, grupo: 'i' }) %>
+			<% }); %>
+		</div>
+	</section>
+<% }); %>

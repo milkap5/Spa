@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/estilos/modalServicios.css" />
+<link rel="stylesheet" href="/estilos/modalItem.css" />
+
+<dialog id="modal">
+    <h2>Servicios solicitados</h2>
+    <div id="contenedor-servicios" class="serviciosSeleccionados">
+        <% carrito.forEach(servicio => { %>
+            <%- include('./modalItem.ejs', { servicio }); %>
+        <% }) %>
+    </div>
+    <div class="botones">
+        <button
+            type="button"
+            id="limpiarCarrito"
+        >
+            Limpiar Carrito
+        </button>
+        <button type="button">Consultar Fechas</button>
+    </div>
+</dialog>
+
+<script src="/logicas/modalItem.js"></script>

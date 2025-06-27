@@ -1,0 +1,55 @@
+.itemContainer {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: pink;
+    padding: 8px 40px;
+    border-radius: 20px;
+    min-width: 700px;
+    border: 5px solid lightgreen;
+    box-shadow: inset 3px 3px 10px var(--color-primario);
+    transition: all 0.3s ease;
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .itemServicioImagen {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 1px 1px 3px gray;
+        }
+
+        .texts {
+            margin-left: 40px;
+        }
+    }
+
+    .fa-times-circle {
+        font-size: 50px;
+        color: #f44;
+    }
+}
+
+p {
+    font-size: 15px;
+}
+
+.fa-times-circle:hover {
+    color: #f00;
+    font-size: 60px;
+    transition: all 0.3s ease;
+}
+
+.fa-times-circle:active {
+    scale: 1.2;
+    transition: all 0.3s ease;
+}
+
+.warning {
+    border-color: #f00;
+    box-shadow: inset 3px 3px 10px #f00;
+}

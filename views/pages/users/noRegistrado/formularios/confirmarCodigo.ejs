@@ -4,15 +4,15 @@
 <body class="flexColumn">
     <%- include("../../../../templates/header.ejs"); %>
 
-    <form action="" id="confirmarClave" class="formulario flexColumn" method="post">
-        <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
+    <form action="/validar-codigo" id="confirmarClave" class="formulario flexColumn" method="post">
+        <img src="/media/imagenes/icono.ico" alt="Logo_SPA">
         <h2>Recuperar mi contraseña</h2>
 
         <label>Escriba el código que recibió en su mail a continuación</label>
-        <input type="text" placeholder="Inserte aquí el código">
+        <input type="text" name="codigo" required placeholder="Inserte aquí el código">
+        
         <div id="botones" class="flexRow">
-            
-          <a href="/ingreseNuevaContrasenia" class="submit">Continuar</a>
+          <button type="submit" class="submit">Continuar</button>
         </div>
     </form>
 

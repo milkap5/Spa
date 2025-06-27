@@ -3,20 +3,37 @@
   <%- include("../../../templates/headTag.ejs", {title: 'Bienvenido'}); %>
   <body class="flexColumn">
       <%- include("../../../templates/header.ejs"); %>
-      <div id="bienvenidoAlSpa" class="flexColumn formulario">
+      <div
+        id="bienvenidoAlSpa"
+        class="flexColumn formulario"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 40px;
+        "
+      >
           <img src="/media/imagenes/icono.ico" alt="Logo_SPA" id="logo"/>
           <h2>Registro exitoso!</h2>
           <p>Le agradecemos por su confianza, ya puede disfrutar de nuestros servicios.</p>
           <p>El siguiente es su número de Cliente: <strong><%= id %></strong>.</p>
-          <p>
-            Con el, usted podrá <strong>Iniciar Sesión</strong>,
-            <strong>soliciar</strong>, 
-            <strong>consultar</strong>, 
-            <strong>modificar</strong>, y
+          <p>Con el, usted podrá:
+            <strong>Iniciar Sesión,</strong>
+            <strong>soliciar, </strong>
+            <strong>consultar, </strong>
+            <strong>modificar,</strong>y
             <strong>cancelar turnos</strong>.
           </p>
           <p>Su número de cliente ha sido enviado a los contactos que ha proporcionado.</p>
-          <form action="/iniciar-sesion" method="get" id="botones">
+          <form
+            action="/inicioSesion"
+            method="get"
+            id="botones"
+            style="
+              display: flex;
+              align-items: center;
+            "
+          >
             <button type="submit">Iniciar Sesión</button>
           </form>
       </div>

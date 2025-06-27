@@ -20,7 +20,9 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
+    if (!req.session.carrito) req.session.carrito = [];
     res.locals.usuario = req.session.usuario;
+    res.locals.carrito = req.session.carrito;
     next();
 });
 
@@ -29,7 +31,7 @@ app.use('/', require('./routes/datosBack'));
 app.use('/', require('./routes/vistas'));
 
 app.use((req, res) => {
-    res.status(404).render('pages/errors/404');
+    res.status(404).render('pages/errors/404', { title: 'ERROR 404'});
 });
 
 const PORT = process.env.PORT || 3000;

@@ -25,7 +25,7 @@ const iniciarSesion = async (req, res) => {
 
 const cerrarSesion = async (req, res) => {
     const usuarioID = req.session?.usuario?.id;
-
+    
     req.session.destroy(async error => {
         if(error) {
             console.error('ERROR AL CERRAR LA SESIÓN: ', error);

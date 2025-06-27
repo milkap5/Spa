@@ -2,20 +2,20 @@
 <html lang="es">
 <%- include("../../../../templates/headTag.ejs", {title: 'Recuperar mi Contraseña'}); %>
 <body class="flexColumn">
-    <%- include("../../../../templates/header.ejs"); %>
+  <%- include("../../../../templates/header.ejs"); %>
 
-    <form action="" id="recuperarClave" class="formulario flexColumn" method="post">
-        <img src="./media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA" style="height: 60px; border-radius: 15px;">
-        <h2>Recuperar mi contraseña</h2>
+  <form action="/recuperar-contrasenia" id="recuperarClave" class="formulario flexColumn" method="post">
+    <img src="/media/imagenes/logo-sentirse-bien.png" alt="Logo_SPA">
+    <h2>Recuperar mi contraseña</h2>
 
-        <label>Para recuperar su contraseña, ingrese el mail con el que se ha registrado</label>
-        <input type="email" placeholder="usuario@mail.com">
-        
-        <div id="botones" class="flexRow" >
-            <a href="/formulario_confirmarCodigo" class="submit">Enviar</a>
-        </div>
-    </form>
+    <label>Para recuperar su contraseña, ingrese el mail con el que se ha registrado</label>
+    <input type="email" name="correo" required placeholder="usuario@mail.com" />
 
-    <%- include("../../../../templates/footer.ejs"); %>
+    <div id="botones" class="flexRow">
+      <button type="submit" class="submit">Enviar</button>
+    </div>
+  </form>
+
+  <%- include("../../../../templates/footer.ejs"); %>
 </body>
 </html>

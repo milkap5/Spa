@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const poolConnection = require('../db/connection')
-
+const serviciosController = require('../controllers/serviciosController');
 const turnosController = require("../controllers/turnosController");
 
 // Obtener servicios/secciones
@@ -15,6 +15,9 @@ router.get("/horas-disponibles", turnosController.obtenerHorasDisponibles);
 
 // Profesionales disponibles
 router.get("/profesionales-disponibles", turnosController.obtenerProfesionalesDisponibles);
+
+router.get('/servicios-individuales', serviciosController.serviciosIndividuales);
+router.get('/servicios-grupales', serviciosController.serviciosGrupales);
 
 // Registrar turno
 router.post('/registrar-turno', async (req, res) => {

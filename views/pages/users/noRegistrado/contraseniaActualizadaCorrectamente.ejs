@@ -4,10 +4,13 @@
 <body class="flexColumn">
     <%- include("../../../templates/header.ejs"); %>
 
-    <form action="" id="claveActualizada" class="formulario flexColumn" method="post">
+    <form action="inicioSesion" id="claveActualizada" class="formulario flexColumn" method="get">
         <img src="./media/imagenes/icono.ico" alt="Logo_SPA">
         <h2>¡Contraseña actualizada correctamente!</h2>
-        <a href="/inicioSesion" class="submit">Iniciar Sesión</a>
+        
+        <div id="botones" class="flexRow">
+            <button type="submit" class="submit">Iniciar Sesión</button>
+        </div>
     </form>
 
     <%- include("../../../templates/footer.ejs"); %>

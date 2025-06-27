@@ -1,49 +1,9 @@
-:root {
-  --color-primario: #a51f6f;
-  --color-secundario: #b3558d;
-  --color-floating: #b3558dd7;
-  --color-fondo: #b3558d3e;
-  --color-texto: #333;
-  --color-texto-secundario: #666;
-  --fuente-principal: 'Segoe UI', sans-serif;
-  --color-acento:#2e7d32 ; 
-  --color-lujo:#4CAF50 ; 
-}
-
 body {
   font-family: var(--fuente-principal);
   margin: 0;
   padding: 0;
   background-color: var(--color-fondo);
   color: var(--color-texto);
-}
-
-header {
-  background-color: var(--color-primario);
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-nav {
-  background-color: var(--color-secundario);
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #003c46;
 }
 
 section {
@@ -118,35 +78,7 @@ section {
   width: 90%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-/*
-input,
-select,
-button.submit {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-*/
-/*
-button.submit {
-  background-color: #b3558d;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-button.submit:hover {
-  background-color: #b3558dd7;
-  transform: scale(1.03);
-}
-*/
 footer {
   background-color: #a51f6f;
   color: #fff;
@@ -154,7 +86,6 @@ footer {
   padding: 40px 20px 20px;
   margin-top: 40px;
   font-size: 16px;
-  /*background: #a8d8e8;*/
 }
 
 .direccion-visitanos {
@@ -290,28 +221,18 @@ button.submit:hover {
   letter-spacing: 1px;
 }
 
-.servicios-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
 .servicio-box {
-  background: white;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
+  width: 280px;
+  
   /* Sombra sutil y borde redondeado */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-out, transform 0.3s ease, box-shadow 0.3s ease;
   transform: translateY(30px);
+  text-align: center;
   opacity: 0;
-}
-
-.servicio-box:hover {
-  transform: scale(1.02);
 }
 
 /*color de las letras de las tarjetas (por ej 'Masajes') en grupales*/
@@ -335,11 +256,6 @@ button.submit:hover {
 .servicio-box ul li {
   margin-bottom: 8px;
   font-size: 15px;
-}
-
-.servicio-box.visible {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .footer-content {
@@ -499,7 +415,6 @@ button.submit:hover {
   text-align: center;
   color: #fff;
   padding: 2rem;
-  overflow: hidden;
 }
 
 .parallax {
@@ -584,50 +499,6 @@ button.submit:hover {
 .boton-reservar:hover {
   background-color: var(--color-lujo); /* Dorado suave al hacer hover */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* nuevos campos estilizados */
-form input[type='text'],
-form input[type='email'],
-form input[type='date'],
-form input[type='time'],
-form select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-form input:focus,
-form select:focus {
-  border-color: var(--color-floating);
-  box-shadow: 0 0 5px rgba(132, 197, 208, 0.5);
-  outline: none;
-}
-
-/*del form cuando le das a reservar dentro de servicios*/
-/* boton de envío en el formulario de contacto */
-form button.submit {
-  padding: 12px;
-  background-color: var(--color-acento); /* beige calido */
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  text-decoration: none;
-}
-
-form button.submit:hover {
-  background-color: var(--color-lujo); /* marron suave al hacer hover */
-  transform: scale(1.03);
 }
 
 .seccion-testimonios {
@@ -722,17 +593,10 @@ form button.submit:hover {
   transform: translateY(0);
 }
 
-.servicio-box {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  /* Transición para la sombra */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
 .servicio-box.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: all 0.3s ease-out;
 }
 
 /* Cascada para las primeras 6 tarjetas */
@@ -820,16 +684,6 @@ form button.submit:hover {
   justify-content: center;
 }
 
-.servicio-box {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 280px;
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-
 .servicio-box:hover {
   transform: translateY(-5px);
 }
@@ -840,65 +694,6 @@ form button.submit:hover {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 15px;
-}
-
-.formulario {
-  max-width: 400px; /* Ajusta el ancho máximo del formulario */
-  margin: 20px auto; /* Centra el formulario horizontalmente */
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-}
-
-.formulario img {
-  max-width: 150px; /* Ajusta el ancho máximo del logo */
-  margin: 0 auto 20px; /* Centra el logo horizontalmente y agrega espacio abajo */
-  display: block;
-}
-
-.formulario h2 {
-  text-align: center;
-  color: var(--color-texto);
-  margin-bottom: 20px;
-}
-
-.formulario label {
-  display: block;
-  margin-bottom: 5px;
-  color: var(#383737);
-}
-
-.formulario input[type="text"],
-.formulario input[type="number"],
-.formulario input[type="email"],
-.formulario input[type="password"] {
-    width: 400px; 
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Importante para que el padding y el border no aumenten el ancho total */
-}
-
-.formulario button[type="submit"] {
-  background-color: var(--color-acento); 
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  align-items: center;
-  margin: 0 auto;
-  display: block;
-  text-decoration: none;
-}
-
-.formulario button[type="submit"]:hover {
-  background-color: var(--color-lujo); 
-
 }
 
 .registro {
@@ -1038,31 +833,6 @@ form button.submit:hover {
 .metodo-pago p {
   font-size: 1rem;
   color: var(--color-texto-secundario);
-}
-
-/* Estilos para el botón flotante del carrito */
-.floating-cart-button {
-    position: fixed;
-    bottom: 90px; /* Un poco más arriba que el botón flotante de contacto si lo tienes */
-    right: 20px;
-    background-color: var(--color-primario); /* Tu color primario */
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    z-index: 999; /* Asegúrate de que esté debajo del modal */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.floating-cart-button:hover {
-    background-color: var(--color-secundario);
-    transform: scale(1.05);
 }
 
 .floating-cart-button .cart-count {
@@ -1368,7 +1138,7 @@ body, html {
 
 main, header {
   position: relative;
-  z-index: 1;
+  z-index: 1
 }
 /* Video fondo pantalla completa */
 #videoFondo {

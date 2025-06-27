@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include("../../../../templates/headTag.ejs", {title: 'Registrarme'}); %>
+     <%- include("../../../../templates/headTag.ejs", {title: 'Registrarme'}); %>
     <body class="flexColumn">
         <%- include('../../../../templates/header.ejs');%>
         <form id="formularioRegistro" class="formulario flexColumn">
@@ -10,7 +10,7 @@
             <div id="grupoNombre" class="grupoFormulario flexColumn">
                 <label for="nombre" id="nombreLabel" class="label">Nombre(s)</label>
                 <div id="inputNombre" class="inputDato">
-                    <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre" maxlength="20" required>
+                    <input type="text" id="nombre" name="nombre" class="input" placeholder="Nahuel Joaquín" maxlength="20" required>
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
@@ -20,7 +20,7 @@
             <div id="grupoApellido" class="grupoFormulario flexColumn">
                 <label for="apellido" id="apellidoLabel" class="label">Apellidos(s)</label>
                 <div id="inputApellido" class="inputDato">
-                    <input type="text" id="apellido" name="apellido" class="input" placeholder="Apellido" maxlength="25" required>
+                    <input type="text" id="apellido" name="apellido" class="input" placeholder="Gonzalez Del Valle" maxlength="25" required>
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
@@ -30,7 +30,7 @@
             <div id="grupoDni" class="grupoFormulario flexColumn">
                 <label for="dni" id="dniLabel" class="label">DNI</label>
                 <div id="inputDni" class="inputDato">
-                    <input type="text" id="dni" name="dni" class="input" placeholder="DNI" maxlength="8" required>
+                    <input type="text" id="dni" name="dni" class="input" placeholder="40111222" maxlength="8" required>
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
@@ -45,7 +45,7 @@
             <div id="grupoCelular" class="grupoFormulario flexColumn">
                 <label for="celular" id="celularLabel" class="label">Número de celular</label>
                 <div id="inputCelular" class="inputDato">
-                    <input type="text" id="celular" name="celular" class="input" placeholder="Número de celular" maxlength="10" required>
+                    <input type="text" id="celular" name="celular" class="input" placeholder="3624311644" maxlength="10" required>
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
@@ -104,7 +104,7 @@
             </div>
         </form>
 
-        <%- include("../../../../templates/footer.ejs"); %>
         <script src="./logicas/formularios/registro.js"></script>
+        <%- include("../../../../templates/footer.ejs"); %>
     </body>
 </html>
